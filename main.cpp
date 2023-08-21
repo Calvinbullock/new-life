@@ -2,9 +2,19 @@
 
 int main()
 {
-    sf::RenderWindow window(sf::VideoMode(200, 200), "SFML wo    rks!");
-    sf::CircleShape shape(100.f);
-    shape.setFillColor(sf::Color::Green);
+    float windowWidth = 400;
+    float windowHeight = 400;
+
+    sf::RenderWindow window(sf::VideoMode(windowWidth, windowHeight), "NewLife");
+
+    sf::Texture texture;
+    if (texture.loadFromFile("images/slime.png"))
+    {
+        return 0;
+    }
+
+    sf::Sprite sprite;
+    sprite.setTexture(texture);
 
     while (window.isOpen())
     {
@@ -16,7 +26,7 @@ int main()
         }
 
         window.clear();
-        window.draw(shape);
+        window.draw(sprite);
         window.display();
     }
 
