@@ -7,15 +7,6 @@ int main()
 
     sf::RenderWindow window(sf::VideoMode(windowWidth, windowHeight), "NewLife");
 
-    sf::Texture texture;
-    if (!texture.loadFromFile("/home/calvin/Documents/new-life/images/slime.png"))
-    {
-        return 0;
-    }
-
-    sf::Sprite sprite;
-    sprite.setTexture(texture);
-
     while (window.isOpen())
     {
         sf::Event event;
@@ -26,7 +17,6 @@ int main()
         }
 
         window.clear();
-        window.draw(sprite);
         window.display();
     }
 
