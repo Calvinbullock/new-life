@@ -8,7 +8,7 @@ int main()
     sf::RenderWindow window(sf::VideoMode(windowWidth, windowHeight), "NewLife");
 
     sf::Texture texture;
-    if (texture.loadFromFile("images/slime.png"))
+    if (!texture.loadFromFile("/home/calvin/Documents/new-life/images/slime.png"))
     {
         return 0;
     }
