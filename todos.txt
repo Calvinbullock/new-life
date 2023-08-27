@@ -1,0 +1,18 @@
+-- in gameWorld.cpp figure out how to do somehitng like this:
+
+ void GameWorld::setUpTiles()
+ {
+     ** ISSUE The postions (x,y) in the constucter make things hard....
+     GameTile *rw = new GameTile("images/rockWall.png", x, y, false, false);
+     GameTile *sd = new GameTile("images/stoneDoor.png", x, y, true, true);
+
+     std::vector<GameTile *>{
+         rw,
+         sd,
+         rw,
+         rw,
+         rw,
+         rw,
+         rw,
+     };
+ }
