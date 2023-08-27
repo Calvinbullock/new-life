@@ -1,4 +1,6 @@
+
 #include "gameWorld.h"
+#include <iostream> // DEBUGing
 
 GameWorld::GameWorld() : gridLength(8),
                          tiles(),
@@ -11,7 +13,7 @@ GameWorld::GameWorld() : gridLength(8),
 
 void GameWorld::setUpInitialState()
 {
-    setUpEnomyPositions();
+    // setUpEnomyPositions();
     setUpTiles();
 }
 
@@ -31,7 +33,7 @@ void GameWorld::setUpTiles()
     firstRow.push_back(new GameTile("images/rockWall.png", 100, 0, false, false));
     firstRow.push_back(new GameTile("images/rockWall.png", 150, 0, false, false));
     firstRow.push_back(new GameTile("images/rockWall.png", 200, 0, false, false));
-    firstRow.push_back(new GameTile("images/rockWall.png", 100, 0, false, false));
+    firstRow.push_back(new GameTile("images/rockWall.png", 250, 0, false, false));
     firstRow.push_back(new GameTile("images/rockWall.png", 300, 0, false, false));
     firstRow.push_back(new GameTile("images/rockWall.png", 350, 0, false, false));
     tiles.push_back(firstRow);
@@ -43,7 +45,7 @@ void GameWorld::setUpTiles()
     secondRow.push_back(new GameTile("images/rockPath.png", 100, 50, true, false));
     secondRow.push_back(new GameTile("images/rockPath.png", 150, 50, true, false));
     secondRow.push_back(new GameTile("images/rockPath.png", 200, 50, true, false));
-    secondRow.push_back(new GameTile("images/rockPath.png", 100, 50, true, false));
+    secondRow.push_back(new GameTile("images/rockPath.png", 250, 50, true, false));
     secondRow.push_back(new GameTile("images/rockPath.png", 300, 50, true, false));
     secondRow.push_back(new GameTile("images/rockPath.png", 350, 50, true, false));
     tiles.push_back(secondRow);
@@ -55,7 +57,7 @@ void GameWorld::setUpTiles()
     thirdRow.push_back(new GameTile("images/rockPath.png", 100, 100, true, false));
     thirdRow.push_back(new GameTile("images/rockPath.png", 150, 100, true, false));
     thirdRow.push_back(new GameTile("images/rockPath.png", 200, 100, true, false));
-    thirdRow.push_back(new GameTile("images/rockPath.png", 100, 100, true, false));
+    thirdRow.push_back(new GameTile("images/rockPath.png", 250, 100, true, false));
     thirdRow.push_back(new GameTile("images/rockPath.png", 300, 100, true, false));
     thirdRow.push_back(new GameTile("images/rockPath.png", 350, 100, true, false));
     tiles.push_back(thirdRow);
@@ -67,7 +69,7 @@ void GameWorld::setUpTiles()
     fourthRow.push_back(new GameTile("images/rockPath.png", 100, 150, true, false));
     fourthRow.push_back(new GameTile("images/rockPath.png", 150, 150, true, false));
     fourthRow.push_back(new GameTile("images/rockPath.png", 200, 150, true, false));
-    fourthRow.push_back(new GameTile("images/rockPath.png", 100, 150, true, false));
+    fourthRow.push_back(new GameTile("images/rockPath.png", 250, 150, true, false));
     fourthRow.push_back(new GameTile("images/rockPath.png", 300, 150, true, false));
     fourthRow.push_back(new GameTile("images/rockPath.png", 350, 150, true, false));
     tiles.push_back(fourthRow);
@@ -79,20 +81,19 @@ void GameWorld::setUpTiles()
     fifthRow.push_back(new GameTile("images/rockPath.png", 100, 200, true, false));
     fifthRow.push_back(new GameTile("images/rockPath.png", 150, 200, true, false));
     fifthRow.push_back(new GameTile("images/rockPath.png", 200, 200, true, false));
-    fifthRow.push_back(new GameTile("images/rockPath.png", 100, 200, true, false));
+    fifthRow.push_back(new GameTile("images/rockPath.png", 250, 200, true, false));
     fifthRow.push_back(new GameTile("images/rockPath.png", 300, 200, true, false));
     fifthRow.push_back(new GameTile("images/rockPath.png", 350, 200, true, false));
-    tiles.push_back(fifthRow); 
+    tiles.push_back(fifthRow);
 
-    // Broken -------------- Not dispalaying
-    // y = 250 
+    // y = 250
     std::vector<GameTile *> sixthRow;
     sixthRow.push_back(new GameTile("images/rockWall.png", 0, 250, false, false));
     sixthRow.push_back(new GameTile("images/rockPath.png", 50, 250, true, true));
     sixthRow.push_back(new GameTile("images/rockPath.png", 100, 250, true, false));
     sixthRow.push_back(new GameTile("images/rockPath.png", 150, 250, true, false));
     sixthRow.push_back(new GameTile("images/rockPath.png", 200, 250, true, false));
-    sixthRow.push_back(new GameTile("images/rockPath.png", 100, 250, true, false));
+    sixthRow.push_back(new GameTile("images/rockPath.png", 250, 250, true, false));
     sixthRow.push_back(new GameTile("images/rockPath.png", 300, 250, true, false));
     sixthRow.push_back(new GameTile("images/rockPath.png", 350, 250, true, false));
     tiles.push_back(sixthRow);
@@ -104,7 +105,7 @@ void GameWorld::setUpTiles()
     seventhRow.push_back(new GameTile("images/rockPath.png", 100, 300, true, false));
     seventhRow.push_back(new GameTile("images/rockPath.png", 150, 300, true, false));
     seventhRow.push_back(new GameTile("images/rockPath.png", 200, 300, true, false));
-    seventhRow.push_back(new GameTile("images/rockPath.png", 100, 300, true, false));
+    seventhRow.push_back(new GameTile("images/rockWall.png", 250, 300, true, false));
     seventhRow.push_back(new GameTile("images/rockPath.png", 300, 300, true, false));
     seventhRow.push_back(new GameTile("images/rockPath.png", 350, 300, true, false));
     tiles.push_back(seventhRow);
@@ -116,7 +117,7 @@ void GameWorld::setUpTiles()
     eighthRow.push_back(new GameTile("images/rockPath.png", 100, 350, true, false));
     eighthRow.push_back(new GameTile("images/rockPath.png", 150, 350, true, false));
     eighthRow.push_back(new GameTile("images/rockPath.png", 200, 350, true, false));
-    eighthRow.push_back(new GameTile("images/rockPath.png", 100, 350, true, false));
+    eighthRow.push_back(new GameTile("images/rockPath.png", 250, 350, true, false));
     eighthRow.push_back(new GameTile("images/rockPath.png", 300, 350, true, false));
     eighthRow.push_back(new GameTile("images/rockPath.png", 350, 350, true, false));
     tiles.push_back(eighthRow);
