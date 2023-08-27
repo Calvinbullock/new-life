@@ -16,3 +16,5 @@
          rw,
      };
  }
+
+ -- Move Postion out of the GameTile and into a new location..... 
