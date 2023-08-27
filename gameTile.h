@@ -8,11 +8,11 @@ public:
     bool isPassable;
     bool isExit;
 
-    sf::Vector2f pos;
+    sf::Vector2f positions;
     sf::Texture texture;
     sf::Sprite sprite;
 
-    GameTile(std::string, float, float, bool, bool) {}
+    GameTile(std::string, float, float, bool, bool);
     bool SetUpSprite(std::string);
 };
 
