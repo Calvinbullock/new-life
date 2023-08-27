@@ -2,7 +2,7 @@
 #include "gameWorld.cpp"
 #include "gameTile.cpp"
 
-#include <iostream> // DEBUGING
+#include <iostream> // DEBUGing
 
 int main()
 {
