@@ -18,3 +18,5 @@
  }
 
  -- Move Postion out of the GameTile and into a new location..... 
+    - Use the postion in the array 0 = 0, 1 = 50, 2 = 100, etc
+  
