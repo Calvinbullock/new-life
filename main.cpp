@@ -90,3 +90,7 @@ int main()
 // -ansi -pedantic -Wall -Wextra -Wshadow -Weffc++
 
 // g++ main.cpp -o newLifeEXE -lsfml-graphics -lsfml-window -lsfml-system
+
+// Refrance videos used:
+//      https://www.youtube.com/watch?v=aEDP7uhaiJc&list=PLnEt5PBXuAmvPHLXnYzjR4eP65VsxCQRV&index=9
+//      https://www.youtube.com/watch?v=A60oYZK_ptk&list=PLnEt5PBXuAmvPHLXnYzjR4eP65VsxCQRV&index=7
