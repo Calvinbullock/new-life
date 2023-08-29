@@ -21,7 +21,8 @@ void PlayerSprite::SetPlayerXY(float x, float y)
     // positions(sf::Vector2f(x, y));
 }
 
-void PlayerSprite::UpdateTexture(std::string texturePath){
-     if (!texture.loadFromFile(texturePath))
+void PlayerSprite::PlayerMove(std::string texturePath, int xDelta, int yDelta)
+{
+    if (!texture.loadFromFile(texturePath))
         return;
 }
