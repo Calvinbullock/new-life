@@ -42,7 +42,7 @@ int main()
                 {
                     std::cout << "you pushed A" << std::endl;
                     playerX += moveAmt;
-                    if (!playerTexture.loadFromFile("images/protag-up-stand.png"))
+                    if (!playerTexture.loadFromFile("images/protag-left-stand.png"))
                         return -1;
                 }
                 else if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
@@ -56,7 +56,7 @@ int main()
                 {
                     std::cout << "you pushed D" << std::endl;
                     playerX -= moveAmt;
-                    if (!playerTexture.loadFromFile("images/protag-up-stand.png"))
+                    if (!playerTexture.loadFromFile("images/protag-right-stand.png"))
                         return -1;
                 }
                 // set the sprite for the directional texture.
