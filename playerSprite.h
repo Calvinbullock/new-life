@@ -14,7 +14,7 @@ public:
     PlayerSprite(std::string texturePath, float x, float y);
     bool SetUpSprite(std::string texturePath);
     void SetPlayerXY(float x, float y);
-    void PlayerMove(std::string texturePath, int xDelat, int yDelta);
+    void PlayerMove(std::string texturePath, int xDelta, int yDelta);
 
     sf::Sprite GetSprite()
     {
