@@ -1,6 +1,4 @@
 #include <SFML/Graphics.hpp>
-#include "gameWorld.cpp"
-#include "gameTile.cpp"
 #include "playerSprite.cpp"
 #include "tileMap.cpp"
 
