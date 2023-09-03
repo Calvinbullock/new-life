@@ -9,7 +9,7 @@ class GameWorld
 {
 
 public:
-    int gridLength;
+    int gridLength; // TODO replace calls to this with the geter
     std::vector<std::vector<GameTile *> > tiles;
 
     GameWorld();
