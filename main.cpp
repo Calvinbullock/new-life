@@ -47,22 +47,22 @@ int main()
                 if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
                 {
                     std::cout << "you pushed W" << std::endl;
-                    player1.PlayerMove("images/protag-up-stand.png", 0, moveAmt);
+                    player1.PlayerMove("images/protag-up-stand.png", 0, -moveAmt);
                 }
                 else if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
                 {
                     std::cout << "you pushed A" << std::endl;
-                    player1.PlayerMove("images/protag-left-stand.png", moveAmt, 0);
+                    player1.PlayerMove("images/protag-left-stand.png", -moveAmt, 0);
                 }
                 else if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
                 {
                     std::cout << "you pushed S" << std::endl;
-                    player1.PlayerMove("images/protag-down-stand.png", -moveAmt, 0);
+                    player1.PlayerMove("images/protag-down-stand.png", 0, moveAmt);
                 }
                 else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
                 {
                     std::cout << "you pushed D" << std::endl;
-                    player1.PlayerMove("images/protag-right-stand.png", -moveAmt, 0);
+                    player1.PlayerMove("images/protag-right-stand.png", moveAmt, 0);
                 }
             }
         }
