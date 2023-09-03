@@ -2,11 +2,12 @@
 #include <iostream> // DEBUGing
 
 PlayerSprite::PlayerSprite(std::string texturePath, float x, float y) : positions(sf::Vector2f(x, y)),
-                                                                                     texture(),
-                                                                                     sprite()
+                                                                        texture(),
+                                                                        sprite()
 {
     if (!SetUpSprite(texturePath))
         return;
+
     sprite.setPosition(positions);
 }
 
@@ -18,7 +19,7 @@ bool PlayerSprite::SetUpSprite(std::string texturePath)
     texture.setSmooth(true);
     sprite.setTexture(texture);
     sprite.setTextureRect(sf::IntRect(0, 0, 400, 400));
-    
+
     return true;
 }
 
@@ -33,8 +34,8 @@ void PlayerSprite::PlayerMove(std::string texturePath, int xDelta, int yDelta)
 {
     if (!texture.loadFromFile(texturePath))
         return;
+
     std::cout << positions.y << ", " << positions.x << std::endl;
     positions.x += xDelta;
     positions.y += yDelta;
-    
 }
