@@ -6,8 +6,8 @@
 
 int main()
 {
-    float windowWidth = 400;
-    float windowHeight = 400;
+    float windowWidth = 512;
+    float windowHeight = 256;
     int moveAmt = 10; // the amount of pixels the player moves with each key press.
 
     sf::RenderWindow window(sf::VideoMode(windowWidth, windowHeight), "NewLife");
