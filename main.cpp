@@ -1,6 +1,7 @@
 #include <SFML/Graphics.hpp>
 #include "gameWorld.cpp"
 #include "gameTile.cpp"
+#include "tileMap.cpp"
 
 #include <iostream> // DEBUGing
 
@@ -8,15 +9,29 @@ int main()
 {
     float windowWidth = 400;
     float windowHeight = 400;
-    int playerX = -200;
-    int playerY = -50;
     int moveAmt = 10; // the amount of pixels the player moves with each key press.
 
     sf::RenderWindow window(sf::VideoMode(windowWidth, windowHeight), "NewLife");
 
-    GameWorld gameWorld = GameWorld();
-    sf::Texture playerTexture;
-    sf::Sprite playerSprite;
+    PlayerSprite player1 = PlayerSprite("protag-up-stand.png", 0, 0);
+    TileMap map;
+    
+    // define the level with an array of tile indices
+    const int level[] =
+    {
+        0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+        0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 2, 0, 0, 0, 0,
+        1, 1, 0, 0, 0, 0, 0, 0, 3, 3, 3, 3, 3, 3, 3, 3,
+        0, 1, 0, 0, 2, 0, 3, 3, 3, 0, 1, 1, 1, 0, 0, 0,
+        0, 1, 1, 0, 3, 3, 3, 0, 0, 0, 1, 1, 1, 2, 0, 0,
+        0, 0, 1, 0, 3, 0, 2, 2, 0, 0, 1, 1, 1, 1, 2, 0,
+        2, 0, 1, 0, 3, 0, 2, 2, 2, 0, 1, 1, 1, 1, 1, 1,
+        0, 0, 1, 0, 3, 2, 2, 2, 0, 0, 0, 0, 1, 1, 1, 1,
+    };
+    
+    // Set tile map textures
+    if (!map.load("images/tilemap-src.png", sf::Vector2u(32, 32), level, 16, 8))
+        return -1;
 
     // Main event / game loop
     while (window.isOpen())
@@ -65,20 +80,9 @@ int main()
         }
 
         window.clear();
-
-        // Draws gameWorld / game map to window buffer
-        for (int x = 0; x < gameWorld.gridLength; x++)
-        {
-            for (int y = 0; y < gameWorld.gridLength; y++)
-            {
-                window.draw(gameWorld.tiles[x][y]->sprite);
-            }
-        }
-
-        window.draw(playerSprite);
-        playerSprite.setTextureRect(sf::IntRect(playerX, playerY, 500, 400));
+        window.draw(map);
+        window.draw(player1.GetSprite());
         window.display();
-        // std::cout << "redraw" << std::endl;
     }
 
     return 0;
