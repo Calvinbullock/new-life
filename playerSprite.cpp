@@ -1,4 +1,5 @@
 #include "playerSprite.h"
+#include <iostream> // DEBUGing
 
 PlayerSprite::PlayerSprite(std::string texturePath, float x, float y) : positions(sf::Vector2f(x, y)),
                                                                                      texture(),
@@ -32,7 +33,7 @@ void PlayerSprite::PlayerMove(std::string texturePath, int xDelta, int yDelta)
 {
     if (!texture.loadFromFile(texturePath))
         return;
-    
+    std::cout << positions.y << ", " << positions.x << std::endl;
     positions.x += xDelta;
     positions.y += yDelta;
     
