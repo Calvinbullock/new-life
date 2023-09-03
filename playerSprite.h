@@ -6,7 +6,6 @@
 class PlayerSprite
 {
 private:
-    sf::Vector2f positions;
     sf::Texture texture;
     sf::Sprite sprite;
 
