@@ -1,6 +1,7 @@
 #include <SFML/Graphics.hpp>
 #include "gameWorld.cpp"
 #include "gameTile.cpp"
+#include "playerSprite.cpp"
 #include "tileMap.cpp"
 
 #include <iostream> // DEBUGing
@@ -13,7 +14,7 @@ int main()
 
     sf::RenderWindow window(sf::VideoMode(windowWidth, windowHeight), "NewLife");
 
-    PlayerSprite player1 = PlayerSprite("protag-up-stand.png", 0, 0);
+    PlayerSprite player1 = PlayerSprite("images/protag-up-stand.png", 0, 0);
     TileMap map;
     
     // define the level with an array of tile indices
@@ -49,33 +50,23 @@ int main()
                 if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
                 {
                     std::cout << "you pushed W" << std::endl;
-                    playerY += moveAmt;
-                    if (!playerTexture.loadFromFile("images/protag-up-stand.png"))
-                        return -1;
+                    player1.PlayerMove("images/protag-up-stand.png", 0, moveAmt);
                 }
                 else if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
                 {
                     std::cout << "you pushed A" << std::endl;
-                    playerX += moveAmt;
-                    if (!playerTexture.loadFromFile("images/protag-left-stand.png"))
-                        return -1;
+                    player1.PlayerMove("images/protag-left-stand.png", moveAmt, 0);
                 }
                 else if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
                 {
                     std::cout << "you pushed S" << std::endl;
-                    playerY -= moveAmt;
-                    if (!playerTexture.loadFromFile("images/protag-down-stand.png"))
-                        return -1;
+                    player1.PlayerMove("images/protag-down-stand.png", -moveAmt, 0);
                 }
                 else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
                 {
                     std::cout << "you pushed D" << std::endl;
-                    playerX -= moveAmt;
-                    if (!playerTexture.loadFromFile("images/protag-right-stand.png"))
-                        return -1;
+                    player1.PlayerMove("images/protag-right-stand.png", -moveAmt, 0);
                 }
-                // set the sprite for the directional texture.
-                playerSprite.setTexture(playerTexture);
             }
         }
 
