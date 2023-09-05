@@ -23,9 +23,7 @@ bool PlayerSprite::SetUpSprite(std::string texturePath)
 
 void PlayerSprite::SetPlayerXY(float x, float y)
 {
-    // positions(sf::Vector2f(x, y));
-    // positions.x = x;
-    // positions.y = y;
+    sprite.setPosition(sf::Vector2f(x, y));
 }
 
 void PlayerSprite::PlayerMove(std::string texturePath, int xDelta, int yDelta)
