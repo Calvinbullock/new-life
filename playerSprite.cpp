@@ -2,7 +2,8 @@
 #include <iostream> // DEBUGing
 
 PlayerSprite::PlayerSprite(std::string texturePath, float x, float y) : texture(),
-                                                                        sprite()
+                                                                        sprite(),
+                                                                        boundery()
 {
     if (!SetUpSprite(texturePath))
         return;
