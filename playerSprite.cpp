@@ -30,8 +30,19 @@ void PlayerSprite::SetPlayerXY(float x, float y)
 
 void PlayerSprite::PlayerMove(std::string texturePath, int xDelta, int yDelta)
 {
-    if (!texture.loadFromFile(texturePath))
-        return;
+    // colision logic.......
+    //      tile colistion,
+    //      item colistion,
+    //      enemey colistion.
+    //      Idea --- Have the tile enemey or item say what it is then a if tree
+    //          here based on boundery type
+    sf::FloatRect otherBoundery; // TODO how to find other boundery....
+
+    if (boundery.intersects(otherBoundery))
+        // move invalid....
+
+        if (!texture.loadFromFile(texturePath))
+            return;
 
     sprite.move(xDelta, yDelta);
 }
