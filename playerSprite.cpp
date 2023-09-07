@@ -18,6 +18,7 @@ bool PlayerSprite::SetUpSprite(std::string texturePath)
 
     texture.setSmooth(true);
     sprite.setTexture(texture);
+    boundery = sprite.getGlobalBounds();
 
     return true;
 }

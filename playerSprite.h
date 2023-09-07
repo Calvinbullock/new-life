@@ -8,6 +8,7 @@ class PlayerSprite
 private:
     sf::Texture texture;
     sf::Sprite sprite;
+    sf::FloatRect boundery;
 
 public:
     PlayerSprite(std::string texturePath, float x, float y);
@@ -18,6 +19,11 @@ public:
     sf::Sprite GetSprite()
     {
         return sprite;
+    }
+
+    sf::FloatRect GetBoundery()
+    {
+        return boundery;
     }
 };
 
