@@ -42,7 +42,8 @@ void PlayerSprite::PlayerMove(std::string texturePath, int xDelta, int yDelta, T
 
     std::vector<sf::FloatRect> bounderyList = map.GetBounderies();
     int length = bounderyList.size();
-    /// VV**TODO**VV need to be able to get this(isPassable) info for a tile
+    /// TODO**VV need to be able to get this(isPassable) info for a tile
+    ///     Also tie the pasability to the curent square the player is on or about to enter
     bool isPassable; 
 
     for (int i = 0; i < length; i++)
