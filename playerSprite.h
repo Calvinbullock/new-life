@@ -1,4 +1,5 @@
 #include <SFML/Graphics.hpp>
+#include "tileMap.cpp"
 
 #ifndef PLAYERSPRITE_H
 #define PLAYERSPRITE_H
@@ -14,7 +15,7 @@ public:
     PlayerSprite(std::string texturePath, float x, float y);
     bool SetUpSprite(std::string texturePath);
     void SetPlayerXY(float x, float y);
-    void PlayerMove(std::string texturePath, int xDelta, int yDelta);
+    void PlayerMove(std::string texturePath, int xDelta, int yDelta, TileMap map);
 
     sf::Sprite GetSprite()
     {

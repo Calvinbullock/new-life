@@ -1,5 +1,6 @@
 
 #include <SFML/Graphics.hpp>
+#include <vector>
 
 #ifndef TILEMAP_H
 #define TILEMAP_H
@@ -8,7 +9,7 @@ class TileMap : public sf::Drawable, public sf::Transformable
 {
 
 public:
-    TileMap() : Drawable(), Transformable(), m_vertices(), m_tileset() {}
+    TileMap() : Drawable(), Transformable(), m_vertices(), m_tileset(), bounderyList() {}
 
     bool load(const std::string &tileset,
               sf::Vector2u tileSize,
@@ -53,9 +54,17 @@ public:
                 triangles[3].texCoords = sf::Vector2f(tu * tileSize.x, (tv + 1) * tileSize.y);
                 triangles[4].texCoords = sf::Vector2f((tu + 1) * tileSize.x, tv * tileSize.y);
                 triangles[5].texCoords = sf::Vector2f((tu + 1) * tileSize.x, (tv + 1) * tileSize.y);
+
+                bounderyList.push_back(m_vertices.getBounds());
             }
 
         return true;
+    }
+
+    std::vector<sf::FloatRect> GetBounderies()
+    {
+        // for collision detection
+        return bounderyList;
     }
 
 private:
@@ -73,6 +82,7 @@ private:
 
     sf::VertexArray m_vertices;
     sf::Texture m_tileset;
+    std::vector<sf::FloatRect> bounderyList;
 };
 
 #endif
