@@ -3,6 +3,7 @@
 #include "tileMap.cpp"
 
 #include <iostream> // DEBUGing
+#define DEBUG std::cout << "DEBUG: " << __LINE__ << std::endl
 
 int main()
 {
@@ -66,6 +67,8 @@ int main()
                 }
             }
         }
+
+        DEBUG;
 
         window.clear();
         window.draw(caveMap);
