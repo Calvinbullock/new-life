@@ -33,7 +33,7 @@ void PlayerSprite::SetPlayerXY(float x, float y)
 
 void PlayerSprite::PlayerMove(std::string texturePath, int xDelta, int yDelta, TileMap map)
 {
-    // collision logic.......
+    /// TODO collision logic.......
     //      tile colistion,
     //      item colistion,
     //      enemey colistion.
@@ -42,19 +42,22 @@ void PlayerSprite::PlayerMove(std::string texturePath, int xDelta, int yDelta, T
 
     std::vector<sf::FloatRect> bounderyList = map.GetBounderies();
     int length = bounderyList.size();
-    /// TODO**VV need to be able to get this(isPassable) info for a tile
-    ///     Also tie the pasability to the curent square the player is on or about to enter
-    bool isPassable; 
 
     for (int i = 0; i < length; i++)
     {
         sf::FloatRect otherBoundery = bounderyList[i];
 
-        std::cout << "collision checking..." << std::endl;
-        if (boundery.intersects(otherBoundery))
+        sf::Vector2f currentPoint = sprite.getPosition();
+        float nextX = currentPoint.x + xDelta;
+        float nextY = currentPoint.y + yDelta;
+        sf::Vector2f nextPoint = sf::Vector2f(nextX, nextY);
+
+        // BUG** - the other.Boundery is triggering to offten - find solotion
+        std::cout << otherBoundery.contains(nextPoint) << ", i= " << i << std::endl;
+        if (otherBoundery.contains(nextPoint) && map.TileIsPassable(i))
         {
-            std::cout << "hit impassable tile" << std::endl;
-            // return;
+            std::cout << "Impassable tile..." << std::endl;
+            return;
         }
     }
 
