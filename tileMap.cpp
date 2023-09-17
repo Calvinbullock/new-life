@@ -9,7 +9,15 @@ class TileMap : public sf::Drawable, public sf::Transformable
 {
 
 public:
-    TileMap() : Drawable(), Transformable(), m_vertices(), m_tileset(), bounderyList() {}
+    TileMap() : Drawable(),
+                Transformable(),
+                m_vertices(),
+                m_tileset(),
+                bounderyList(),
+                passableTilesID(),
+                tilesID()
+    {
+    }
 
     bool load(const std::string &tileset,
               sf::Vector2u tileSize,
