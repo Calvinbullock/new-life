@@ -3,7 +3,6 @@
 #include "tileMap.cpp"
 
 #include <iostream> // DEBUGing
-#define DEBUG std::cout << "DEBUG: " << __LINE__ << std::endl
 
 int main()
 {
@@ -12,7 +11,7 @@ int main()
     int moveAmt = 10; // the amount of pixels the player moves with each key press.
 
     sf::RenderWindow window(sf::VideoMode(windowWidth, windowHeight), "NewLife");
-    PlayerSprite player1 = PlayerSprite("images/protag-up-stand.png", 50, 50);
+    PlayerSprite player1 = PlayerSprite("images/protag-up-stand.png", 32, 32);
     TileMap caveMap;
     
     // define the level with an array of tile indices
@@ -77,7 +76,7 @@ int main()
     return 0;
 }
 
-// Compile command
+// Compile command / flags
 //      g++ *FILE-NAME*.cpp -o *EXACUTABLE-NAME* -lsfml-graphics -lsfml-window -lsfml-system
 //  
 // Other compile options and flags
