@@ -67,7 +67,6 @@ public:
 
     std::vector<sf::FloatRect> GetBounderies()
     {
-        // for collision detection
         return bounderyList;
     }
 
