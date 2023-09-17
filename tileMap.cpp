@@ -75,6 +75,19 @@ public:
     {
         return passableTilesID;
     }
+
+    bool TileIsPassable(int index)
+    {
+        size_t length = passableTilesID.size();
+
+        for (size_t i = 0; i < length; i++)
+        {
+            if (tilesID[index] == passableTilesID[i])
+                return true;
+        }
+        return false;
+    }
+
 private:
     virtual void draw(sf::RenderTarget &target, sf::RenderStates states) const
     {
