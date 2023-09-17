@@ -71,6 +71,10 @@ public:
         return bounderyList;
     }
 
+    std::vector<int> GetPassableTiles()
+    {
+        return passableTilesID;
+    }
 private:
     virtual void draw(sf::RenderTarget &target, sf::RenderStates states) const
     {
