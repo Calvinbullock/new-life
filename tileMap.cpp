@@ -13,9 +13,11 @@ public:
 
     bool load(const std::string &tileset,
               sf::Vector2u tileSize,
-              const int *tiles,
+              std::vector<int> tiles,
               unsigned int width,
-              unsigned int height)
+              unsigned int height,
+              std::vector<int> passableTilesIn)
+
     {
         // load the tileset texture
         if (!m_tileset.loadFromFile(tileset))
@@ -55,7 +57,9 @@ public:
                 triangles[4].texCoords = sf::Vector2f((tu + 1) * tileSize.x, tv * tileSize.y);
                 triangles[5].texCoords = sf::Vector2f((tu + 1) * tileSize.x, (tv + 1) * tileSize.y);
 
-                bounderyList.push_back(m_vertices.getBounds());
+                // Vectores for colistion detection
+                passableTilesID = passableTilesIn;
+                tilesID = tiles;
             }
 
         return true;
@@ -83,6 +87,8 @@ private:
     sf::VertexArray m_vertices;
     sf::Texture m_tileset;
     std::vector<sf::FloatRect> bounderyList;
+    std::vector<int> passableTilesID;
+    std::vector<int> tilesID;
 };
 
 #endif
