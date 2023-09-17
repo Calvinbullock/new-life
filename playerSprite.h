@@ -9,10 +9,10 @@ class PlayerSprite
 private:
     sf::Texture texture;
     sf::Sprite sprite;
-    sf::FloatRect boundery;
+    sf::FloatRect playerBoundery;
 
 public:
-    PlayerSprite(std::string texturePath, float x, float y);
+    PlayerSprite(std::string texturePath, float startX, float startY);
     bool SetUpSprite(std::string texturePath);
     void SetPlayerXY(float x, float y);
     void PlayerMove(std::string texturePath, int xDelta, int yDelta, TileMap map);
@@ -24,7 +24,7 @@ public:
 
     sf::FloatRect GetBoundery()
     {
-        return boundery;
+        return playerBoundery;
     }
 };
 

@@ -11,7 +11,7 @@ int main()
     int moveAmt = 10; // the amount of pixels the player moves with each key press.
 
     sf::RenderWindow window(sf::VideoMode(windowWidth, windowHeight), "NewLife");
-    PlayerSprite player1 = PlayerSprite("images/protag-up-stand.png", 32, 32);
+    PlayerSprite player1 = PlayerSprite("images/protag-up-stand.png", 52, 52);
     TileMap caveMap;
     
     // **TODO rename this array 

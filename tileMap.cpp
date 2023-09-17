@@ -65,6 +65,14 @@ public:
                 triangles[4].texCoords = sf::Vector2f((tu + 1) * tileSize.x, tv * tileSize.y);
                 triangles[5].texCoords = sf::Vector2f((tu + 1) * tileSize.x, (tv + 1) * tileSize.y);
 
+                // single rectangle for colistion boundery
+                sf::VertexArray tileRec(sf::LinesStrip, 4);
+                tileRec[0].position = sf::Vector2f(i * tileSize.x, j * tileSize.y);
+                tileRec[1].position = sf::Vector2f(i * tileSize.x, (j + 1) * tileSize.y);
+                tileRec[2].position = sf::Vector2f((i + 1) * tileSize.x, j * tileSize.y);
+                tileRec[3].position = sf::Vector2f((i + 1) * tileSize.x, (j + 1) * tileSize.y);
+                bounderyList.push_back(tileRec.getBounds());
+                
                 // Vectores for colistion detection
                 passableTilesID = passableTilesIn;
                 tilesID = tiles;

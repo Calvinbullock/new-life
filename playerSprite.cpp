@@ -3,16 +3,17 @@
 #include <vector>
 
 #include <iostream> // DEBUGing
+#define DEBUG std::cout << " DEBUG: L" << __LINE__ << " "
 
-PlayerSprite::PlayerSprite(std::string texturePath, float x, float y) : texture(),
-                                                                        sprite(),
-                                                                        boundery()
+PlayerSprite::PlayerSprite(std::string texturePath, float startX, float startY) : texture(),
+                                                                                  sprite(),
+                                                                                  playerBoundery()
 {
     if (!SetUpSprite(texturePath))
         return;
 
-    sprite.setPosition(sf::Vector2f(x, y));
-    boundery = sprite.getGlobalBounds();
+    sprite.setPosition(sf::Vector2f(startX, startY));
+    playerBoundery = sprite.getGlobalBounds();
 }
 
 bool PlayerSprite::SetUpSprite(std::string texturePath)
@@ -43,26 +44,28 @@ void PlayerSprite::PlayerMove(std::string texturePath, int xDelta, int yDelta, T
     std::vector<sf::FloatRect> bounderyList = map.GetBounderies();
     int length = bounderyList.size();
 
+    sprite.move(xDelta, yDelta);
+    playerBoundery = sprite.getGlobalBounds();
+
+    // Checks for colistion with impassable tile.
     for (int i = 0; i < length; i++)
     {
         sf::FloatRect otherBoundery = bounderyList[i];
+        bool notPassable = !map.TileIsPassable(i);
 
-        sf::Vector2f currentPoint = sprite.getPosition();
-        float nextX = currentPoint.x + xDelta;
-        float nextY = currentPoint.y + yDelta;
-        sf::Vector2f nextPoint = sf::Vector2f(nextX, nextY);
-
-        // BUG** - the other.Boundery is triggering to offten - find solotion
-        std::cout << otherBoundery.contains(nextPoint) << ", i= " << i << std::endl;
-        if (otherBoundery.contains(nextPoint) && map.TileIsPassable(i))
+        if (otherBoundery.intersects(playerBoundery) && notPassable)
         {
-            std::cout << "Impassable tile..." << std::endl;
-            return;
+            DEBUG << "-------------------------------" << std::endl;
+            DEBUG << "Impassable tile..." << std::endl;
+            DEBUG << "PLayer x, y = " << sprite.getPosition().x << ", " << sprite.getPosition().y << std::endl;
+            DEBUG << "i= " << i << std::endl;
+            std::cout << std::endl;
+
+            sprite.move(-xDelta, -yDelta);
+            // return;
         }
     }
 
     if (!texture.loadFromFile(texturePath))
         return;
-
-    sprite.move(xDelta, yDelta);
 }
