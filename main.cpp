@@ -14,9 +14,9 @@ int main()
     PlayerSprite player1 = PlayerSprite("images/protag-up-stand.png", 32, 32);
     TileMap caveMap;
     
+    // **TODO rename this array 
     // define the level with an array of tile indices
-    const int cave[] =
-    {
+    int arr[] = {
         2, 3, 4, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 0,
         2, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 0,
         2, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 0,
@@ -26,9 +26,16 @@ int main()
         2, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 0,
         2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0,
     };
+    std::vector<int> cave(arr, arr + sizeof(arr) / sizeof(arr[0]));
+
+    // if the int in cave[] matches one of these then it is passable by the 
+    //      player sprite. 
+    std::vector<int> cavePassable;
+    cavePassable.push_back(5);
+    cavePassable.push_back(4); 
 
     // Set tile map textures
-    if (!caveMap.load("images/dungon-src.png", sf::Vector2u(32, 32), cave, 16, 8))
+    if (!caveMap.load("images/dungon-src.png", sf::Vector2u(32, 32), cave, 16, 8, cavePassable))
         return -1;
 
     // Main event / game loop
