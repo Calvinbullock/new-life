@@ -20,3 +20,9 @@
  -- Move Postion out of the GameTile and into a new location..... 
     - Use the postion in the array 0 = 0, 1 = 50, 2 = 100, etc
   
+-- HIND SIGHT 
+    if I had made tiles, player, items and enemies all a 
+    child of a common class then collistions and the action / effects
+    between entitys would be so much easer to just have a function
+    in the parent class that takes to entities (children) says what do
+    each of you wnat then so that if pareamiters / collision are meet.
