@@ -41,6 +41,10 @@ void PlayerSprite::PlayerMove(std::string texturePath, int xDelta, int yDelta, T
     //      Idea --- Have the tile enemey or item say what it is then a if tree
     //          here based on boundery type
 
+    // checks if player sprite is in window bounds 
+    if (sprite.getPosition().x < 0 || sprite.getPosition().y < 0)
+        return; // tie in window height and width from main.
+
     std::vector<sf::FloatRect> bounderyList = map.GetBounderies();
     int length = bounderyList.size();
 
@@ -55,6 +59,7 @@ void PlayerSprite::PlayerMove(std::string texturePath, int xDelta, int yDelta, T
 
         if (otherBoundery.intersects(playerBoundery) && notPassable)
         {
+            // NOT FULLY BUG FREEE......
             DEBUG << "-------------------------------" << std::endl;
             DEBUG << "Impassable tile..." << std::endl;
             DEBUG << "PLayer x, y = " << sprite.getPosition().x << ", " << sprite.getPosition().y << std::endl;
