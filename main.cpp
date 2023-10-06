@@ -10,6 +10,12 @@ int main()
     float windowHeight = 256;
     int moveAmt = 10; // the amount of pixels the player moves with each key press.
 
+    // PLayer sprite direction textures
+    std::string playerUpImg = "images/protag-up-stand.png";
+    std::string playerDownImg = "images/protag-down-stand.png";
+    std::string playerLeftImg = "images/protag-left-stand.png";
+    std::string playerRightImg = "images/protag-right-stand.png";
+
     sf::RenderWindow window(sf::VideoMode(windowWidth, windowHeight), "NewLife");
     PlayerSprite player1 = PlayerSprite("images/protag-up-stand.png", 52, 52);
     TileMap caveMap;
@@ -54,22 +60,22 @@ int main()
                 if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
                 {
                     std::cout << "you pushed W" << std::endl;
-                    player1.PlayerMove("images/protag-up-stand.png", 0, -moveAmt, caveMap);
+                    player1.PlayerMove(playerUpImg, 0, -moveAmt, caveMap, 0);
                 }
                 else if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
                 {
                     std::cout << "you pushed A" << std::endl;
-                    player1.PlayerMove("images/protag-left-stand.png", -moveAmt, 0, caveMap);
+                    player1.PlayerMove(playerLeftImg, -moveAmt, 0, caveMap, 1);
                 }
                 else if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
                 {
                     std::cout << "you pushed S" << std::endl;
-                    player1.PlayerMove("images/protag-down-stand.png", 0, moveAmt, caveMap);
+                    player1.PlayerMove(playerDownImg, 0, moveAmt, caveMap, 2);
                 }
                 else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
                 {
                     std::cout << "you pushed D" << std::endl;
-                    player1.PlayerMove("images/protag-right-stand.png", moveAmt, 0, caveMap);
+                    player1.PlayerMove(playerRightImg, moveAmt, 0, caveMap, 3);
                 }
             }
         }
