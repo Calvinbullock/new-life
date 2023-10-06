@@ -7,7 +7,8 @@
 
 PlayerSprite::PlayerSprite(std::string texturePath, float startX, float startY) : texture(),
                                                                                   sprite(),
-                                                                                  playerBoundery()
+                                                                                  playerBoundery(),
+                                                                                  faceDirection()
 {
     if (!SetUpSprite(texturePath))
         return;
@@ -32,14 +33,9 @@ void PlayerSprite::SetPlayerXY(float x, float y)
     sprite.setPosition(sf::Vector2f(x, y));
 }
 
-void PlayerSprite::PlayerMove(std::string texturePath, int xDelta, int yDelta, TileMap map)
+void PlayerSprite::PlayerMove(std::string texturePath, int xDelta, int yDelta, TileMap map, int faceDirectionIn)
 {
-    /// TODO collision logic.......
-    //      tile colistion,
-    //      item colistion,
-    //      enemey colistion.
-    //      Idea --- Have the tile enemey or item say what it is then a if tree
-    //          here based on boundery type
+    PlayerSprite::faceDirection = faceDirectionIn;
 
     // checks if player sprite is in window bounds 
     if (sprite.getPosition().x < 0 || sprite.getPosition().y < 0)
