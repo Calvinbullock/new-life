@@ -8,6 +8,8 @@
 PlayerSprite::PlayerSprite(std::string texturePath, float startX, float startY) : texture(),
                                                                                   sprite(),
                                                                                   playerBoundery(),
+                                                                                  initialHealth(),
+                                                                                  currentHealth(),
                                                                                   faceDirection()
 {
     if (!SetUpSprite(texturePath))

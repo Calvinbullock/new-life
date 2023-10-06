@@ -11,6 +11,8 @@ private:
     sf::Sprite sprite;
     sf::FloatRect playerBoundery;
 
+    int initialHealth;
+    int currentHealth;
 
     int faceDirection; // 0 north, 1 e, 2 s, 3 west
 
