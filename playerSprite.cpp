@@ -37,17 +37,18 @@ void PlayerSprite::PlayerMove(std::string texturePath, int xDelta, int yDelta, T
 {
     PlayerSprite::faceDirection = faceDirectionIn;
 
-    // checks if player sprite is in window bounds 
+    // checks if player sprite is in window bounds
     if (sprite.getPosition().x < 0 || sprite.getPosition().y < 0)
-        return; // tie in window height and width from main.
+        return; // TODO tie in window height and width from main.
 
     std::vector<sf::FloatRect> bounderyList = map.GetBounderies();
     int length = bounderyList.size();
 
+    // postion change of Player sprite
     sprite.move(xDelta, yDelta);
     playerBoundery = sprite.getGlobalBounds();
 
-    // Checks for colistion with impassable tile.
+    // Checks for colistion with impassable tiles.
     for (int i = 0; i < length; i++)
     {
         sf::FloatRect otherBoundery = bounderyList[i];
@@ -68,5 +69,5 @@ void PlayerSprite::PlayerMove(std::string texturePath, int xDelta, int yDelta, T
     }
 
     if (!texture.loadFromFile(texturePath))
-        return;
+        return; // this return might cause a bug
 }
