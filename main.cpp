@@ -34,7 +34,7 @@ int main()
     };
     std::vector<int> cave(arr, arr + sizeof(arr) / sizeof(arr[0]));
 
-    // if the int in cave[] matches one of these then it is passable by the 
+    // if the int in cave[] matches one of these (cavePassable) then it is passable by the 
     //      player sprite. 
     std::vector<int> cavePassable;
     cavePassable.push_back(5);
