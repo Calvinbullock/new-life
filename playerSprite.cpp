@@ -61,8 +61,9 @@ void PlayerSprite::PlayerMove(std::string texturePath, int xDelta, int yDelta, T
             // NOT FULLY BUG FREEE......
             DEBUG << "-------------------------------" << std::endl;
             DEBUG << "Impassable tile..." << std::endl;
-            DEBUG << "PLayer x, y = " << sprite.getPosition().x << ", " << sprite.getPosition().y << std::endl;
-            DEBUG << "i= " << i << std::endl;
+            DEBUG << "PLayer x = " << sprite.getPosition().x << std::endl;
+            DEBUG << "Player y = " << sprite.getPosition().y << std::endl;
+            DEBUG << "i = " << i << std::endl;
             std::cout << std::endl;
 
             sprite.move(-xDelta, -yDelta);
