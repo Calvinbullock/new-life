@@ -56,7 +56,7 @@ void PlayerSprite::PlayerMove(std::string texturePath, int xDelta, int yDelta, T
         sf::FloatRect otherBoundery = bounderyList[i];
         bool notPassable = !map.TileIsPassable(i);
 
-        if (otherBoundery.intersects(playerBoundery) && notPassable)
+        if (playerBoundery.intersects(otherBoundery) && notPassable)
         {
             // NOT FULLY BUG FREE......
             DEBUG << "Impassable tile..." << std::endl;
