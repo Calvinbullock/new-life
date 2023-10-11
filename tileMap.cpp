@@ -66,8 +66,8 @@ public:
                 triangles[5].texCoords = sf::Vector2f((tu + 1) * tileSize.x, (tv + 1) * tileSize.y);
 
                 // Get the top-left and bottom-right corners of the tilemap.
-                sf::Vector2f topLeft = sf::Vector2f((i + 1) * tileSize.x, j * tileSize.y);
-                sf::Vector2f bottomRight = sf::Vector2f(i * tileSize.x, j * tileSize.y);
+                sf::Vector2f topLeft = triangles[0].position;
+                sf::Vector2f bottomRight = triangles[5].position;
                 
                 // create a boundery for colistions
                 sf::FloatRect tileBounding(topLeft, bottomRight);
