@@ -35,7 +35,12 @@ void PlayerSprite::SetPlayerXY(float x, float y)
     sprite.setPosition(sf::Vector2f(x, y));
 }
 
-void PlayerSprite::PlayerMove(std::string texturePath, int xDelta, int yDelta, TileMap map, int faceDirectionIn)
+void PlayerSprite::PlayerMove(
+    std::string texturePath,
+    int xDelta,
+    int yDelta,
+    TileMap map,
+    int faceDirectionIn)
 {
     PlayerSprite::faceDirection = faceDirectionIn;
 
@@ -50,7 +55,7 @@ void PlayerSprite::PlayerMove(std::string texturePath, int xDelta, int yDelta, T
     sprite.move(xDelta, yDelta);
     playerBoundery = sprite.getGlobalBounds();
 
-    // Checks for colistion with impassable tiles.
+    // Checks for colistion with impassable map tiles.
     for (int i = 0; i < length; i++)
     {
         sf::FloatRect otherBoundery = bounderyList[i];

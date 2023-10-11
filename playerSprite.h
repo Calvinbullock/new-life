@@ -20,7 +20,12 @@ public:
     PlayerSprite(std::string texturePath, float startX, float startY);
     bool SetUpSprite(std::string texturePath);
     void SetPlayerXY(float x, float y);
-    void PlayerMove(std::string texturePath, int xDelta, int yDelta, TileMap map, int faceDirectionIn);
+    void PlayerMove(
+        std::string texturePath,
+        int xDelta,
+        int yDelta,
+        TileMap map,
+        int faceDirectionIn);
 
     sf::Sprite GetSprite()
     {
