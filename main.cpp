@@ -1,6 +1,7 @@
 #include <SFML/Graphics.hpp>
 #include "playerSprite.cpp"
 #include "tileMap.cpp"
+#include "item.cpp"
 
 #include <iostream> // DEBUGing
 
@@ -19,6 +20,8 @@ int main()
     sf::RenderWindow window(sf::VideoMode(windowWidth, windowHeight), "NewLife");
     PlayerSprite player1 = PlayerSprite("images/protag-up-stand.png", 52, 52);
     TileMap caveMap;
+
+    Item sword = Item("images/temp-sword.png", 99, 99);
     
     // **TODO rename this array 
     // define the level with an array of tile indices
@@ -61,21 +64,25 @@ int main()
                 {
                     std::cout << "you pushed W" << std::endl;
                     player1.PlayerMove(playerUpImg, 0, -moveAmt, caveMap, 0);
+                    sword.itemActionTest(player1.GetBoundery());
                 }
                 else if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
                 {
                     std::cout << "you pushed A" << std::endl;
                     player1.PlayerMove(playerLeftImg, -moveAmt, 0, caveMap, 1);
+                    sword.itemActionTest(player1.GetBoundery());
                 }
                 else if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
                 {
                     std::cout << "you pushed S" << std::endl;
                     player1.PlayerMove(playerDownImg, 0, moveAmt, caveMap, 2);
+                    sword.itemActionTest(player1.GetBoundery());
                 }
                 else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
                 {
                     std::cout << "you pushed D" << std::endl;
                     player1.PlayerMove(playerRightImg, moveAmt, 0, caveMap, 3);
+                    sword.itemActionTest(player1.GetBoundery());
                 }
             }
         }
@@ -83,6 +90,7 @@ int main()
         window.clear();
         window.draw(caveMap);
         window.draw(player1.GetSprite());
+        window.draw(sword.GetSprite());
         window.display();
     }
 
