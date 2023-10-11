@@ -1,7 +1,7 @@
 #include <SFML/Graphics.hpp>
 
-#ifndef ITEM_H
-#define ITEM_H
+#include <iostream> // DEBUGing
+#define DEBUG std::cout << " DEBUG: L" << __LINE__ << " "
 
 class Item
 {
@@ -18,7 +18,21 @@ public:
         itemBoundery = sprite.getGlobalBounds();
     }
 
-    void itemAction() {
+    sf::Sprite GetSprite()
+    {
+        return sprite;
+    }
+
+    void itemActionTest(sf::FloatRect playerBoundery)
+    {
+        if (playerBoundery.intersects(itemBoundery))
+        {
+            std::cout << "CONTACT" << std::endl;
+        }
+    }
+
+    void itemAction()
+    {
         // This will be overiden for diffrent (child) items, so that each item can
         //      achive its unique action.
     }
@@ -39,5 +53,3 @@ private:
         return true;
     }
 };
-
-#endif
