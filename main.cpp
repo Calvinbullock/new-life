@@ -111,3 +111,10 @@ int main()
 // 
 //      -- tileMap
 //      https://www.sfml-dev.org/tutorials/2.6/graphics-vertex-array.php
+
+
+// Compile command:
+// rm -f newLifeEXE && g++ -ansi -pedantic -Wall -Wextra -Wshadow -Weffc++ main.cpp -o newLifeEXE -lsfml-graphics -lsfml-window -lsfml-system
+
+// Run:
+// ./newLifeEXE 
