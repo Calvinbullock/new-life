@@ -76,8 +76,9 @@ public:
                 bounderyList.push_back(tileBounding);
 
                 // Vectores for colistion detection
-                passableTilesID = passableTilesIn;
-                tilesID = tiles;
+                // TODO remname to texture.....
+                passableTexturesID = passableTilesIn;
+                textureID = tiles;
             }
 
         return true;
@@ -90,16 +91,16 @@ public:
 
     std::vector<int> GetPassableTiles()
     {
-        return passableTilesID;
+        return passableTexturesID;
     }
 
     bool TileIsPassable(int index)
     {
-        size_t length = passableTilesID.size();
+        size_t length = passableTexturesID.size();
 
         for (size_t i = 0; i < length; i++)
         {
-            if (tilesID[index] == passableTilesID[i])
+            if (textureID[index] == passableTexturesID[i])
             {
                 return true;
             }
@@ -124,8 +125,8 @@ private:
     sf::VertexArray m_vertices;
     sf::Texture m_tileset;
     std::vector<sf::FloatRect> bounderyList;
-    std::vector<int> passableTilesID;
-    std::vector<int> tilesID;
+    std::vector<int> passableTexturesID;
+    std::vector<int> textureID;
 };
 
 #endif
