@@ -43,6 +43,9 @@ public:
         for (unsigned int row = 0; row < height; row++)    // row - was j
             for (unsigned int col = 0; col < width; col++) // column - was i
             {
+                // TODO find name then replace the math with the variable..
+                //      int foo = row * width + col; 
+                
                 // get the current tile number
                 int tileNumber = tiles[row * width + col];
 
