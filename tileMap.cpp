@@ -18,8 +18,8 @@ public:
                 m_vertices(),
                 m_tileset(),
                 bounderyList(),
-                passableTilesID(),
-                tilesID()
+                passableTexturesID(),
+                textureID()
     {
     }
 
@@ -40,26 +40,26 @@ public:
         m_vertices.resize(width * height * 6);
 
         // populate the vertex array, with two triangles per tile
-        for (unsigned int j = 0; j < height; ++j)    // row
-            for (unsigned int i = 0; i < width; ++i) // column
+        for (unsigned int row = 0; row < height; row++)    // row - was j
+            for (unsigned int col = 0; col < width; col++) // column - was i
             {
                 // get the current tile number
-                int tileNumber = tiles[j * width + i];
+                int tileNumber = tiles[row * width + col];
 
                 // find its position in the tileset texture
                 int tu = tileNumber % (m_tileset.getSize().x / tileSize.x);
                 int tv = tileNumber / (m_tileset.getSize().x / tileSize.x);
 
                 // get a pointer to the triangles' vertices of the current tile
-                sf::Vertex *triangles = &m_vertices[(i + j * width) * 6];
+                sf::Vertex *triangles = &m_vertices[(col + row * width) * 6];
 
                 // define the 6 corners of the two triangles
-                triangles[0].position = sf::Vector2f(i * tileSize.x, j * tileSize.y);
-                triangles[1].position = sf::Vector2f((i + 1) * tileSize.x, j * tileSize.y);
-                triangles[2].position = sf::Vector2f(i * tileSize.x, (j + 1) * tileSize.y);
-                triangles[3].position = sf::Vector2f(i * tileSize.x, (j + 1) * tileSize.y);
-                triangles[4].position = sf::Vector2f((i + 1) * tileSize.x, j * tileSize.y);
-                triangles[5].position = sf::Vector2f((i + 1) * tileSize.x, (j + 1) * tileSize.y);
+                triangles[0].position = sf::Vector2f(col * tileSize.x, row * tileSize.y);
+                triangles[1].position = sf::Vector2f((col + 1) * tileSize.x, row * tileSize.y);
+                triangles[2].position = sf::Vector2f(col * tileSize.x, (row + 1) * tileSize.y);
+                triangles[3].position = sf::Vector2f(col * tileSize.x, (row + 1) * tileSize.y);
+                triangles[4].position = sf::Vector2f((col + 1) * tileSize.x, row * tileSize.y);
+                triangles[5].position = sf::Vector2f((col + 1) * tileSize.x, (row + 1) * tileSize.y);
 
                 // define the 6 matching texture coordinates
                 triangles[0].texCoords = sf::Vector2f(tu * tileSize.x, tv * tileSize.y);
@@ -70,9 +70,9 @@ public:
                 triangles[5].texCoords = sf::Vector2f((tu + 1) * tileSize.x, (tv + 1) * tileSize.y);
 
                 // create a boundery for colistions
-                sf::FloatRect tileBounding(i * tileSize.x, j * tileSize.y, tileSize.x, tileSize.y);
+                sf::FloatRect tileBounding(col * tileSize.x, row * tileSize.y, tileSize.x, tileSize.y);
                 
-                assert(j * width + i == bounderyList.size());
+                assert(row * width + col == bounderyList.size());
                 bounderyList.push_back(tileBounding);
 
                 // Vectores for colistion detection
