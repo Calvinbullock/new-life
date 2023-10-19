@@ -63,18 +63,12 @@ void PlayerSprite::PlayerMove(
 
         if (playerBoundery.intersects(otherBoundery) && notPassable)
         {
-            // NOT FULLY BUG FREE......
-            DEBUG << "Impassable tile..." << std::endl;
-            DEBUG << "PLayer x = " << sprite.getPosition().x << std::endl;
-            DEBUG << "Player y = " << sprite.getPosition().y << std::endl;
-            DEBUG << "i = " << i << std::endl;
-            std::cout << std::endl;
 
             sprite.move(-xDelta, -yDelta);
-            // return;
+            return;
         }
     }
 
     if (!texture.loadFromFile(texturePath))
-        return; // this return might cause a bug
+        return; // BUG this return might cause a bug
 }

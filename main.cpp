@@ -22,7 +22,13 @@ int main()
     TileMap caveMap;
 
     Item sword = Item("images/temp-sword.png", 99, 99);
-    
+    Item topDoor = Item("", 64, 0);
+
+    // TODO this needs to be moved / cleaned up MapObject 2/2
+    std::vector<Item> items;
+    items.push_back(topDoor);
+    items.push_back(sword);
+
     // **TODO rename this array 
     // define the level with an array of tile indices
     int arr[] = {
@@ -35,8 +41,11 @@ int main()
         2, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 0,
         2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0,
     };
+    //  0  1  2  3  4  5  6  7  8  9  0  1  2  3  4  5
+
     std::vector<int> cave(arr, arr + sizeof(arr) / sizeof(arr[0]));
 
+    // TODO Moved / cleaned up MapObject 2/2
     // if the int in cave[] matches one of these (cavePassable) then it is passable 
     //      by the player sprite. 
     std::vector<int> cavePassable;

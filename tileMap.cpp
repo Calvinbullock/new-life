@@ -1,9 +1,13 @@
 
 #include <SFML/Graphics.hpp>
 #include <vector>
+#include <cassert>
 
 #ifndef TILEMAP_H
 #define TILEMAP_H
+
+#include <iostream> // DEBUGing
+#define DEBUG std::cout << " DEBUG: L" << __LINE__ << " "
 
 class TileMap : public sf::Drawable, public sf::Transformable
 {
@@ -36,11 +40,11 @@ public:
         m_vertices.resize(width * height * 6);
 
         // populate the vertex array, with two triangles per tile
-        for (unsigned int i = 0; i < width; ++i)
-            for (unsigned int j = 0; j < height; ++j)
+        for (unsigned int j = 0; j < height; ++j)    // row
+            for (unsigned int i = 0; i < width; ++i) // column
             {
                 // get the current tile number
-                int tileNumber = tiles[i + j * width];
+                int tileNumber = tiles[j * width + i];
 
                 // find its position in the tileset texture
                 int tu = tileNumber % (m_tileset.getSize().x / tileSize.x);
@@ -65,12 +69,10 @@ public:
                 triangles[4].texCoords = sf::Vector2f((tu + 1) * tileSize.x, tv * tileSize.y);
                 triangles[5].texCoords = sf::Vector2f((tu + 1) * tileSize.x, (tv + 1) * tileSize.y);
 
-                // Get the top-left and bottom-right corners of the tilemap.
-                sf::Vector2f topLeft = triangles[0].position;
-                sf::Vector2f bottomRight = triangles[5].position;
-                
                 // create a boundery for colistions
-                sf::FloatRect tileBounding(topLeft, bottomRight);
+                sf::FloatRect tileBounding(i * tileSize.x, j * tileSize.y, tileSize.x, tileSize.y);
+                
+                assert(j * width + i == bounderyList.size());
                 bounderyList.push_back(tileBounding);
 
                 // Vectores for colistion detection
@@ -98,8 +100,11 @@ public:
         for (size_t i = 0; i < length; i++)
         {
             if (tilesID[index] == passableTilesID[i])
+            {
                 return true;
+            }
         }
+
         return false;
     }
 
