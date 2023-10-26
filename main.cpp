@@ -28,7 +28,6 @@ int main()
     std::string slimeLeft = "images/slimeLeft";
     std::string slimeRight = "images/slimeRight";
 
-
     sf::RenderWindow window(sf::VideoMode(windowWidth, windowHeight), "NewLife");
     PlayerSprite player1 = PlayerSprite(playerDownImg, 52, 52);
     PlayerSprite npcSlime = PlayerSprite(slimeDown, 83, 83);
