@@ -5,6 +5,12 @@
 
 #include <iostream> // DEBUGing
 
+/*
+TODOS
+- Make a function that will take a tile index and find the x,y postion for more easy of use
+- creat a function to turn the map array into a vector 
+*/
+
 int main()
 {
     float windowWidth = 512;
