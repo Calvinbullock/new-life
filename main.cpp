@@ -86,25 +86,28 @@ int main()
                 {
                     std::cout << "you pushed W" << std::endl;
                     player1.PlayerMove(playerUpImg, 0, -moveAmt, caveMap, 0);
-                    sword.itemActionTest(player1.GetBoundery());
                 }
                 else if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
                 {
                     std::cout << "you pushed A" << std::endl;
                     player1.PlayerMove(playerLeftImg, -moveAmt, 0, caveMap, 1);
-                    sword.itemActionTest(player1.GetBoundery());
                 }
                 else if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
                 {
                     std::cout << "you pushed S" << std::endl;
                     player1.PlayerMove(playerDownImg, 0, moveAmt, caveMap, 2);
-                    sword.itemActionTest(player1.GetBoundery());
                 }
                 else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
                 {
                     std::cout << "you pushed D" << std::endl;
                     player1.PlayerMove(playerRightImg, moveAmt, 0, caveMap, 3);
                 }
+                else if (sf::Keyboard::isKeyPressed(sf::Keyboard::F))
+                {
+                    for (int i = 0; i < (int)items.size(); i++)
+                    {
+                        items[i].itemActionTest(player1.GetBoundery());
+                    }
                 }
             }
         }
