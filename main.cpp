@@ -115,7 +115,12 @@ int main()
         window.clear();
         window.draw(caveMap);
         window.draw(player1.GetSprite());
-        window.draw(sword.GetSprite());
+
+        for (int i = 0; i < (int)items.size(); i++)
+        {
+            window.draw(items[i].GetSprite());
+        }
+
         window.display();
     }
 
