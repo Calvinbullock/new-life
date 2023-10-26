@@ -17,8 +17,15 @@ int main()
     std::string playerLeftImg = "images/protag-left-stand.png";
     std::string playerRightImg = "images/protag-right-stand.png";
 
+    std::string slimeUp = "images/slimeBack";
+    std::string slimeDown = "images/slimeFront";
+    std::string slimeLeft = "images/slimeLeft";
+    std::string slimeRight = "images/slimeRight";
+
+
     sf::RenderWindow window(sf::VideoMode(windowWidth, windowHeight), "NewLife");
-    PlayerSprite player1 = PlayerSprite("images/protag-up-stand.png", 52, 52);
+    PlayerSprite player1 = PlayerSprite(playerDownImg, 52, 52);
+    PlayerSprite npcSlime = PlayerSprite(slimeDown, 83, 83);
     TileMap caveMap;
 
     Item sword = Item("images/temp-sword.png", 99, 99);
@@ -91,7 +98,7 @@ int main()
                 {
                     std::cout << "you pushed D" << std::endl;
                     player1.PlayerMove(playerRightImg, moveAmt, 0, caveMap, 3);
-                    sword.itemActionTest(player1.GetBoundery());
+                }
                 }
             }
         }

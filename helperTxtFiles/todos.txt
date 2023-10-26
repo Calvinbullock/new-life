@@ -26,3 +26,18 @@
     between entitys would be so much easer to just have a function
     in the parent class that takes to entities (children) says what do
     each of you wnat then so that if pareamiters / collision are meet.
+
+
+-- WORLD MAPS
+
+    store JSON file names in a array read in the needed one:
+
+    JSON File:
+    {
+        name :
+        stages : list[lv 1, lv 2, lv 3]
+        stages : stageFiles[file 1, file 2, file 3]
+        textureSRC : /file
+    }
+
+    - ISSUE - this would require me to hard code every door item class for every map
