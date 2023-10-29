@@ -18,15 +18,15 @@ int main()
     int moveAmt = 10; // the amount of pixels the player moves with each key press.
 
     // PLayer sprite direction textures
-    std::string playerUpImg = "images/protag-up-stand.png";
-    std::string playerDownImg = "images/protag-down-stand.png";
-    std::string playerLeftImg = "images/protag-left-stand.png";
-    std::string playerRightImg = "images/protag-right-stand.png";
+    std::string playerUpImg = "images/protag-up.png";
+    std::string playerDownImg = "images/protag-down.png";
+    std::string playerLeftImg = "images/protag-left.png";
+    std::string playerRightImg = "images/protag-right.png";
 
-    std::string slimeUp = "images/slimeBack";
-    std::string slimeDown = "images/slimeFront";
-    std::string slimeLeft = "images/slimeLeft";
-    std::string slimeRight = "images/slimeRight";
+    std::string slimeUp = "images/slimeBack.png";
+    std::string slimeDown = "images/slimeFront.png";
+    std::string slimeLeft = "images/slimeLeft.png";
+    std::string slimeRight = "images/slimeRight.png";
 
     sf::RenderWindow window(sf::VideoMode(windowWidth, windowHeight), "NewLife");
     PlayerSprite player1 = PlayerSprite(playerDownImg, 52, 52);
