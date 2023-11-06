@@ -15,7 +15,7 @@ int main()
 {
     float windowWidth = 512;
     float windowHeight = 256;
-    int moveAmt = 10; // the amount of pixels the player moves with each key press.
+    int moveAmt = 16; // the amount of pixels the player moves with each key press.
 
     // PLayer sprite direction textures
     std::string playerUpImg = "images/protag-up.png";
