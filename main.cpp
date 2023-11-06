@@ -29,8 +29,13 @@ int main()
     std::string slimeRight = "images/slimeRight.png";
 
     sf::RenderWindow window(sf::VideoMode(windowWidth, windowHeight), "NewLife");
-    PlayerSprite player1 = PlayerSprite(playerDownImg, 52, 52);
-    PlayerSprite npcSlime = PlayerSprite(slimeDown, 83, 83);
+    PlayerSprite player1 = PlayerSprite(playerDownImg, 52, 52, 100);
+    PlayerSprite npcSlime = PlayerSprite(slimeDown, 83, 83, 100);
+    
+    // List of all the npcs in a level
+    std::vector<PlayerSprite> npcList;
+    npcList.push_back(npcSlime);
+
     TileMap caveMap;
 
     Item sword = Item("images/temp-sword.png", 99, 99);
@@ -41,7 +46,7 @@ int main()
     items.push_back(topDoor);
     items.push_back(sword);
 
-    // **TODO rename this array 
+    // TODO rename this array 
     // define the level with an array of tile indices
     int arr[] = {
         2, 3, 4, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 0,
@@ -73,8 +78,10 @@ int main()
     {
         sf::Event event;
         // checks for input / game events
-        while (window.pollEvent(event))
+	    while (window.pollEvent(event))
         {
+            player1.NpcColistion(10, npcList); // TODO add npc list 
+
             if (event.type == sf::Event::Closed)
             {
                 window.close();
@@ -114,10 +121,12 @@ int main()
         window.clear();
         window.draw(caveMap);
         window.draw(player1.GetSprite());
+	window.draw(npcSlime.GetSprite());
 
         for (int i = 0; i < (int)items.size(); i++)
         {
-            window.draw(items[i].GetSprite());
+            // TODO uncoment when you have items ready
+            // window.draw(items[i].GetSprite());
         }
 
         window.display();

@@ -5,13 +5,16 @@
 #include <iostream> // DEBUGing
 #define DEBUG std::cout << " DEBUG: L" << __LINE__ << " "
 
-PlayerSprite::PlayerSprite(std::string texturePath, float startX, float startY) : texture(),
-                                                                                  sprite(),
-                                                                                  playerBoundery(),
-                                                                                  initialHealth(),
-                                                                                  currentHealth(),
-                                                                                  faceDirection()
+PlayerSprite::PlayerSprite(std::string texturePath, float startX, float startY, int baseHealth) : texture(),
+    sprite(),
+    playerBoundery(),
+    initialHealth(),
+    currentHealth(),
+    faceDirection()
 {
+    initialHealth = baseHealth;
+    currentHealth = baseHealth;
+
     if (!SetUpSprite(texturePath))
         return;
 
@@ -72,3 +75,23 @@ void PlayerSprite::PlayerMove(
     if (!texture.loadFromFile(texturePath))
         return; // BUG this return might cause a bug
 }
+
+// TODO tie this into PlayerMove - stop the player from moveing during a npc 
+//      colistion
+void PlayerSprite::NpcColistion(int dmg, std::vector<PlayerSprite> npcList) {
+    int vectorLength = npcList.size();
+
+    for (int i = 0; i < vectorLength; i++) {
+ 
+        sf::FloatRect playerBound = sprite.getGlobalBounds();
+        sf::FloatRect npcBound = npcList[i].GetSprite().getGlobalBounds();
+ 
+        if (playerBound.intersects(npcBound)) {
+            currentHealth = currentHealth - dmg;
+            DEBUG << currentHealth << ", " << initialHealth << ", " << dmg << std::endl;
+        }
+
+    }
+}
+
+
