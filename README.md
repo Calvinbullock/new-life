@@ -4,8 +4,6 @@ libraries and have fun learing.
 
 The current program is not much more then a basic tile map with collisions, and a movable player sprite.
 
-[Software Demo Video](http://youtube.link.goes.here)
-
 # Development Environment
 The lagage used was c++ from the ubuntu apt repositories.
 
