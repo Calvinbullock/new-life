@@ -1,11 +1,11 @@
 # Overview
 
 New Life was a game I was building to learn how to use and learn graphics 
-libraries and have fun learing.
+libraries and have fun learning.
 
-The actual program is not much more then a basic tile map with colistions, and a player sprite. 
+The actual program is not much more than a basic tile map with collisions, and a player sprite. 
 
-The graphics libray I used was SFML and c++. 
+The graphics library I used was SFML and c++. 
 
 [Software Demo Video](http://youtube.link.goes.here)
 
@@ -22,6 +22,6 @@ language/frameworks/libraries: c++ and the sfml library.
 # Future Work
 
 * Item 1: Enemey movement
-* Item 2: damage and health, player and enemeys
+* Item 2: damage and health, player and enemies
 * Item 3: More levels
 
