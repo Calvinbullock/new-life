@@ -26,6 +26,8 @@ language/frameworks/libraries: c++ and the sfml library.
 * Item 3: More levels
 
 # Images
+- Images look blurry but that is actually the game its self I have not properly handeld scaleing
+
 
 ![image](https://github.com/Calvinbullock/new-life/assets/37564710/7d5068b7-290f-4bb4-a376-4e0545158c18)
 
