@@ -73,11 +73,7 @@ int main() {
     cavePassable.push_back(4);
 
     // Set tile map textures
-    if (!caveMap.load("images/dungon-src.png",
-                      sf::Vector2u(32, 32),
-                      cave,
-                      16,
-                      8,
+    if (!caveMap.load("images/dungon-src.png", sf::Vector2u(32, 32), cave, 16, 8,
                       cavePassable))
         return -1;
 
@@ -92,6 +88,7 @@ int main() {
             if (event.type == sf::Event::Closed) {
                 window.close();
             } else if (event.type == sf::Event::KeyPressed) { // Player key entry
+            
                 if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) {
                     std::cout << "you pushed W" << std::endl;
                     player1.PlayerMove(playerUpImg, 0, -moveAmt, caveMap, 0);

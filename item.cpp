@@ -1,16 +1,13 @@
 #include <SFML/Graphics.hpp>
- 
+
 #include <iostream> // DEBUGing
 #define DEBUG std::cout << " DEBUG: L" << __LINE__ << " "
 
-class Item
-{
+class Item {
 
 public:
-    Item(std::string texturePath, float startX, float startY) : texture(),
-                                                                sprite(),
-                                                                itemBoundery()
-    {
+    Item(std::string texturePath, float startX, float startY)
+        : texture(), sprite(), itemBoundery() {
         if (!SetUpSprite(texturePath))
             return;
 
@@ -18,32 +15,24 @@ public:
         itemBoundery = sprite.getGlobalBounds();
     }
 
-    sf::Sprite GetSprite()
-    {
-        return sprite;
-    }
+    sf::Sprite GetSprite() { return sprite; }
 
-    void itemActionTest(sf::FloatRect playerBoundery)
-    {
-        if (playerBoundery.intersects(itemBoundery))
-        {
+    void itemActionTest(sf::FloatRect playerBoundery) {
+        if (playerBoundery.intersects(itemBoundery)) {
             std::cout << "CONTACT" << std::endl;
         }
     }
 
-    void itemAction()
-    {
-        // This will be overiden for diffrent (child) items, so that each item can
-        //      achive its unique action.
-    }
+    // This will be overiden for diffrent (child) items, so that each item
+    // can achive its unique action.
+    void itemAction();
 
 private:
     sf::Texture texture;
     sf::Sprite sprite;
     sf::FloatRect itemBoundery;
 
-    bool SetUpSprite(std::string texturePath)
-    {
+    bool SetUpSprite(std::string texturePath) {
         if (!texture.loadFromFile(texturePath))
             return false;
 
@@ -53,4 +42,3 @@ private:
         return true;
     }
 };
-

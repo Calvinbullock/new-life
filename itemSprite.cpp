@@ -3,10 +3,8 @@
 #include <iostream> // DEBUGing
 #define DEBUG std::cout << " DEBUG: L" << __LINE__ << " "
 
-ItemSprite::ItemSprite(std::string texturePath, float startX, float startY) : texture(),
-                                                                                  sprite(),
-                                                                                  itemBoundery()
-{
+ItemSprite::ItemSprite(std::string texturePath, float startX, float startY)
+    : texture(), sprite(), itemBoundery() {
     if (!SetUpSprite(texturePath))
         return;
 
@@ -14,8 +12,7 @@ ItemSprite::ItemSprite(std::string texturePath, float startX, float startY) : te
     itemBoundery = sprite.getGlobalBounds();
 }
 
-bool ItemSprite::SetUpSprite(std::string texturePath)
-{
+bool ItemSprite::SetUpSprite(std::string texturePath) {
     if (!texture.loadFromFile(texturePath))
         return false;
 
@@ -25,8 +22,6 @@ bool ItemSprite::SetUpSprite(std::string texturePath)
     return true;
 }
 
-void ItemSprite::SetItemXY(float x, float y)
-{
+void ItemSprite::SetItemXY(float x, float y) {
     sprite.setPosition(sf::Vector2f(x, y));
 }
-
