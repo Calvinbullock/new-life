@@ -1,5 +1,5 @@
 #include <SFML/Graphics.hpp>
-#include "playerSprite.cpp"
+#include "playerSprite.h"
 #include "tileMap.cpp"
 #include "item.cpp"
 
@@ -11,8 +11,7 @@ TODOS
 - creat a function to turn the map array into a vector 
 */
 
-int main()
-{
+int main() {
     float windowWidth = 512;
     float windowHeight = 256;
     int moveAmt = 16; // the amount of pixels the player moves with each key press.

@@ -1,5 +1,4 @@
 #include "playerSprite.h"
-#include "tileMap.cpp"
 #include <vector>
 
 #include <iostream> // DEBUGing

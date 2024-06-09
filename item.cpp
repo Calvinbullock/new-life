@@ -1,5 +1,5 @@
 #include <SFML/Graphics.hpp>
-
+ 
 #include <iostream> // DEBUGing
 #define DEBUG std::cout << " DEBUG: L" << __LINE__ << " "
 
@@ -53,3 +53,4 @@ private:
         return true;
     }
 };
+

@@ -1,4 +1,3 @@
-
 #include <SFML/Graphics.hpp>
 #include <vector>
 #include <cassert>
@@ -133,3 +132,4 @@ private:
 };
 
 #endif
+
