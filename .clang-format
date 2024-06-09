@@ -1,8 +1,12 @@
+# based on the google styling
 BasedOnStyle: LLVM
+
 IndentWidth: 4
-BinPackArguments: false
-BinPackParameters: false
-ColumnLimit: 81  # No line wrapping
+BinPackArguments: true
+BinPackParameters: true
+
+# No line wrapping
+ColumnLimit: 81
 
 # Indentation for continuation lines within braces
 ContinuationIndentWidth: 4
