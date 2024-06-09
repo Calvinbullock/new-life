@@ -1,11 +1,11 @@
-#include <SFML/Graphics.hpp>
 #include "tileMap.cpp"
+#include <SFML/Graphics.hpp>
 
 #ifndef PLAYERSPRITE_H
 #define PLAYERSPRITE_H
 
-class PlayerSprite
-{
+class PlayerSprite {
+
 private:
     sf::Texture texture;
     sf::Sprite sprite;
@@ -17,26 +17,25 @@ private:
     int faceDirection; // 0 north, 1 e, 2 s, 3 west
 
 public:
-    PlayerSprite(std::string texturePath, float startX, float startY, int baseHealth);
+    PlayerSprite(std::string texturePath,
+                 float startX,
+                 float startY,
+                 int baseHealth);
+
     bool SetUpSprite(std::string texturePath);
-    void SetPlayerXY(float x, float y);
-    void PlayerMove(
-        std::string texturePath,
-        int xDelta,
-        int yDelta,
-        TileMap map,
-        int faceDirectionIn);
-    void NpcColistion(int dmg, std::vector<PlayerSprite> npcList);
-    
-    sf::Sprite GetSprite()
-    {
-        return sprite;
+    void PlayerMove(std::string texturePath,
+                    int xDelta,
+                    int yDelta,
+                    TileMap map,
+                    int faceDirectionIn);
+
+    void SetPlayerXY(float x, float y) {
+        sprite.setPosition(sf::Vector2f(x, y));
     }
 
-    sf::FloatRect GetBoundery()
-    {
-        return playerBoundery;
-    }
+    void NpcCollistion(int dmg, std::vector<PlayerSprite> npcList);
+    sf::Sprite GetSprite() { return sprite; }
+    sf::FloatRect GetBoundery() { return playerBoundery; }
 };
 
 #endif
