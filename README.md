@@ -1,11 +1,8 @@
 # Overview
 
-New Life was a game I was building to learn how to use and learn graphics 
-libraries and have fun learning.
+New Life was a game I was building to learn more about using libraries and have fun learning more c++.
 
-The actual program is not much more than a basic tile map with collisions, and a player sprite. 
-
-The graphics library I used was SFML and c++. 
+The actual program is not much more than a basic tile map with collisions, and a few sprites sprite, so far.
 
 [Software Demo Video](https://www.youtube.com/watch?v=TKum7AfY2Do)
 
@@ -24,16 +21,11 @@ Languages/frameworks/libraries: c++ and the sfml library.
 * [google c++ style guides](https://google.github.io/styleguide/cppguide.html)
 
 # Future Work
-* Item 1: Enemy movement
-* Item 2: damage and health, player and enemies
-* Item 3: More levels
+* Item 1: Enemy movement.
+* Item 2: damage and health for players and enemies.
+* Item 3: More levels / maps.
 
 # Images
-- Images look blurry but that is the game itself I have not properly handled scaling.
+- Images look blurry but that is the game itself *(I have not properly handled scaling)*.
 ![image](https://github.com/Calvinbullock/new-life/assets/37564710/7d5068b7-290f-4bb4-a376-4e0545158c18)
-
-
-### Other Notes
-Compile command:
-- rm -f newLifeEXE && g++ -ansi -pedantic -Wall -Wextra -Wshadow -Weffc++ main.cpp -o newLifeEXE -lsfml-graphics -lsfml-window -lsfml-system
 
