@@ -32,3 +32,8 @@ Languages/frameworks/libraries: c++ and the sfml library.
 - Images look blurry but that is the game itself I have not properly handled scaling.
 ![image](https://github.com/Calvinbullock/new-life/assets/37564710/7d5068b7-290f-4bb4-a376-4e0545158c18)
 
+
+### Other Notes
+Compile command:
+- rm -f newLifeEXE && g++ -ansi -pedantic -Wall -Wextra -Wshadow -Weffc++ main.cpp -o newLifeEXE -lsfml-graphics -lsfml-window -lsfml-system
+
