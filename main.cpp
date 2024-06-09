@@ -83,7 +83,7 @@ int main() {
 
         // checks for input / game events
         while (window.pollEvent(event)) {
-            player1.NpcColistion(10, npcList); // TODO add npc list
+            player1.NpcCollistion(10, npcList); // TODO add npc list
 
             if (event.type == sf::Event::Closed) {
                 window.close();
