@@ -5,26 +5,6 @@
 #define DEBUG std::cout << " DEBUG: L" << __LINE__ << " "
 
 /* ================================================
-*  Constructor for playerSprite
-================================================ */
-PlayerSprite::PlayerSprite(std::string texturePath,
-                           float startX,
-                           float startY,
-                           int baseHealth)
-    : texture(), sprite(), playerBoundery(), initialHealth(), currentHealth(),
-      faceDirection() {
-
-    initialHealth = baseHealth;
-    currentHealth = baseHealth;
-
-    if (!SetUpSprite(texturePath))
-        return;
-
-    sprite.setPosition(sf::Vector2f(startX, startY));
-    playerBoundery = sprite.getGlobalBounds();
-}
-
-/* ================================================
 *  Sets and stores the player sprite.
 ================================================ */
 bool PlayerSprite::SetUpSprite(std::string texturePath) {
@@ -38,13 +18,56 @@ bool PlayerSprite::SetUpSprite(std::string texturePath) {
 }
 
 /* ================================================
-*  Handles movement of the player
+*  Handles sprite movements
 ================================================ */
-void PlayerSprite::PlayerMove(std::string texturePath,
-                              int xDelta,
-                              int yDelta,
+void PlayerSprite::PlayerMove(int moveAmt,
                               TileMap map,
-                              int faceDirectionIn) {
+                              std::vector<Item> items) {
+
+    int dirUp = 0;
+    int dirRight = 1;
+    int dirDown = 2;
+    int dirLeft = 3;
+
+    // PLayer sprite direction textures
+    std::string playerUpImg = pathsToSpriteMovementTextures[dirUp];
+    std::string playerRightImg = pathsToSpriteMovementTextures[dirRight];
+    std::string playerDownImg = pathsToSpriteMovementTextures[dirDown];
+    std::string playerLeftImg = pathsToSpriteMovementTextures[dirLeft];
+
+    // the 0s in the UpdatePlayerPostion calls are the axis they don't move in
+    //   the last int in the call is the direction they face 0 = up, 1 = left
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) {
+        std::cout << "you pushed W" << std::endl;
+        UpdatePlayerPostion(playerUpImg, 0, -moveAmt, map, dirUp);
+
+    } else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
+        std::cout << "you pushed D" << std::endl;
+        UpdatePlayerPostion(playerRightImg, moveAmt, 0, map, dirRight);
+
+    } else if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) {
+        std::cout << "you pushed S" << std::endl;
+        UpdatePlayerPostion(playerDownImg, 0, moveAmt, map, dirDown);
+
+    } else if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
+        std::cout << "you pushed A" << std::endl;
+        UpdatePlayerPostion(playerLeftImg, -moveAmt, 0, map, dirLeft);
+
+    } else if (sf::Keyboard::isKeyPressed(sf::Keyboard::F)) {
+        for (int i = 0; i < (int)items.size(); i++) {
+            items[i].itemActionTest(GetBoundery());
+        }
+    }
+}
+
+/* ================================================
+*  Handles movement updates to the player sprite
+================================================ */
+void PlayerSprite::UpdatePlayerPostion(std::string texturePath,
+                                       int xDelta,
+                                       int yDelta,
+                                       TileMap map,
+                                       int faceDirectionIn) {
     PlayerSprite::faceDirection = faceDirectionIn;
 
     // checks if player sprite is in window bounds
@@ -76,7 +99,7 @@ void PlayerSprite::PlayerMove(std::string texturePath,
 // TODO tie this into PlayerMove - stop the player from moveing during a npc
 //      colistion
 /* ================================================
-*  Checks for collisions between the NPC and 
+*  Checks for collisions between the NPC and
 *     player sprites.
 ================================================ */
 void PlayerSprite::NpcCollistion(int dmg, std::vector<PlayerSprite> npcList) {
@@ -94,4 +117,3 @@ void PlayerSprite::NpcCollistion(int dmg, std::vector<PlayerSprite> npcList) {
         }
     }
 }
-

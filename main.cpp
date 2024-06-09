@@ -1,4 +1,3 @@
-#include "item.cpp"
 #include "playerSprite.h"
 #include "tileMap.cpp"
 #include <SFML/Graphics.hpp>
@@ -18,19 +17,23 @@ int main() {
     int moveAmt = 16; // Amount of pixels the player moves with each key press.
 
     // PLayer sprite direction textures
-    std::string playerUpImg = "images/protag-up.png";
-    std::string playerDownImg = "images/protag-down.png";
-    std::string playerLeftImg = "images/protag-left.png";
-    std::string playerRightImg = "images/protag-right.png";
+    std::string playerSpriteMovementPaths[4] = {
+        "images/protagUp.png",
+        "images/protagRight.png",
+        "images/protagDown.png",
+        "images/protagLeft.png",
+    };
 
-    std::string slimeUp = "images/slimeBack.png";
-    std::string slimeDown = "images/slimeFront.png";
-    std::string slimeLeft = "images/slimeLeft.png";
-    std::string slimeRight = "images/slimeRight.png";
+    std::string slimeSpriteMovementPaths[4] = {
+        "images/slimeUp.png",
+        "images/slimeRight.png",
+        "images/slimeDown.png",
+        "images/slimeLeft.png",
+    };
 
     sf::RenderWindow window(sf::VideoMode(windowWidth, windowHeight), "NewLife");
-    PlayerSprite player1 = PlayerSprite(playerDownImg, 52, 52, 100);
-    PlayerSprite npcSlime = PlayerSprite(slimeDown, 83, 83, 100);
+    PlayerSprite player1 = PlayerSprite(52, 52, 100, playerSpriteMovementPaths);
+    PlayerSprite npcSlime = PlayerSprite(83, 83, 100, slimeSpriteMovementPaths);
 
     // List of all the npcs in a level
     std::vector<PlayerSprite> npcList;
@@ -88,28 +91,7 @@ int main() {
             if (event.type == sf::Event::Closed) {
                 window.close();
             } else if (event.type == sf::Event::KeyPressed) { // Player key entry
-            
-                if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) {
-                    std::cout << "you pushed W" << std::endl;
-                    player1.PlayerMove(playerUpImg, 0, -moveAmt, caveMap, 0);
-
-                } else if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
-                    std::cout << "you pushed A" << std::endl;
-                    player1.PlayerMove(playerLeftImg, -moveAmt, 0, caveMap, 1);
-
-                } else if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) {
-                    std::cout << "you pushed S" << std::endl;
-                    player1.PlayerMove(playerDownImg, 0, moveAmt, caveMap, 2);
-
-                } else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
-                    std::cout << "you pushed D" << std::endl;
-                    player1.PlayerMove(playerRightImg, moveAmt, 0, caveMap, 3);
-
-                } else if (sf::Keyboard::isKeyPressed(sf::Keyboard::F)) {
-                    for (int i = 0; i < (int)items.size(); i++) {
-                        items[i].itemActionTest(player1.GetBoundery());
-                    }
-                }
+                player1.PlayerMove(moveAmt, caveMap, items);
             }
         }
 
