@@ -3,14 +3,11 @@ BasedOnStyle: LLVM
 
 IndentWidth: 4
 BinPackArguments: true
-BinPackParameters: true
+BinPackParameters: false
 
 # No line wrapping
 ColumnLimit: 81
 
 # Indentation for continuation lines within braces
 ContinuationIndentWidth: 4
-AccessModifierOffset: -3
-
-# do not format arrays
-BinPackParameters: false
+AccessModifierOffset: -4
