@@ -1,8 +1,10 @@
-newLifeEXE
 .vscode/settings.json
-.gameTile.cpp.swp
-.playerSprite.h.swp
-images/temp-sword.png
-Image-rawfiles/protagV2.kra~
-.gitignore
 maps/test.json
+
+# temp files
+images/temp-sword.png
+.kra~
+
+# Build files
+newLifeEXE
+*.o
