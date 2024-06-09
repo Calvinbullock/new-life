@@ -9,6 +9,11 @@ The graphics library I used was SFML and c++.
 
 [Software Demo Video](https://www.youtube.com/watch?v=TKum7AfY2Do)
 
+# Compiling
+- Run the `make` command.
+- The executable will be named `newLifeEXE`.
+- on Linux run the file using `./newLifeEXE`.
+
 # Development Environment
 Editors: Neovim and VS code
 
@@ -25,6 +30,5 @@ Languages/frameworks/libraries: c++ and the sfml library.
 
 # Images
 - Images look blurry but that is the game itself I have not properly handled scaling.
-
 ![image](https://github.com/Calvinbullock/new-life/assets/37564710/7d5068b7-290f-4bb4-a376-4e0545158c18)
 
