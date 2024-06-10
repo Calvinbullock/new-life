@@ -1,8 +1,10 @@
-#include "playerSprite.h"
+e "playerSprite.h"
 #include "tileMap.cpp"
 #include <SFML/Graphics.hpp>
 
+#include <SFML/Graphics/RenderWindow.hpp>
 #include <iostream> // DEBUGing
+#include <vector>
 
 /*
 TODOS
@@ -11,7 +13,98 @@ easy of use
 - creat a function to turn the map array into a vector
 */
 
+/* ================================================
+*  Game Class
+================================================ */
+class Game {
+
+public:
+    Game(int windowWidthIn,
+         int windowHeightIn,
+         int moveAmtIn,
+         PlayerSprite playerIn)
+        : windowWidth(windowWidthIn), windowHeight(windowHeightIn),
+          moveAmt(moveAmtIn), player(playerIn), npcList(), itemsList() {}
+
+    /* ================================================
+    *
+    ================================================ */
+    void GameLoop(TileMap *map,
+                  std::vector<Item> *itemList,
+                  std::vector<PlayerSprite> *npcListIn) {
+
+        sf::RenderWindow window(sf::VideoMode(windowWidth, windowHeight),
+                                "NewLife");
+        while (window.isOpen()) {
+            sf::Event event;
+
+            // checks for input / game events
+            while (window.pollEvent(event)) {
+                player.NpcCollistion(10, *npcListIn); // TODO add npc list
+
+                // check for user input
+                if (event.type == sf::Event::Closed) {
+                    window.close();
+                } else if (event.type == sf::Event::KeyPressed) {
+                    // Player key entry
+                    player.PlayerMove(moveAmt, *map, *itemList);
+                }
+            }
+
+            window.clear();
+            window.draw(*map);
+            window.draw(player.GetSprite());
+
+            // draw all NPC sprites
+            // window->draw(npcSlime.GetSprite());
+            DrawNPCSpriteVector(*npcListIn, &window);
+
+            // draw all item sprites
+            // TODO uncoment when you have items ready
+            // DrawItemSpriteVector(items, window);
+
+            window.display();
+        }
+    }
+
+private:
+    float windowWidth;
+    float windowHeight;
+    int moveAmt; // Amount of pixels the player moves with each key press.
+
+    PlayerSprite player;
+    std::vector<PlayerSprite> npcList;
+    std::vector<Item> itemsList;
+
+    /* ================================================
+    *  draws the items in Item vector
+    ================================================ */
+    void DrawItemSpriteVector(std::vector<Item> spriteVec,
+                              sf::RenderWindow *windowIn) {
+        for (int i = 0; i < (int)spriteVec.size(); i++) {
+            windowIn->draw(spriteVec[i].GetSprite());
+        }
+    }
+
+    /* ================================================
+    *  draws the NPC sprites
+    *  TODO  think about merging this and the DrawItemSpriteVector func
+    ================================================ */
+    void DrawNPCSpriteVector(std::vector<PlayerSprite> spriteVec,
+                             sf::RenderWindow *windowIn) {
+        for (int i = 0; i < (int)spriteVec.size(); i++) {
+            windowIn->draw(spriteVec[i].GetSprite());
+        }
+    }
+};
+
+/* ================================================
+*  Main Function
+================================================ */
 int main() {
+    /* ================================================
+    *  Create Game const
+    ================================================ */
     float windowWidth = 512;
     float windowHeight = 256;
     int moveAmt = 16; // Amount of pixels the player moves with each key press.
@@ -34,6 +127,7 @@ int main() {
     sf::RenderWindow window(sf::VideoMode(windowWidth, windowHeight), "NewLife");
     PlayerSprite player1 = PlayerSprite(52, 52, 100, playerSpriteMovementPaths);
     PlayerSprite npcSlime = PlayerSprite(83, 83, 100, slimeSpriteMovementPaths);
+    Game game = Game(512, 256, 16, player1);
 
     // List of all the npcs in a level
     std::vector<PlayerSprite> npcList;
@@ -79,6 +173,8 @@ int main() {
     if (!caveMap.load("images/dungon-src.png", sf::Vector2u(32, 32), cave, 16, 8,
                       cavePassable))
         return -1;
+
+    // game.GameLoop(&caveMap, &items, &npcList);
 
     // Main event / game loop
     while (window.isOpen()) {
