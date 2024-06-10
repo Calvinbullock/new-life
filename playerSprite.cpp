@@ -62,7 +62,7 @@ void PlayerSprite::PlayerMove(int moveAmt,
 
     } else if (sf::Keyboard::isKeyPressed(sf::Keyboard::F)) {
         for (int i = 0; i < (int)items.size(); i++) {
-            items[i].itemActionTest(GetBoundery());
+            items[i].ItemActionTest(GetBoundery());
         }
     }
 }

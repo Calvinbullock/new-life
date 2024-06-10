@@ -21,15 +21,20 @@
 
 // #include <iostream> // DEBUGing
 
-/* TODO
+/* TODO 
 - Encapsulate?
    - items / tileMap - they should be clearly part of each other
    - draw items / tileMap - one func call
    - maybe NPC list as well?
    - look for MapObject notes 1/2 & 2/2
+   - a diagram showing the maps (0, 0) start is top left.
 
-- Make a function that will take a tile index and find the x,y postion for more
-easy of use
+- NPC classes.
+
+- See about changing maps with the doors.
+
+- Make a function that will take a tile index and find the x,y 
+   position for more easy of use.
 */
 
 /* ================================================
@@ -45,6 +50,7 @@ TileMap getCaveMap() {
     // TODO rename this array
     // define the level with an array of tile indices
     // clang-format off
+    // (0, 0) is the top left
     int arr[] = {
         2, 3, 4, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 0,
         2, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 0,
@@ -110,12 +116,12 @@ int main() {
 
     // NOTE  this needs to be moved / cleaned up MapObject 2/2
     //    Other is the tileMap
-    Item sword = Item("images/temp-sword.png", 99, 99);
     Item topDoor = Item("", 64, 0);
+    //Item sword = Item("images/temp-sword.png", 99, 99);
 
     std::vector<Item> items;
     items.push_back(topDoor);
-    items.push_back(sword);
+    //items.push_back(sword);
 
     TileMap caveMap = getCaveMap();
     // -- }
@@ -147,7 +153,7 @@ int main() {
         // Draw Items
         for (int i = 0; i < (int)items.size(); i++) {
             // TODO uncoment when you have items ready
-            // window.draw(items[i].GetSprite());
+            window.draw(items[i].GetSprite());
         }
 
         window.display();
