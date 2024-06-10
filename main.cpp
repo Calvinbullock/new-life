@@ -2,13 +2,14 @@
 #include "tileMap.cpp"
 #include <SFML/Graphics.hpp>
 
-#include <iostream> // DEBUGing
+/* TODO
+- Encapsulate?
+   - items / tileMap - they should be clearly part of each other
+   - draw items / tileMap - one func call
+   - maybe NPC list as well?
 
-/*
-TODOS
 - Make a function that will take a tile index and find the x,y postion for more
 easy of use
-- creat a function to turn the map array into a vector
 */
 
 int main() {
