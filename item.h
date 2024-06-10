@@ -1,7 +1,7 @@
 /* ================================================
 * Author: Calvin Bullock
 *
-* This is the header file for item. Item is the 
+* This is the header file for item. Item is the
 *     parent class for game items with abilities.
 *     Ex: keys, doors, weapons, etc.
 ================================================ */
@@ -15,11 +15,11 @@ class Item {
 
 public:
     Item(std::string texturePath, float startX, float startY);
-   sf::Sprite GetSprite() { return sprite; }
+    sf::Sprite GetSprite() { return sprite; }
 
-// This will be overiden for diffrent (child) items, so that each item
-// can achive its unique action.
-void itemAction();
+    // This will be overiden for diffrent (child) items, so that each item
+    // can achive its unique action.
+    void itemAction();
     void ItemActionTest(sf::FloatRect playerBoundery);
 
 private:
