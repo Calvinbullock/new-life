@@ -12,9 +12,14 @@ The actual program is not much more than a basic tile map with collisions, and a
 - on Linux run the file using `./newLifeEXE`.
 
 # Development Environment
-Editors: Neovim and VS code
+Editors / Tools: 
+- Neovim 
+- VS code
+- clang-format
 
-Languages/frameworks/libraries: c++ and the sfml library.
+Languages/frameworks/libraries:
+- c++ 
+- sfml library.
 
 # Useful Websites
 * [SFML docs](https://www.sfml-dev.org/documentation/2.6.1/)
