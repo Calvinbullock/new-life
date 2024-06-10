@@ -1,3 +1,10 @@
+/* ================================================
+* Author: Calvin Bullock
+*
+* This is the cpp for PlayerSprites. Where the 
+*     larger functions are implemented.
+================================================ */
+
 #include "playerSprite.h"
 #include <vector>
 

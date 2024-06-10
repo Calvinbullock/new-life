@@ -1,3 +1,11 @@
+/* ================================================
+* Author: Calvin Bullock
+*
+* This is the header for PlayerSprites. This is
+*     where the player movement and all player stats
+*     are stored.
+================================================ */
+
 #include "item.cpp"
 #include "tileMap.cpp"
 #include <SFML/Graphics.hpp>
@@ -63,6 +71,7 @@ public:
 
     // clang-format off
     // Copy constructor
+    // WARN  compiler no like 
     /*PlayerSprite(PlayerSprite &pSprite)*/
     /*              : texture(pSprite.texture), sprite(pSprite.sprite), */
     /*                playerBoundery(pSprite.playerBoundery),*/
