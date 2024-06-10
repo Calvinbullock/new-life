@@ -2,6 +2,15 @@
 * Author: Calvin Bullock
 *
 * This file contains the Main function and gameloop.
+*   
+* 
+* References used:
+*    -- gameTile / gameWorld
+*    https://www.youtube.com/watch?v=aEDP7uhaiJc&list=PLnEt5PBXuAmvPHLXnYzjR4eP65VsxCQRV&index=9
+*    https://www.youtube.com/watch?v=A60oYZK_ptk&list=PLnEt5PBXuAmvPHLXnYzjR4eP65VsxCQRV&index=7
+*
+*    -- tileMap
+*    https://www.sfml-dev.org/tutorials/2.6/graphics-vertex-array.php
 ================================================ */
 
 #include "playerSprite.h"
