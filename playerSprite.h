@@ -61,6 +61,22 @@ public:
         playerBoundery = sprite.getGlobalBounds();
     }
 
+    // clang-format off
+    // Copy constructor
+    PlayerSprite(PlayerSprite &pSprite)
+                  : texture(pSprite.texture), sprite(pSprite.sprite), 
+                    playerBoundery(pSprite.playerBoundery),
+                    pathsToSpriteMovementTextures{
+                        pSprite.pathsToSpriteMovementTextures[0], 
+                        pSprite.pathsToSpriteMovementTextures[1],
+                        pSprite.pathsToSpriteMovementTextures[2],
+                        pSprite.pathsToSpriteMovementTextures[3]
+                    },
+                    initialHealth(pSprite.initialHealth), 
+                    currentHealth(pSprite.currentHealth), 
+                    faceDirection(pSprite.faceDirection) {}
+    // clang-format on
+
     sf::Sprite GetSprite() { return sprite; }
     sf::FloatRect GetBoundery() { return playerBoundery; }
 
