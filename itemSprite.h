@@ -1,6 +1,15 @@
+/* ================================================
+* Author: Calvin Bullock
+*
+* Contains the item sprite, including:
+*  Boundaries
+*  Texture
+*  and sprite
+================================================ */
+
 #include <SFML/Graphics.hpp>
 
-// TODO??
+// TODO ?
 // Not sure if I should just add functions to player and make it more generic
 //      or make this class and playerSprite a child of a new entity class or
 //      someting else entierly....

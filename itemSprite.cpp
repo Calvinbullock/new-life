@@ -1,3 +1,10 @@
+/* ================================================
+* Author: Calvin Bullock
+*
+* Contains the implementations of ItemSprite 
+*     functions.
+================================================ */
+
 #include "itemSprite.h"
 
 #include <iostream> // DEBUGing
