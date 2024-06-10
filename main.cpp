@@ -2,12 +2,11 @@
 * Author: Calvin Bullock
 *
 * This file contains the Main function and gameloop.
-*   
-* 
+*
 * References used:
 *    -- gameTile / gameWorld
-*    https://www.youtube.com/watch?v=aEDP7uhaiJc&list=PLnEt5PBXuAmvPHLXnYzjR4eP65VsxCQRV&index=9
-*    https://www.youtube.com/watch?v=A60oYZK_ptk&list=PLnEt5PBXuAmvPHLXnYzjR4eP65VsxCQRV&index=7
+*____-https://www.youtube.com/watch?v=aEDP7uhaiJc&list=PLnEt5PBXuAmvPHLXnYzjR4eP65VsxCQRV&index=9
+*____-https://www.youtube.com/watch?v=A60oYZK_ptk&list=PLnEt5PBXuAmvPHLXnYzjR4eP65VsxCQRV&index=7
 *
 *    -- tileMap
 *    https://www.sfml-dev.org/tutorials/2.6/graphics-vertex-array.php
@@ -104,7 +103,7 @@ int main() {
     PlayerSprite player1 = PlayerSprite(52, 52, 100, playerSpriteMovementPaths);
     PlayerSprite npcSlime = PlayerSprite(83, 83, 100, slimeSpriteMovementPaths);
 
-    // -- All part of map? {
+    // NOTE -- All part of map? {
     // List of all the npcs in a level
     std::vector<PlayerSprite> npcList;
     npcList.push_back(npcSlime);
@@ -156,12 +155,3 @@ int main() {
 
     return 0;
 }
-
-// Refrances used:
-//      -- gameTile / gameWorld
-//      https://www.youtube.com/watch?v=aEDP7uhaiJc&list=PLnEt5PBXuAmvPHLXnYzjR4eP65VsxCQRV&index=9
-//      https://www.youtube.com/watch?v=A60oYZK_ptk&list=PLnEt5PBXuAmvPHLXnYzjR4eP65VsxCQRV&index=7
-//
-//      -- tileMap
-//      https://www.sfml-dev.org/tutorials/2.6/graphics-vertex-array.php
-//
