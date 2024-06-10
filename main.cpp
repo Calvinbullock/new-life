@@ -1,55 +1,39 @@
+/* ================================================
+* Author: Calvin Bullock
+*
+* This file contains the Main function and gameloop.
+================================================ */
+
 #include "playerSprite.h"
 #include "tileMap.cpp"
 #include <SFML/Graphics.hpp>
+#include <cassert>
+#include <string>
+#include <vector>
+
+// #include <iostream> // DEBUGing
 
 /* TODO
 - Encapsulate?
    - items / tileMap - they should be clearly part of each other
    - draw items / tileMap - one func call
    - maybe NPC list as well?
+   - look for MapObject notes 1/2 & 2/2
 
 - Make a function that will take a tile index and find the x,y postion for more
 easy of use
 */
 
-int main() {
-    float windowWidth = 512;
-    float windowHeight = 256;
-    int moveAmt = 16; // Amount of pixels the player moves with each key press.
-
-    // PLayer sprite direction textures
-    std::string playerSpriteMovementPaths[4] = {
-        "images/protagUp.png",
-        "images/protagRight.png",
-        "images/protagDown.png",
-        "images/protagLeft.png",
-    };
-
-    std::string slimeSpriteMovementPaths[4] = {
-        "images/slimeUp.png",
-        "images/slimeRight.png",
-        "images/slimeDown.png",
-        "images/slimeLeft.png",
-    };
-
-    sf::RenderWindow window(sf::VideoMode(windowWidth, windowHeight), "NewLife");
-    PlayerSprite player1 = PlayerSprite(52, 52, 100, playerSpriteMovementPaths);
-    PlayerSprite npcSlime = PlayerSprite(83, 83, 100, slimeSpriteMovementPaths);
-
-    // List of all the npcs in a level
-    std::vector<PlayerSprite> npcList;
-    npcList.push_back(npcSlime);
-
-    TileMap caveMap;
-
-    Item sword = Item("images/temp-sword.png", 99, 99);
-    Item topDoor = Item("", 64, 0);
-
-    // TODO this needs to be moved / cleaned up MapObject 2/2
-    std::vector<Item> items;
-    items.push_back(topDoor);
-    items.push_back(sword);
-
+/* ================================================
+* getCaveMap
+*     This is a placeHolder func this should all
+*           be moved a text/json/other file to be read
+*           in.
+*
+*   NOTE  this needs to be moved / cleaned up MapObject 1/2
+*     Other is the items list
+================================================ */
+TileMap getCaveMap() {
     // TODO rename this array
     // define the level with an array of tile indices
     // clang-format off
@@ -66,20 +50,67 @@ int main() {
     //  0  1  2  3  4  5  6  7  8  9  0  1  2  3  4  5
     // clang-format on
 
+    TileMap caveMap;
     std::vector<int> cave(arr, arr + sizeof(arr) / sizeof(arr[0]));
 
-    // TODO Moved / cleaned up MapObject 2/2
     // if the int in cave[] matches one of these (cavePassable) then it is
-    // passable
-    //      by the player sprite.
+    //      passable by the player sprite.
     std::vector<int> cavePassable;
     cavePassable.push_back(5);
     cavePassable.push_back(4);
 
-    // Set tile map textures
+    // load all the parts to create a tile map
     if (!caveMap.load("images/dungon-src.png", sf::Vector2u(32, 32), cave, 16, 8,
                       cavePassable))
-        return -1;
+        assert(false); // if load fails crash
+
+    return caveMap;
+}
+
+/* ================================================
+*  Main Function
+*     contains the main game loop
+================================================ */
+int main() {
+    float windowWidth = 512;
+    float windowHeight = 256;
+    int moveAmt = 16; // Amount of pixels the player moves with each key press.
+    sf::RenderWindow window(sf::VideoMode(windowWidth, windowHeight), "NewLife");
+
+    // PLayer sprite direction textures
+    std::string playerSpriteMovementPaths[4] = {
+        "images/protagUp.png",
+        "images/protagRight.png",
+        "images/protagDown.png",
+        "images/protagLeft.png",
+    };
+
+    std::string slimeSpriteMovementPaths[4] = {
+        "images/slimeUp.png",
+        "images/slimeRight.png",
+        "images/slimeDown.png",
+        "images/slimeLeft.png",
+    };
+
+    PlayerSprite player1 = PlayerSprite(52, 52, 100, playerSpriteMovementPaths);
+    PlayerSprite npcSlime = PlayerSprite(83, 83, 100, slimeSpriteMovementPaths);
+
+    // -- All part of map? {
+    // List of all the npcs in a level
+    std::vector<PlayerSprite> npcList;
+    npcList.push_back(npcSlime);
+
+    // NOTE  this needs to be moved / cleaned up MapObject 2/2
+    //    Other is the tileMap
+    Item sword = Item("images/temp-sword.png", 99, 99);
+    Item topDoor = Item("", 64, 0);
+
+    std::vector<Item> items;
+    items.push_back(topDoor);
+    items.push_back(sword);
+
+    TileMap caveMap = getCaveMap();
+    // -- }
 
     // Main event / game loop
     while (window.isOpen()) {
@@ -99,8 +130,13 @@ int main() {
         window.clear();
         window.draw(caveMap);
         window.draw(player1.GetSprite());
-        window.draw(npcSlime.GetSprite());
 
+        // Draw NPCs
+        for (int i = 0; i < (int)npcList.size(); i++) {
+            window.draw(npcList[i].GetSprite());
+        }
+
+        // Draw Items
         for (int i = 0; i < (int)items.size(); i++) {
             // TODO uncoment when you have items ready
             // window.draw(items[i].GetSprite());
