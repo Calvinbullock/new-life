@@ -1,3 +1,11 @@
+/* ================================================
+* Author: Calvin Bullock
+*
+* This is the header file for item. Item is the 
+*     parent class for game items with abilities.
+*     Ex: keys, doors, weapons, etc
+================================================ */
+
 #include <SFML/Graphics.hpp>
 
 #ifndef ITEM_H

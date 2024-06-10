@@ -1,3 +1,10 @@
+/* ================================================
+* Author: Calvin Bullock
+*
+* This file holds the implementation for tileMap
+*     it holds all the tiles and there boundaries.
+================================================ */
+
 #include <SFML/Graphics.hpp>
 #include <vector>
 #include <cassert>
