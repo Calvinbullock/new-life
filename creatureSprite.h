@@ -2,14 +2,19 @@
 * Author: Calvin Bullock
 * 
 * This is the header for CreatureSprite. This is
-*     where the player movement and all player stats
-*     are stored.
+*     where the base class for the npc and the player
+*     will be laid out.
 ================================================ */
+
+// TODO Need to clean up mentions of player in this 
+//    file and in the cpp
+//
+// Remove sprite from the class name
 
 #include "item.h"
 #include "tileMap.cpp"
 #include <SFML/Graphics.hpp>
-#include <iostream>
+#include <iostream> // for DEBUGING 
 
 class CreatureSprite {
 
@@ -87,11 +92,12 @@ public:
     sf::FloatRect GetBoundery() { return playerBoundery; }
 
     bool SetUpSprite(std::string texturePath);
-    void NpcCollistion(int dmg, std::vector<CreatureSprite> npcList);
-    void PlayerMove(int moveAmt, TileMap map, std::vector<Item> items);
-
     void SetPlayerXY(float x, float y) {
         sprite.setPosition(sf::Vector2f(x, y));
     }
+
+    // TODO move to new playerSprite.h
+    void NpcCollistion(int dmg, std::vector<CreatureSprite> npcList);
+    void PlayerMove(int moveAmt, TileMap map, std::vector<Item> items);
 };
 
