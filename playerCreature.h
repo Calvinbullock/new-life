@@ -6,9 +6,9 @@
 *     are stored. This class is a child of creature.
 ================================================ */
 
-#include "creatureSprite.h"
+#include "creature.h"
 
-class PlayerCreature : public CreatureSprite {
+class PlayerCreature : public Creature {
 
 public:
 private:

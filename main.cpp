@@ -12,7 +12,7 @@
 *    https://www.sfml-dev.org/tutorials/2.6/graphics-vertex-array.php
 ================================================ */
 
-#include "creatureSprite.h"
+#include "creature.h"
 #include "tileMap.cpp"
 
 #include <SFML/Graphics.hpp>
@@ -117,12 +117,12 @@ int main() {
         "images/slimeLeft.png",
     };
 
-    CreatureSprite player1 = CreatureSprite(52, 52, 100, playerSpriteMovementPaths);
-    CreatureSprite npcSlime = CreatureSprite(83, 83, 100, slimeSpriteMovementPaths);
+    Creature player1 = Creature(52, 52, 100, playerSpriteMovementPaths);
+    Creature npcSlime = Creature(83, 83, 100, slimeSpriteMovementPaths);
 
     // NOTE -- All part of map? {
     // List of all the npcs in a level
-    std::vector<CreatureSprite> npcList;
+    std::vector<Creature> npcList;
     npcList.push_back(npcSlime);
 
     // NOTE  this needs to be moved / cleaned up MapObject 2/2
@@ -143,7 +143,7 @@ int main() {
 
         // checks for input / game events
         while (window.pollEvent(event)) {
-            player1.NpcCollistion(10, npcList); // TODO add npc list
+            player1.NpcCollision(10, npcList); // TODO add npc list
 
             if (event.type == sf::Event::Closed) {
                 window.close();

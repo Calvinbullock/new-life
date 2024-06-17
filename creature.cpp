@@ -1,11 +1,11 @@
 /* ================================================
 * Author: Calvin Bullock
 *
-* This is the cpp for CreatureSprite. Where the 
+* This is the cpp for Creature. Where the 
 *     larger functions are implemented.
 ================================================ */
 
-#include "creatureSprite.h"
+#include "creature.h"
 #include <vector>
 
 #include <iostream> // DEBUGing
@@ -14,7 +14,7 @@
 /* ================================================
 *  Sets and stores the player sprite.
 ================================================ */
-bool CreatureSprite::SetUpSprite(std::string texturePath) {
+bool Creature::SetUpSprite(std::string texturePath) {
     if (!texture.loadFromFile(texturePath))
         return false;
 
@@ -27,7 +27,7 @@ bool CreatureSprite::SetUpSprite(std::string texturePath) {
 /* ================================================
 *  Handles sprite movements
 ================================================ */
-void CreatureSprite::PlayerMove(int moveAmt,
+void Creature::PlayerMove(int moveAmt,
                               TileMap map,
                               std::vector<Item> items) {
 
@@ -70,12 +70,12 @@ void CreatureSprite::PlayerMove(int moveAmt,
 /* ================================================
 *  Handles movement updates to the player sprite
 ================================================ */
-void CreatureSprite::UpdatePlayerPostion(std::string texturePath,
+void Creature::UpdatePlayerPostion(std::string texturePath,
                                        int xDelta,
                                        int yDelta,
                                        TileMap map,
                                        int faceDirectionIn) {
-    CreatureSprite::faceDirection = faceDirectionIn;
+    Creature::faceDirection = faceDirectionIn;
 
     // checks if player sprite is in window bounds
     if (sprite.getPosition().x < 0 || sprite.getPosition().y < 0)
@@ -109,7 +109,7 @@ void CreatureSprite::UpdatePlayerPostion(std::string texturePath,
 *  Checks for collisions between the NPC and
 *     player sprites.
 ================================================ */
-void CreatureSprite::NpcCollistion(int dmg, std::vector<CreatureSprite> npcList) {
+void Creature::NpcCollision(int dmg, std::vector<Creature> npcList) {
     int vectorLength = npcList.size();
 
     for (int i = 0; i < vectorLength; i++) {

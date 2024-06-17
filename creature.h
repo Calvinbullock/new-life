@@ -1,12 +1,12 @@
 /* ================================================
 * Author: Calvin Bullock
-* 
-* This is the header for CreatureSprite. This is
+*
+* This is the header for Creature. This is
 *     where the base class for the npc and the player
 *     will be laid out.
 ================================================ */
 
-// TODO Need to clean up mentions of player in this 
+// TODO Need to clean up mentions of player in this
 //    file and in the cpp
 //
 // Remove sprite from the class name
@@ -14,9 +14,9 @@
 #include "item.h"
 #include "tileMap.cpp"
 #include <SFML/Graphics.hpp>
-#include <iostream> // for DEBUGING 
+#include <iostream> // for DEBUGING
 
-class CreatureSprite {
+class Creature {
 
 private:
     sf::Texture texture;
@@ -46,7 +46,7 @@ public:
     *       should be four paths - {left, right, up, down}
     ================================================ */
     // clang-format off
-    CreatureSprite(float startX, float startY, int baseHealth, 
+    Creature(float startX, float startY, int baseHealth, 
                   std::string pathsToSpriteMovementTexturesIn[])
                   : texture(), sprite(), playerBoundery(), 
                     pathsToSpriteMovementTextures(), initialHealth(), 
@@ -74,7 +74,7 @@ public:
     // clang-format off
     // Copy constructor
     // WARN  compiler no like 
-    /*CreatureSprite(CreatureSprite &pSprite)*/
+    /*Creature(Creature &pSprite)*/
     /*              : texture(pSprite.texture), sprite(pSprite.sprite), */
     /*                playerBoundery(pSprite.playerBoundery),*/
     /*                pathsToSpriteMovementTextures{*/
@@ -97,7 +97,6 @@ public:
     }
 
     // TODO move to new playerSprite.h
-    void NpcCollistion(int dmg, std::vector<CreatureSprite> npcList);
+    void NpcCollision(int dmg, std::vector<Creature> npcList);
     void PlayerMove(int moveAmt, TileMap map, std::vector<Item> items);
 };
-
