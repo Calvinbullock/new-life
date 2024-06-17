@@ -1,7 +1,7 @@
 /* ================================================
 * Author: Calvin Bullock
 * 
-* This is the header for PlayerSprites. This is
+* This is the header for CreatureSprite. This is
 *     where the player movement and all player stats
 *     are stored.
 ================================================ */
@@ -10,9 +10,6 @@
 #include "tileMap.cpp"
 #include <SFML/Graphics.hpp>
 #include <iostream>
-
-#ifndef PLAYERSPRITE_H
-#define PLAYERSPRITE_H
 
 class CreatureSprite {
 
@@ -72,7 +69,7 @@ public:
     // clang-format off
     // Copy constructor
     // WARN  compiler no like 
-    /*PlayerSprite(PlayerSprite &pSprite)*/
+    /*CreatureSprite(CreatureSprite &pSprite)*/
     /*              : texture(pSprite.texture), sprite(pSprite.sprite), */
     /*                playerBoundery(pSprite.playerBoundery),*/
     /*                pathsToSpriteMovementTextures{*/
@@ -98,4 +95,3 @@ public:
     }
 };
 
-#endif

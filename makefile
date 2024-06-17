@@ -8,13 +8,13 @@ CXX = g++
 CXXFLAGS = -O2 -ansi -pedantic -Wall -Wextra -Wshadow -Weffc++
 
 # Source files (cpp)
-SRCS = item.cpp itemSprite.cpp main.cpp playerSprite.cpp tileMap.cpp
+SRCS = item.cpp itemSprite.cpp main.cpp tileMap.cpp creatureSprite.cpp
 
 # Object files (created from source files)
 OBJS = $(SRCS:.cpp=.o)
 
 # Header files (include for compilation)
-HDRS = item.h itemSprite.h playerSprite.h
+HDRS = item.h itemSprite.h creatureSprite.h
 
 # Linker flags (link with SFML library)
 LDFLAGS = -lsfml-graphics -lsfml-window -lsfml-system

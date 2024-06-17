@@ -5,15 +5,16 @@
 *
 * References used:
 *    -- gameTile / gameWorld
-*____-https://www.youtube.com/watch?v=aEDP7uhaiJc&list=PLnEt5PBXuAmvPHLXnYzjR4eP65VsxCQRV&index=9
-*____-https://www.youtube.com/watch?v=A60oYZK_ptk&list=PLnEt5PBXuAmvPHLXnYzjR4eP65VsxCQRV&index=7
+*....-https://www.youtube.com/watch?v=aEDP7uhaiJc&list=PLnEt5PBXuAmvPHLXnYzjR4eP65VsxCQRV&index=9
+*....-https://www.youtube.com/watch?v=A60oYZK_ptk&list=PLnEt5PBXuAmvPHLXnYzjR4eP65VsxCQRV&index=7
 *
 *    -- tileMap
 *    https://www.sfml-dev.org/tutorials/2.6/graphics-vertex-array.php
 ================================================ */
 
-#include "playerSprite.h"
+#include "creatureSprite.h"
 #include "tileMap.cpp"
+
 #include <SFML/Graphics.hpp>
 #include <cassert>
 #include <string>
@@ -21,7 +22,7 @@
 
 // #include <iostream> // DEBUGing
 
-/* TODO 
+/* TODO :
 - Encapsulate?
    - items / tileMap - they should be clearly part of each other
    - draw items / tileMap - one func call
@@ -33,9 +34,18 @@
 
 - See about changing maps with the doors.
 
-- Make a function that will take a tile index and find the x,y 
+- Make a function that will take a tile index and find the x,y
    position for more easy of use.
 */
+
+// WARN  --- WORKING HERE
+class GameLevel {
+public:
+   void setGameLeve(){}
+
+private:
+   TileMap tileMap;
+};
 
 /* ================================================
 * getCaveMap
@@ -79,6 +89,7 @@ TileMap getCaveMap() {
         assert(false); // if load fails crash
 
     return caveMap;
+
 }
 
 /* ================================================
@@ -106,22 +117,22 @@ int main() {
         "images/slimeLeft.png",
     };
 
-    PlayerSprite player1 = PlayerSprite(52, 52, 100, playerSpriteMovementPaths);
-    PlayerSprite npcSlime = PlayerSprite(83, 83, 100, slimeSpriteMovementPaths);
+    CreatureSprite player1 = CreatureSprite(52, 52, 100, playerSpriteMovementPaths);
+    CreatureSprite npcSlime = CreatureSprite(83, 83, 100, slimeSpriteMovementPaths);
 
     // NOTE -- All part of map? {
     // List of all the npcs in a level
-    std::vector<PlayerSprite> npcList;
+    std::vector<CreatureSprite> npcList;
     npcList.push_back(npcSlime);
 
     // NOTE  this needs to be moved / cleaned up MapObject 2/2
     //    Other is the tileMap
     Item topDoor = Item("", 64, 0);
-    //Item sword = Item("images/temp-sword.png", 99, 99);
+    // Item sword = Item("images/temp-sword.png", 99, 99);
 
     std::vector<Item> items;
     items.push_back(topDoor);
-    //items.push_back(sword);
+    // items.push_back(sword);
 
     TileMap caveMap = getCaveMap();
     // -- }
