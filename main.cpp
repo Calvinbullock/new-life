@@ -48,13 +48,43 @@ etc
 
 */
 
-// WARN  --- WORKING HERE
+// WARN  --- WORKING HERE --- Untested
 class GameLevel {
+
 public:
-   void setGameLeve(){}
+    GameLevel(TileMap tilmapIn,
+              std::vector<Creature> newNpcList,
+              std::vector<Item> newItemsList)
+        : tileMap(tilmapIn), npcList(), itemsList() {
+      npcList = newNpcList;
+      itemsList = newItemsList;
+   }
+
+    // Get-ers
+    TileMap getTileMap() { return tileMap; }
+
+    // Modifiers
+    void addItem(Item &item) { itemsList.push_back(item); }
+    void addNPC(Creature &npc) { npcList.push_back(npc); }
+
+    //draw functions
+    void drawItems(sf::RenderWindow &window) {
+        for (int i = 0; i < (int)itemsList.size(); i++) {
+            window.draw(itemsList[i].GetSprite());
+        }
+    }
+    void drawNPCs(sf::RenderWindow &window) {
+        for (int i = 0; i < (int)npcList.size(); i++) {
+            window.draw(npcList[i].GetSprite());
+        }
+    }
+
+    //void checkCollision(Creature &player) {} // TODO:
 
 private:
-   TileMap tileMap;
+    TileMap tileMap;
+    std::vector<Creature> npcList;
+    std::vector<Item> itemsList;
 };
 
 /* ================================================
@@ -99,7 +129,6 @@ TileMap getCaveMap() {
         assert(false); // if load fails, crash
 
     return caveMap;
-
 }
 
 /* ================================================
@@ -120,6 +149,7 @@ int main() {
         "images/protagDown.png",
         "images/protagLeft.png",
     };
+    Creature player1 = Creature(52, 52, 100, playerSpriteMovementPaths);
 
     std::string slimeSpriteMovementPaths[4] = {
         "images/slimeUp.png",
@@ -127,8 +157,6 @@ int main() {
         "images/slimeDown.png",
         "images/slimeLeft.png",
     };
-
-    Creature player1 = Creature(52, 52, 100, playerSpriteMovementPaths);
     Creature npcSlime = Creature(83, 83, 100, slimeSpriteMovementPaths);
 
     // NOTE -- All part of map? {
