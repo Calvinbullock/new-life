@@ -3,6 +3,8 @@
 
 make
 
+# run
+echo "-------------------------------"
 ./newLifeEXE
 
 make clean
