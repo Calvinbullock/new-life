@@ -11,6 +11,8 @@ The actual program is not much more than a basic tile map with collisions, and a
 - The executable will be named `newLifeEXE`.
 - on Linux run the file using `./newLifeEXE`.
 
+- I also have a script to build, run and clean `_run.sh`.
+
 # Development Environment
 Editors / Tools: 
 - Neovim 
