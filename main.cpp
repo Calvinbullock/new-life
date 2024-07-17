@@ -22,7 +22,11 @@
 
 // #include <iostream> // DEBUGing
 
-/* TODO :
+/* TODO:
+
+-  NOTE: have dad read this over and ask for suggestions on formating, nameing
+etc
+
 - Encapsulate?
    - items / tileMap - they should be clearly part of each other
    - draw items / tileMap - one func call
@@ -36,6 +40,12 @@
 
 - Make a function that will take a tile index and find the x,y
    position for more easy of use.
+
+----- -------
+
+-  BUG: if player is against a wall and facing away from it they
+   can not turn the sprite to face it.
+
 */
 
 // WARN  --- WORKING HERE
@@ -86,7 +96,7 @@ TileMap getCaveMap() {
     // load all the parts to create a tile map
     if (!caveMap.load("images/dungon-src.png", sf::Vector2u(32, 32), cave, 16, 8,
                       cavePassable))
-        assert(false); // if load fails crash
+        assert(false); // if load fails, crash
 
     return caveMap;
 
@@ -102,6 +112,7 @@ int main() {
     int moveAmt = 16; // Amount of pixels the player moves with each key press.
     sf::RenderWindow window(sf::VideoMode(windowWidth, windowHeight), "NewLife");
 
+    // NOTE: how to clean this up??
     // PLayer sprite direction textures
     std::string playerSpriteMovementPaths[4] = {
         "images/protagUp.png",
@@ -152,6 +163,7 @@ int main() {
             }
         }
 
+        // draw updated frame
         window.clear();
         window.draw(caveMap);
         window.draw(player1.GetSprite());
