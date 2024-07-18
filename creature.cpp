@@ -27,7 +27,7 @@ bool Creature::SetUpSprite(std::string texturePath) {
 /* ================================================
 *  Handles sprite movements
 ================================================ */
-void Creature::PlayerMove(int moveAmt,
+void Creature::Move(int moveAmt,
                               TileMap map,
                               std::vector<Item> items) {
 

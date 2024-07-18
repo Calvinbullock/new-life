@@ -187,7 +187,7 @@ int main() {
             if (event.type == sf::Event::Closed) {
                 window.close();
             } else if (event.type == sf::Event::KeyPressed) { // Player key entry
-                player1.PlayerMove(moveAmt, caveMap, items);
+                player1.Move(moveAmt, caveMap, items);
             }
         }
 
