@@ -13,6 +13,7 @@
 ================================================ */
 
 #include "creature.h"
+#include "playerCreature.h"
 #include "tileMap.cpp"
 
 #include <SFML/Graphics.hpp>
@@ -149,7 +150,7 @@ int main() {
         "images/protagDown.png",
         "images/protagLeft.png",
     };
-    Creature player1 = Creature(52, 52, 100, playerSpriteMovementPaths);
+    PlayerCreature player1 = PlayerCreature(52, 52, 100, playerSpriteMovementPaths);
 
     std::string slimeSpriteMovementPaths[4] = {
         "images/slimeUp.png",

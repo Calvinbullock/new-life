@@ -11,5 +11,15 @@
 class PlayerCreature : public Creature {
 
 public:
+    PlayerCreature(float startX,
+                   float startY,
+                   int baseHealth,
+                   std::string pathsToSpriteMovementTexturesIn[])
+        : Creature(startX, startY, baseHealth, pathsToSpriteMovementTexturesIn),
+          moveAmt() {}
+
+    void Move(int moveAmtIn, TileMap map, std::vector<Item> items);
+
 private:
+    int moveAmt;
 };

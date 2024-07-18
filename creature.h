@@ -11,6 +11,8 @@
 //
 // Remove sprite from the class name
 
+#pragma once
+
 #include "item.h"
 #include "tileMap.cpp"
 #include <SFML/Graphics.hpp>
@@ -70,9 +72,9 @@ public:
         sprite.setPosition(sf::Vector2f(startX, startY));
         playerBoundery = sprite.getGlobalBounds();
     }
-   
-   // destruct-er
-   virtual ~Creature() {}
+
+    // destruct-er
+    virtual ~Creature() {}
 
     // clang-format off
     // Copy constructor
@@ -99,10 +101,11 @@ public:
         sprite.setPosition(sf::Vector2f(x, y));
     }
 
+    // TODO  FIX warnings
+    //    cuntinue moveing this into the playerCreature
+   
+   
     // TODO move to new playerSprite.h
     void NpcCollision(int dmg, std::vector<Creature> npcList);
-    virtual void Move(int moveAmt, TileMap map, std::vector<Item> items);
+    virtual void Move(int moveAmtIn, TileMap map, std::vector<Item> items) {}
 };
-
-
-
