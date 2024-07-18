@@ -150,7 +150,7 @@ int main() {
         "images/protagDown.png",
         "images/protagLeft.png",
     };
-    PlayerCreature player1 = PlayerCreature(52, 52, 100, playerSpriteMovementPaths);
+    PlayerCreature player1 = PlayerCreature(52, 52, 100, playerSpriteMovementPaths, moveAmt);
 
     std::string slimeSpriteMovementPaths[4] = {
         "images/slimeUp.png",
@@ -188,7 +188,7 @@ int main() {
             if (event.type == sf::Event::Closed) {
                 window.close();
             } else if (event.type == sf::Event::KeyPressed) { // Player key entry
-                player1.Move(moveAmt, caveMap, items);
+                player1.Move(caveMap, items);
             }
         }
 

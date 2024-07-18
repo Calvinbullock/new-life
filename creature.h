@@ -102,7 +102,7 @@ public:
         sprite.setPosition(sf::Vector2f(x, y));
     }
 
-    virtual void Move(int moveAmtIn, TileMap map, std::vector<Item> items) {}
+    virtual void Move(TileMap map, std::vector<Item> items) {}
 
     // TODO  FIX warnings -- left off here
     //    cuntinue moveing this into the playerCreature

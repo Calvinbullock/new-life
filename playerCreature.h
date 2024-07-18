@@ -14,11 +14,12 @@ public:
     PlayerCreature(float startX,
                    float startY,
                    int baseHealth,
-                   std::string pathsToSpriteMovementTexturesIn[])
+                   std::string pathsToSpriteMovementTexturesIn[],
+                   int moveAmtIn)
         : Creature(startX, startY, baseHealth, pathsToSpriteMovementTexturesIn),
-          moveAmt() {}
+          moveAmt(moveAmtIn) {}
 
-    void Move(int moveAmtIn, TileMap map, std::vector<Item> items);
+    void Move(TileMap map, std::vector<Item> items);
 
 private:
     int moveAmt;
