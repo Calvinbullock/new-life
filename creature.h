@@ -48,6 +48,7 @@ public:
     *       should be four paths - {left, right, up, down}
     ================================================ */
     // clang-format off
+   // TODO  move this into cpp
     Creature(float startX, float startY, int baseHealth, 
                   std::string pathsToSpriteMovementTexturesIn[])
                   : texture(), sprite(), playerBoundery(), 
@@ -101,11 +102,10 @@ public:
         sprite.setPosition(sf::Vector2f(x, y));
     }
 
-    // TODO  FIX warnings
-    //    cuntinue moveing this into the playerCreature
-   
-   
-    // TODO move to new playerSprite.h
-    void NpcCollision(int dmg, std::vector<Creature> npcList);
     virtual void Move(int moveAmtIn, TileMap map, std::vector<Item> items) {}
+
+    // TODO  FIX warnings -- left off here
+    //    cuntinue moveing this into the playerCreature
+    void NpcCollision(int dmg, std::vector<Creature> npcList);
+
 };
