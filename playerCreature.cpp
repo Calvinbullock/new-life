@@ -41,3 +41,27 @@ void PlayerCreature::Move(TileMap map, std::vector<Item> items) {
         }
     }
 }
+
+// TODO tie this into PlayerMove - stop the player from moveing during a npc
+//      colistion
+/* ================================================
+*  Checks for collisions between the NPC and
+*     player sprites.
+================================================ */
+void PlayerCreature::NpcCollision(int dmg, std::vector<Creature> npcList) {
+    int vectorLength = npcList.size();
+
+    for (int i = 0; i < vectorLength; i++) {
+
+        sf::FloatRect playerBound = sprite.getGlobalBounds();
+        sf::FloatRect npcBound = npcList[i].GetSprite().getGlobalBounds();
+
+        if (playerBound.intersects(npcBound)) {
+            currentHealth = currentHealth - dmg;
+            DEBUG << currentHealth << ", " << initialHealth << ", " << dmg
+                  << std::endl;
+        }
+    }
+}
+
+
