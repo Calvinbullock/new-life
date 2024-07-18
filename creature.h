@@ -43,43 +43,16 @@ protected:
 public:
     /* ================================================
     *  Constructor for playerSprite
-    *
-    *    pathsToSpriteMovementTexturesIn:
-    *       should be four paths - {left, right, up, down}
+    *  Note: pathsToSpriteMovementTexturesIn:
+    *       should be four paths in this arr - {left, right, up, down}
     ================================================ */
-    // clang-format off
-   // TODO  move this into cpp
-    Creature(float startX, float startY, int baseHealth, 
-                  std::string pathsToSpriteMovementTexturesIn[])
-                  : texture(), sprite(), playerBoundery(), 
-                    pathsToSpriteMovementTextures(), initialHealth(), 
-                    currentHealth(), faceDirection() {
-        // clang-format on
+    Creature(float startX,
+             float startY,
+             int baseHealth,
+             std::string pathsToSpriteMovementTexturesIn[]);
 
-        initialHealth = baseHealth;
-        currentHealth = baseHealth;
-
-        // move sprite paths from passed in array to class array
-        for (int i = 0; i < 4; i++) {
-            pathsToSpriteMovementTextures[i] =
-                pathsToSpriteMovementTexturesIn[i];
-        }
-
-        // grab the texture facing down and set it at game start
-        if (!SetUpSprite(pathsToSpriteMovementTextures[2]))
-            return;
-
-        // set starting position of sprite
-        sprite.setPosition(sf::Vector2f(startX, startY));
-        playerBoundery = sprite.getGlobalBounds();
-    }
-
-    // destruct-er
-    virtual ~Creature() {}
-
-    // clang-format off
     // Copy constructor
-    // WARN  compiler no like 
+    // WARN  compiler no like
     /*Creature(Creature &pSprite)*/
     /*              : texture(pSprite.texture), sprite(pSprite.sprite), */
     /*                playerBoundery(pSprite.playerBoundery),*/
@@ -94,6 +67,9 @@ public:
     /*                faceDirection(pSprite.faceDirection) {}*/
     // clang-format on
 
+    // destruct-er
+    virtual ~Creature() {}
+
     sf::Sprite GetSprite() { return sprite; }
     sf::FloatRect GetBoundery() { return playerBoundery; }
 
@@ -107,5 +83,4 @@ public:
     // TODO  FIX warnings -- left off here
     //    cuntinue moveing this into the playerCreature
     void NpcCollision(int dmg, std::vector<Creature> npcList);
-
 };
