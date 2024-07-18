@@ -20,26 +20,6 @@
 
 class Creature {
 
-protected:
-    sf::Texture texture;
-    sf::Sprite sprite;
-    sf::FloatRect playerBoundery;
-    std::string pathsToSpriteMovementTextures[4];
-
-    int initialHealth;
-    int currentHealth;
-
-    int faceDirection; // 0 north, 1 e, 2 s, 3 west
-
-    /* ================================================
-    *  Private Methods
-    ================================================ */
-    void UpdatePlayerPostion(std::string texturePath,
-                             int xDelta,
-                             int yDelta,
-                             TileMap map,
-                             int faceDirectionIn);
-
 public:
     /* ================================================
     *  Constructor for playerSprite
@@ -79,4 +59,25 @@ public:
     }
 
     virtual void Move(TileMap map, std::vector<Item> items) {}
+
+protected:
+    sf::Texture texture;
+    sf::Sprite sprite;
+    sf::FloatRect playerBoundery;
+    std::string pathsToSpriteMovementTextures[4];
+
+    int initialHealth;
+    int currentHealth;
+
+    int faceDirection; // 0 north, 1 e, 2 s, 3 west
+
+    /* ================================================
+    *  Private Methods
+    ================================================ */
+    void UpdatePlayerPostion(std::string texturePath,
+                             int xDelta,
+                             int yDelta,
+                             TileMap map,
+                             int faceDirectionIn);
+
 };
