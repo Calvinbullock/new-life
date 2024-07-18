@@ -25,29 +25,19 @@
 
 /* TODO:
 
--  NOTE: have dad read this over and ask for suggestions on formating, nameing
-etc
+-  NOTE: have dad read this over, ask for suggestions on formating, nameing etc
 
 - NPC classes.
 
 - Make a function that will take a tile index and find the x,y
    position for more easy of use.
 
------ -------
+                     ----- BUGs-------
 
 -  BUG: if player is against a wall and facing away from it they
    can not turn the sprite to face it.
 
 */
-
-// WARN  --- WORKING HERE --- Untested
-/* WARN: - Encapsulate?
-   - items / tileMap - they should be clearly part of each other
-   - draw items / tileMap - one func call
-   - maybe NPC list as well?
-   - look for MapObject notes 1/2 & 2/2
-   - a diagram showing the maps (0, 0) start is top left.
-   */
 
 /* ================================================
  * GAMELEVEL class
@@ -56,6 +46,7 @@ etc
  * Also draws the NPC, items, and TileMap
 ================================================ */
 class GameLevel {
+    /* TODO:- a diagram showing the maps (0, 0) start is top left.*/
 
 public:
     GameLevel(TileMap tilmapIn) : tileMap(tilmapIn), npcList(), itemsList() {
@@ -92,7 +83,7 @@ public:
 
 private:
     // TODO: read data in from a file
-    void ReadLevelData(std::string fileNmae) {}
+    void ReadLevelData(std::string fileName) {}
 
     TileMap tileMap;
     std::vector<Creature> npcList;
