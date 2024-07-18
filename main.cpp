@@ -27,6 +27,9 @@
 
 -  NOTE: have dad read this over, ask for suggestions on formating, nameing etc
 
+- read gameLevel data from json file then
+   - Move gameLevel class to own file
+
 - NPC classes.
 
 - Make a function that will take a tile index and find the x,y
@@ -39,14 +42,16 @@
 
 */
 
+// TODO  move to own file...
 /* ================================================
  * GAMELEVEL class
  * This reads-in and holds the data for a given gameLevel.
  *    - NPCs, Items, TileMap
  * Also draws the NPC, items, and TileMap
+ *
+ * Note: tileMap's origin(0, 0) is in the top left.
 ================================================ */
 class GameLevel {
-    /* TODO:- a diagram showing the maps (0, 0) start is top left.*/
 
 public:
     GameLevel(TileMap tilmapIn) : tileMap(tilmapIn), npcList(), itemsList() {
