@@ -50,7 +50,10 @@ etc
    */
 
 /* ================================================
- * TODO:
+ * GAMELEVEL class
+ * This reads-in and holds the data for a given gameLevel.
+ *    - NPCs, Items, TileMap
+ * Also draws the NPC, items, and TileMap
 ================================================ */
 class GameLevel {
 
@@ -148,7 +151,7 @@ TileMap getCaveMap() {
  * - Key events
  * - Collisions
 ================================================ */
-void gameLoop(sf::RenderWindow &window,
+void GameLoop(sf::RenderWindow &window,
               GameLevel &level,
               PlayerCreature &player) {
     // Main event / game loop
@@ -199,6 +202,8 @@ int main() {
     PlayerCreature player =
         PlayerCreature(52, 52, 100, playerSpriteMovementPaths, moveAmt);
 
+    // TODO: get this into the GetMap
+    // -- {
     std::string slimeSpriteMovementPaths[4] = {
         "images/slimeUp.png",
         "images/slimeRight.png",
@@ -215,7 +220,7 @@ int main() {
     cave.AddNPC(npcSlime);
     // -- }
 
-    gameLoop(window, cave, player);
+    GameLoop(window, cave, player);
 
     return 0;
 }
