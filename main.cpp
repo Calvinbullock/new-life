@@ -28,16 +28,7 @@
 -  NOTE: have dad read this over and ask for suggestions on formating, nameing
 etc
 
-- Encapsulate?
-   - items / tileMap - they should be clearly part of each other
-   - draw items / tileMap - one func call
-   - maybe NPC list as well?
-   - look for MapObject notes 1/2 & 2/2
-   - a diagram showing the maps (0, 0) start is top left.
-
 - NPC classes.
-
-- See about changing maps with the doors.
 
 - Make a function that will take a tile index and find the x,y
    position for more easy of use.
@@ -50,16 +41,24 @@ etc
 */
 
 // WARN  --- WORKING HERE --- Untested
+/* WARN: - Encapsulate?
+   - items / tileMap - they should be clearly part of each other
+   - draw items / tileMap - one func call
+   - maybe NPC list as well?
+   - look for MapObject notes 1/2 & 2/2
+   - a diagram showing the maps (0, 0) start is top left.
+   */
+
+/* ================================================
+ * TODO:
+================================================ */
 class GameLevel {
 
 public:
     GameLevel(TileMap tilmapIn,
               std::vector<Creature> newNpcList,
               std::vector<Item> newItemsList)
-        : tileMap(tilmapIn), npcList(), itemsList() {
-      npcList = newNpcList;
-      itemsList = newItemsList;
-   }
+        : tileMap(tilmapIn), npcList(), itemsList() {}
 
     // Get-ers
     TileMap getTileMap() { return tileMap; }
@@ -68,7 +67,7 @@ public:
     void addItem(Item &item) { itemsList.push_back(item); }
     void addNPC(Creature &npc) { npcList.push_back(npc); }
 
-    //draw functions
+    // draw functions
     void drawItems(sf::RenderWindow &window) {
         for (int i = 0; i < (int)itemsList.size(); i++) {
             window.draw(itemsList[i].GetSprite());
@@ -80,7 +79,10 @@ public:
         }
     }
 
-    //void checkCollision(Creature &player) {} // TODO:
+    // void checkCollision(Creature &player) {} // TODO:
+
+    // TODO: read data in from a file
+    void readLevelData() {}
 
 private:
     TileMap tileMap;
@@ -94,8 +96,8 @@ private:
 *           be moved a text/json/other file to be read
 *           in.
 *
-*   NOTE  this needs to be moved / cleaned up MapObject 1/2
-*     Other is the items list
+*   NOTE: This should all be read in from a file.
+*   TODO: parts of this can be moved into level class..
 ================================================ */
 TileMap getCaveMap() {
     // TODO rename this array
@@ -150,7 +152,8 @@ int main() {
         "images/protagDown.png",
         "images/protagLeft.png",
     };
-    PlayerCreature player1 = PlayerCreature(52, 52, 100, playerSpriteMovementPaths, moveAmt);
+    PlayerCreature player1 =
+        PlayerCreature(52, 52, 100, playerSpriteMovementPaths, moveAmt);
 
     std::string slimeSpriteMovementPaths[4] = {
         "images/slimeUp.png",
