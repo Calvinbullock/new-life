@@ -55,36 +55,42 @@ etc
 class GameLevel {
 
 public:
-    GameLevel(TileMap tilmapIn,
-              std::vector<Creature> newNpcList,
-              std::vector<Item> newItemsList)
-        : tileMap(tilmapIn), npcList(), itemsList() {}
+    GameLevel(TileMap tilmapIn) : tileMap(tilmapIn), npcList(), itemsList() {
+        // ReadLevelData(fileNmae);
+    }
 
     // Get-ers
-    TileMap getTileMap() { return tileMap; }
+    TileMap GetTileMap() { return tileMap; }
+    std::vector<Item> GetItemsList() { return itemsList; }
 
     // Modifiers
-    void addItem(Item &item) { itemsList.push_back(item); }
-    void addNPC(Creature &npc) { npcList.push_back(npc); }
+    void AddItem(Item &item) { itemsList.push_back(item); }
+    void AddNPC(Creature &npc) { npcList.push_back(npc); }
 
     // draw functions
-    void drawItems(sf::RenderWindow &window) {
+    void DrawItems(sf::RenderWindow &window) {
         for (int i = 0; i < (int)itemsList.size(); i++) {
             window.draw(itemsList[i].GetSprite());
         }
     }
-    void drawNPCs(sf::RenderWindow &window) {
+    void DrawNPCs(sf::RenderWindow &window) {
         for (int i = 0; i < (int)npcList.size(); i++) {
             window.draw(npcList[i].GetSprite());
         }
     }
+    void DrawMap(sf::RenderWindow &window) { window.draw(tileMap); }
 
-    // void checkCollision(Creature &player) {} // TODO:
-
-    // TODO: read data in from a file
-    void readLevelData() {}
+    // level actions
+    void CheckCollision(PlayerCreature &player) {
+        // TODO add npc list
+        player.NpcCollision(10, npcList);
+    }
+    void PlayerMove(PlayerCreature &player) { player.Move(tileMap, itemsList); }
 
 private:
+    // TODO: read data in from a file
+    void ReadLevelData(std::string fileNmae) {}
+
     TileMap tileMap;
     std::vector<Creature> npcList;
     std::vector<Item> itemsList;
@@ -135,8 +141,46 @@ TileMap getCaveMap() {
 }
 
 /* ================================================
+ * GAMELOOP
+ *
+ * Runs the main gameLoop
+ * - Draws window
+ * - Key events
+ * - Collisions
+================================================ */
+void gameLoop(sf::RenderWindow &window,
+              GameLevel &level,
+              PlayerCreature &player) {
+    // Main event / game loop
+    while (window.isOpen()) {
+        sf::Event event;
+
+        // checks for input / game events
+        while (window.pollEvent(event)) {
+            level.CheckCollision(player);
+
+            if (event.type == sf::Event::Closed) {
+                window.close();
+
+            } else if (event.type == sf::Event::KeyPressed) { // Player key entry
+                level.PlayerMove(player);
+            }
+        }
+
+        // draw updated frame
+        window.clear();
+        level.DrawMap(window);
+        window.draw(player.GetSprite());
+
+        level.DrawNPCs(window);
+        level.DrawItems(window);
+
+        window.display();
+    }
+}
+
+/* ================================================
 *  Main Function
-*     contains the main game loop
 ================================================ */
 int main() {
     float windowWidth = 512;
@@ -152,7 +196,7 @@ int main() {
         "images/protagDown.png",
         "images/protagLeft.png",
     };
-    PlayerCreature player1 =
+    PlayerCreature player =
         PlayerCreature(52, 52, 100, playerSpriteMovementPaths, moveAmt);
 
     std::string slimeSpriteMovementPaths[4] = {
@@ -163,56 +207,15 @@ int main() {
     };
     Creature npcSlime = Creature(83, 83, 100, slimeSpriteMovementPaths);
 
-    // NOTE -- All part of map? {
-    // List of all the npcs in a level
-    std::vector<Creature> npcList;
-    npcList.push_back(npcSlime);
-
-    // NOTE  this needs to be moved / cleaned up MapObject 2/2
-    //    Other is the tileMap
-    Item topDoor = Item("", 64, 0);
-    // Item sword = Item("images/temp-sword.png", 99, 99);
-
-    std::vector<Item> items;
-    items.push_back(topDoor);
-    // items.push_back(sword);
-
     TileMap caveMap = getCaveMap();
+    Item topDoor = Item("", 64, 0);
+
+    GameLevel cave = GameLevel(caveMap);
+    cave.AddItem(topDoor);
+    cave.AddNPC(npcSlime);
     // -- }
 
-    // Main event / game loop
-    while (window.isOpen()) {
-        sf::Event event;
-
-        // checks for input / game events
-        while (window.pollEvent(event)) {
-            player1.NpcCollision(10, npcList); // TODO add npc list
-
-            if (event.type == sf::Event::Closed) {
-                window.close();
-            } else if (event.type == sf::Event::KeyPressed) { // Player key entry
-                player1.Move(caveMap, items);
-            }
-        }
-
-        // draw updated frame
-        window.clear();
-        window.draw(caveMap);
-        window.draw(player1.GetSprite());
-
-        // Draw NPCs
-        for (int i = 0; i < (int)npcList.size(); i++) {
-            window.draw(npcList[i].GetSprite());
-        }
-
-        // Draw Items
-        for (int i = 0; i < (int)items.size(); i++) {
-            // TODO uncoment when you have items ready
-            window.draw(items[i].GetSprite());
-        }
-
-        window.display();
-    }
+    gameLoop(window, cave, player);
 
     return 0;
 }
