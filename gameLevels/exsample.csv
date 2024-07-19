@@ -1,0 +1,3 @@
+# Line Identifiyer ( C = creature, M = map, # = comment, I = item)
+
+identifiyer, creatureName, tex/path, tex/path, tex/path, tex/path, startX, startY, moveAmt, baseHeath, atkDmg
