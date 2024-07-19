@@ -14,7 +14,7 @@ SRCS = item.cpp main.cpp tileMap.cpp creature.cpp playerCreature.cpp
 OBJS = $(SRCS:.cpp=.o)
 
 # Header files (include for compilation)
-HDRS = item.h creature.h playerCreature.cpp
+HDRS = item.h creature.h playerCreature.h readFile.h
 
 # Linker flags (link with SFML library)
 LDFLAGS = -lsfml-graphics -lsfml-window -lsfml-system
