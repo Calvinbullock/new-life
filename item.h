@@ -15,8 +15,10 @@ class Item {
 
 public:
     Item(std::string texturePath, float startX, float startY);
+
     sf::Sprite GetSprite() { return sprite; }
     sf::FloatRect GetBoundery() { return itemBoundery; }
+
     void SetItemXY(float x, float y) { sprite.setPosition(sf::Vector2f(x, y)); }
 
     // This will be overiden for diffrent (child) items, so that each item
