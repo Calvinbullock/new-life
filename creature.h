@@ -66,6 +66,7 @@ protected:
     sf::FloatRect playerBoundery;
     std::string pathsToSpriteMovementTextures[4];
 
+    // add a clean position var
     int initialHealth;
     int currentHealth;
 
@@ -79,5 +80,4 @@ protected:
                              int yDelta,
                              TileMap map,
                              int faceDirectionIn);
-
 };
