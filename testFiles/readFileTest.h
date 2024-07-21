@@ -10,6 +10,25 @@
 #include <string>
 #include <vector>
 
+
+/* ================================================
+ * TEST STRING TO INT
+ *
+ * Lots of simple cases... x in, y out
+================================================ */
+inline int TestStringToInt() {
+   if (StringToInt("1") != 1)
+      return 1;
+
+   if (StringToInt("10") != 10)
+      return 1;
+
+   if (StringToInt("44") != 44)
+      return 1;
+
+   return 0;
+}
+
 /* ================================================
 *  TEST SPLIT LINE - SIMPLE
 *
@@ -82,12 +101,21 @@ inline int TestSplitLine_Long() {
     return 0;
 }
 
+/* ================================================
+ * RUN - READ FILE TESTS
+ *
+ * This is will run every test in this file. It
+ *    is called from the testRunner file.
+================================================ */
 inline void Run_ReadFileTests() {
     if (TestSplitLine_Simple() == 1)
         cout << "TestSplitLine_Simple - fail" << endl;
 
     if (TestSplitLine_Long() == 1)
         cout << "TestSplitLine_Long - fail" << endl;
+
+    if (TestStringToInt() == 1)
+        cout << "TestStringToInt - fail" << endl;
 }
 
 

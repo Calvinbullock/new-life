@@ -5,18 +5,50 @@
 * This file handles reading all the level data
 *     from CSV files and parses the into a
 *     gameLevel object.
+*
+* NOTE: READ CSV FILE - this is the "main" function
+*     for this file.
 ================================================ */
 
+#pragma once
 #include "item.h"
+
+#include <cassert>
 #include <fstream>
 #include <iostream>
+#include <stdexcept>
 #include <string>
 #include <vector>
 
 using namespace std;
 
 /* ================================================
- * TODO
+ * STRING TO INT
+ *
+ * This function turns a number in a string into
+ *    an int and returns it.
+ *
+ * Ex: "1" -> 1
+================================================ */
+inline int StringToInt(string stringInt) {
+    int num = -1;
+    try {
+        num = std::stoi(stringInt);
+    } catch (const std::invalid_argument &e) {
+        std::cerr << "Error: Invalid string format for conversion to integer."
+                  << std::endl;
+    }
+
+    assert(num != -1);
+    return num;
+}
+
+/* ================================================
+ * SPLIT LINE
+ *
+ * This function takes a line from a csv file
+ *    and breaks it up into a vector of strings
+ *    that is returned for use.
 ================================================ */
 inline vector<string> SplitLine(char delimiter, string line) {
     string token;
@@ -36,26 +68,46 @@ inline vector<string> SplitLine(char delimiter, string line) {
     return data;
 }
 
+/* ================================================
+ * PROCESS CREATURE
+ *
+================================================ */
 inline void ProcessCreature(string line) {
-    SplitLine(',', line);
+    vector<string> lineData = SplitLine(',', line);
     // return creature
 }
 
+/* ================================================
+ * PROCESS MAP
+ *
+================================================ */
 inline void ProcessMap(string line) {
-    SplitLine(',', line);
+    vector<string> lineData = SplitLine(',', line);
     // return tilemap
 }
 
-inline void ProcessItem(string line) {
-    SplitLine(',', line);
-    // return item
-    // Item item = Item();
-}
+/* ================================================
+ * PROCESS ITEM
+ *
+ * Take a line containing item data and convert 
+ *    that line into a item object, then return
+ *    that object.
+================================================ */
+inline Item ProcessItem(string line) {
+    vector<string> lineData = SplitLine(',', line);
 
-// TODO  write tests!
+    string texturePath = lineData[0];
+    int x = StringToInt(lineData[1]);
+    int y = StringToInt(lineData[2]);
+
+    Item item = Item(texturePath, x, y);
+    return item;
+}
 
 /* ================================================
 *  READ CSV FILE
+*
+* NOTE: Think of this as the Main function of this file
 *
 * This reads in and processes a csv file into a
 *     gameLevel object.
