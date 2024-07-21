@@ -8,11 +8,11 @@
 #include "creature.h"
 #include <vector>
 
-#include <iostream> // DEBUGing
-#define DEBUG std::cout << " DEBUG: L" << __LINE__ << " "
+//#include <iostream> // DEBUGing
+//#define DEBUG std::cout << " DEBUG: L" << __LINE__ << " "
 
 /* ================================================
-*  Constructor for playerSprite
+*  CONSTRUCTOR FOR PLAYER SPRITE
 *
 *    pathsToSpriteMovementTexturesIn:
 *       should be four paths - {left, right, up, down}
@@ -42,6 +42,7 @@ Creature::Creature(float startX,
 }
 
 /* ================================================
+* SET UP SPRITE
 *  Sets and stores the player sprite.
 ================================================ */
 bool Creature::SetUpSprite(std::string texturePath) {
@@ -55,6 +56,7 @@ bool Creature::SetUpSprite(std::string texturePath) {
 }
 
 /* ================================================
+* UPDATE PLAYER POSITION
 *  Handles movement updates to the player sprite
 ================================================ */
 void Creature::UpdatePlayerPostion(std::string texturePath,
