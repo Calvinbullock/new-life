@@ -6,6 +6,7 @@
 *     are stored. This class is a child of creature.
 ================================================ */
 
+#pragma once
 #include "creature.h"
 
 class PlayerCreature : public Creature {

@@ -22,7 +22,7 @@ public:
     void SetItemXY(float x, float y) { sprite.setPosition(sf::Vector2f(x, y)); }
 
     // This will be overiden for diffrent (child) items, so that each item
-    // can achive its unique action.
+    //   can achive its unique action.
     void itemAction();
     void ItemActionTest(sf::FloatRect playerBoundery);
 
