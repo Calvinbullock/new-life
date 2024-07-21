@@ -14,7 +14,9 @@
 
 #include "creature.h"
 #include "playerCreature.h"
+#include "testFiles/testRunner.h"
 #include "tileMap.cpp"
+#include "gameLevel.h"
 
 #include <SFML/Graphics.hpp>
 #include <cassert>
@@ -87,7 +89,7 @@ TileMap getCaveMap() {
 }
 
 /* ================================================
- * GAMELOOP
+ * GAME LOOP
  *
  * Runs the main gameLoop
  * - Draws window
@@ -129,6 +131,8 @@ void GameLoop(sf::RenderWindow &window,
 *  Main Function
 ================================================ */
 int main() {
+    TestRunner();
+
     float windowWidth = 512;
     float windowHeight = 256;
     int moveAmt = 16; // Amount of pixels the player moves with each key press.
