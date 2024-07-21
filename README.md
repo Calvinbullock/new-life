@@ -6,22 +6,25 @@ The actual program is not much more than a basic tile map with collisions, and a
 
 [Software Demo Video](https://www.youtube.com/watch?v=TKum7AfY2Do)
 
+# Running
+- Run the script `run.sh`, it will compile an update binary the run it.
+
 # Compiling
-- Run the `make` command.
+- Run `cmake` to generate a makefile
+- Next run the `make` command.
 - The executable will be named `newLifeEXE`.
 - on Linux run the file using `./newLifeEXE`.
-
-- I also have a script to build, run and clean `_run.sh`.
 
 # Development Environment
 Editors / Tools: 
 - Neovim 
 - VS code
 - clang-format
+- Make / Cmake
 
 Languages/frameworks/libraries:
 - c++ 
-- sfml library.
+- sfml graphics library.
 
 # Useful Websites
 * [SFML docs](https://www.sfml-dev.org/documentation/2.6.1/)
