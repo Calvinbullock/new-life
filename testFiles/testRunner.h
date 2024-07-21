@@ -1,11 +1,13 @@
 
 #include "readFileTest.h"
+#include <iostream>
 
 /* ================================================
-* TESTRUNNER
+* TEST RUNNER
 *  
 * Runs all the test files.
 ================================================ */
 inline void TestRunner() {
    Run_ReadFileTests();
+   std::cout << "All Tests Passed" << std::endl;
 }

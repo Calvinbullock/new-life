@@ -5,7 +5,7 @@
 #include <vector>
 
 /* ================================================
-*  TESTSPLITLINE
+*  TEST SPLIT LINE
 *  
 *  CASE: simple split
 *  Input:  line = "M,tex/path,name"
