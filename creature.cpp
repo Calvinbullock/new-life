@@ -8,8 +8,8 @@
 #include "creature.h"
 #include <vector>
 
-//#include <iostream> // DEBUGing
-//#define DEBUG std::cout << " DEBUG: L" << __LINE__ << " "
+#include <iostream> // DEBUGing
+#define DEBUG std::cout << " DEBUG: L" << __LINE__ << " "
 
 /* ================================================
 *  CONSTRUCTOR FOR PLAYER SPRITE

@@ -23,10 +23,10 @@ public:
 
     // This will be overiden for diffrent (child) items, so that each item
     //   can achive its unique action.
-    void itemAction();
+    virtual void itemAction() {}
     void ItemActionTest(sf::FloatRect playerBoundery);
 
-private:
+protected:
     sf::Texture texture;
     sf::Sprite sprite;
     sf::FloatRect itemBoundery;

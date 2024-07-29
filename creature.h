@@ -31,6 +31,8 @@ public:
              int baseHealth,
              std::string pathsToSpriteMovementTexturesIn[]);
 
+    Creature() {}
+
     // Copy constructor
     // WARN  compiler no like
     /*Creature(Creature &pSprite)*/

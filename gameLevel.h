@@ -9,6 +9,8 @@
  * Note: tileMap's origin(0, 0) is in the top left.
 ================================================ */
 
+#pragma once
+
 #include "creature.h"
 #include "playerCreature.h"
 #include "tileMap.cpp"
@@ -16,15 +18,16 @@
 class GameLevel {
 
 public:
-    GameLevel(TileMap tilmapIn) : tileMap(tilmapIn), npcList(), itemsList() {
-        // ReadLevelData(fileNmae);
-    }
+    GameLevel(TileMap tileMapIn) : tileMap(tileMapIn), npcList(), itemsList() {}
+
+    GameLevel() : tileMap(), npcList(), itemsList() {}
 
     // Get-ers
     TileMap GetTileMap() { return tileMap; }
     std::vector<Item> GetItemsList() { return itemsList; }
 
     // Modifiers
+    void SetTileMap(TileMap &tileMapIn) { tileMap = tileMapIn; }
     void AddItem(Item &item) { itemsList.push_back(item); }
     void AddNPC(Creature &npc) { npcList.push_back(npc); }
 
@@ -56,4 +59,3 @@ private:
     std::vector<Creature> npcList;
     std::vector<Item> itemsList;
 };
-
