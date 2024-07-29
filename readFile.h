@@ -126,6 +126,8 @@ inline TileMap ProcessMap(vector<string> lineData) {
 ================================================ */
 inline Item ProcessItem(vector<string> lineData) {
     string texturePath = lineData[1];
+
+    // start Position
     int x = StringToInt(lineData[2]);
     int y = StringToInt(lineData[3]);
 
