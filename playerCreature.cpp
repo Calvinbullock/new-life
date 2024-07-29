@@ -1,6 +1,9 @@
 
 #include "playerCreature.h"
 
+#include <iostream> // DEBUGing
+#define DEBUG std::cout << " DEBUG: L" << __LINE__ << " "
+
 /* ================================================
 *  Handles sprite movements
 ================================================ */
@@ -58,8 +61,7 @@ void PlayerCreature::NpcCollision(int dmg, std::vector<Creature> npcList) {
 
         if (playerBound.intersects(npcBound)) {
             currentHealth = currentHealth - dmg;
-            DEBUG << currentHealth << ", " << initialHealth << ", " << dmg
-                  << std::endl;
+            DEBUG << currentHealth << ", " << initialHealth << ", " << dmg << std::endl;
         }
     }
 }
