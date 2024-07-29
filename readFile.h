@@ -11,6 +11,8 @@
 ================================================ */
 
 #pragma once
+#include "creature.h"
+#include "gameLevel.h"
 #include "item.h"
 
 #include <cassert>
@@ -72,33 +74,60 @@ inline vector<string> SplitLine(char delimiter, string line) {
  * PROCESS CREATURE
  *
 ================================================ */
-inline void ProcessCreature(string line) {
-    vector<string> lineData = SplitLine(',', line);
-    // return creature
+inline Creature ProcessCreature(vector<string> lineData) {
+    Creature creature;
+    return creature;
 }
 
 /* ================================================
  * PROCESS MAP
  *
+ * Read the map data and parse it into a tileMap
+ *    Object.
 ================================================ */
-inline void ProcessMap(string line) {
-    vector<string> lineData = SplitLine(',', line);
-    // return tilemap
+// TODO  add tests!!!
+inline TileMap ProcessMap(vector<string> lineData) {
+    vector<int> tiles;
+    vector<int> passableTiles;
+    TileMap tileMap;
+    int i = 4;
+
+    string texturePath = lineData[1];
+    int mapLength = StringToInt(lineData[2]);
+    int mapWidth = StringToInt(lineData[3]);
+
+    // all tiles
+    while (lineData[i] != ";") {
+        tiles.push_back(StringToInt(lineData[i]));
+        i++;
+    }
+
+    // passable tiles
+    i++; // move over end item
+    while (lineData[i] != ";") {
+        passableTiles.push_back(StringToInt(lineData[i]));
+        i++;
+    }
+
+    // load / set up the tileMap object
+    if (!tileMap.load(texturePath, sf::Vector2u(32, 32), tiles, mapLength,
+                      mapWidth, passableTiles))
+        assert(false); // if load fails, crash
+
+    return tileMap;
 }
 
 /* ================================================
  * PROCESS ITEM
  *
- * Take a line containing item data and convert 
+ * Take a line containing item data and convert
  *    that line into a item object, then return
  *    that object.
 ================================================ */
-inline Item ProcessItem(string line) {
-    vector<string> lineData = SplitLine(',', line);
-
-    string texturePath = lineData[0];
-    int x = StringToInt(lineData[1]);
-    int y = StringToInt(lineData[2]);
+inline Item ProcessItem(vector<string> lineData) {
+    string texturePath = lineData[1];
+    int x = StringToInt(lineData[2]);
+    int y = StringToInt(lineData[3]);
 
     Item item = Item(texturePath, x, y);
     return item;
@@ -112,28 +141,35 @@ inline Item ProcessItem(string line) {
 * This reads in and processes a csv file into a
 *     gameLevel object.
 ================================================ */
-inline int ReadCSVFile(string filename) {
+inline int ParseCSVFile(string filename) {
     string line;
+    GameLevel gl;
 
     // Open the file for reading
     ifstream input_file(filename);
 
     if (input_file.is_open()) {
+
         // Read each line of the file
         while (std::getline(input_file, line)) {
-
+            vector<string> lineData = SplitLine(',', line);
             char id = line[0];
 
             // sort each line for proper processing
-            if (id == 'C')
-                ProcessCreature(line);
-            else if (id == 'M')
-                ProcessMap(line);
-            else if (id == 'I')
-                ProcessItem(line);
+            if (id == 'C') {
+                Creature creature = ProcessCreature(lineData);
+                gl.AddNPC(creature);
+
+            } else if (id == 'I') {
+                Item item = ProcessItem(lineData);
+                gl.AddItem(item);
+
+            } else if (id == 'M') {
+                TileMap tileMap = ProcessMap(lineData);
+                gl.SetTileMap(tileMap);
+            }
         }
 
-        // Close the file
         input_file.close();
     } else {
         cerr << "Error opening file: " << filename << endl;

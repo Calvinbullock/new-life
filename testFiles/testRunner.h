@@ -10,4 +10,5 @@
 inline void TestRunner() {
    Run_ReadFileTests();
    std::cout << "All Tests Passed" << std::endl;
+   std::cout << "-------------------------------\n" << std::endl;
 }

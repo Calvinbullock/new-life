@@ -6,6 +6,7 @@
 ================================================ */
 
 #include "../readFile.h"
+#include <cassert>
 #include <iostream>
 #include <string>
 #include <vector>
@@ -101,6 +102,43 @@ inline int TestSplitLine_Long() {
     return 0;
 }
 
+
+/* ================================================
+ *
+================================================ */
+inline int TestProcessMap_Simple() {
+   // *setup
+   vector<string> lineData;
+   lineData.push_back("M");
+   lineData.push_back("images/dungon-src.png");
+   
+   // length X width
+   lineData.push_back("3");
+   lineData.push_back("3");
+   
+   // tiles
+   lineData.push_back("3");
+   lineData.push_back("3");
+   lineData.push_back("3");
+   lineData.push_back(";");
+
+   // passable
+   lineData.push_back("3");
+   lineData.push_back("3");
+   lineData.push_back(";");
+
+   // *do thing
+   TileMap tm = ProcessMap(lineData);
+   vector<int> passable = tm.GetPassableTiles();
+
+   // *check
+   if (passable.size() != 2)
+      return 1;
+
+   // *clean up
+   return 0;
+}
+
 /* ================================================
  * RUN - READ FILE TESTS
  *
@@ -109,13 +147,18 @@ inline int TestSplitLine_Long() {
 ================================================ */
 inline void Run_ReadFileTests() {
     if (TestSplitLine_Simple() == 1)
-        cout << "TestSplitLine_Simple - fail" << endl;
+        cout << "TestSplitLine_Simple - Fail" << endl;
 
     if (TestSplitLine_Long() == 1)
-        cout << "TestSplitLine_Long - fail" << endl;
+        cout << "TestSplitLine_Long - Fail" << endl;
 
     if (TestStringToInt() == 1)
-        cout << "TestStringToInt - fail" << endl;
+        cout << "TestStringToInt - Fail" << endl;
+   
+    if (TestProcessMap_Simple() == 1)
+        cout << "TestProcessMap_Simple - Fail" << endl;
+        
+   cout << "Run_ReadFileTests - Pass" << endl;
 }
 
 
