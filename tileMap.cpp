@@ -6,37 +6,25 @@
 ================================================ */
 
 #include <SFML/Graphics.hpp>
-#include <vector>
 #include <cassert>
+#include <vector>
 
 #ifndef TILEMAP_H
 #define TILEMAP_H
 
-#include <iostream> // DEBUGing
-#define DEBUG std::cout << " DEBUG: L" << __LINE__ << " "
-
-class TileMap : public sf::Drawable, public sf::Transformable
-{
+class TileMap : public sf::Drawable, public sf::Transformable {
 
 public:
-    TileMap() : Drawable(),
-                Transformable(),
-                m_vertices(),
-                m_tileset(),
-                bounderyList(),
-                passableTexturesID(),
-                textureID()
-    {
-    }
+    TileMap()
+        : Drawable(), Transformable(), m_vertices(), m_tileset(), bounderyList(),
+          passableTexturesID(), textureID() {}
 
     bool load(const std::string &tileset,
               sf::Vector2u tileSize,
               std::vector<int> tiles,
               unsigned int width,
               unsigned int height,
-              std::vector<int> passableTilesIn)
-
-    {
+              std::vector<int> passableTilesIn) {
         // load the tileset texture
         if (!m_tileset.loadFromFile(tileset))
             return false;
@@ -50,8 +38,8 @@ public:
             for (unsigned int col = 0; col < width; col++) // column - was i
             {
                 // TODO find name then replace the math with the variable..
-                //      int foo = row * width + col; 
-                
+                //      int foo = row * width + col;
+
                 // get the current tile number
                 int tileNumber = tiles[row * width + col];
 
@@ -63,24 +51,37 @@ public:
                 sf::Vertex *triangles = &m_vertices[(col + row * width) * 6];
 
                 // define the 6 corners of the two triangles
-                triangles[0].position = sf::Vector2f(col * tileSize.x, row * tileSize.y);
-                triangles[1].position = sf::Vector2f((col + 1) * tileSize.x, row * tileSize.y);
-                triangles[2].position = sf::Vector2f(col * tileSize.x, (row + 1) * tileSize.y);
-                triangles[3].position = sf::Vector2f(col * tileSize.x, (row + 1) * tileSize.y);
-                triangles[4].position = sf::Vector2f((col + 1) * tileSize.x, row * tileSize.y);
-                triangles[5].position = sf::Vector2f((col + 1) * tileSize.x, (row + 1) * tileSize.y);
+                triangles[0].position =
+                    sf::Vector2f(col * tileSize.x, row * tileSize.y);
+                triangles[1].position =
+                    sf::Vector2f((col + 1) * tileSize.x, row * tileSize.y);
+                triangles[2].position =
+                    sf::Vector2f(col * tileSize.x, (row + 1) * tileSize.y);
+                triangles[3].position =
+                    sf::Vector2f(col * tileSize.x, (row + 1) * tileSize.y);
+                triangles[4].position =
+                    sf::Vector2f((col + 1) * tileSize.x, row * tileSize.y);
+                triangles[5].position =
+                    sf::Vector2f((col + 1) * tileSize.x, (row + 1) * tileSize.y);
 
                 // define the 6 matching texture coordinates
-                triangles[0].texCoords = sf::Vector2f(tu * tileSize.x, tv * tileSize.y);
-                triangles[1].texCoords = sf::Vector2f((tu + 1) * tileSize.x, tv * tileSize.y);
-                triangles[2].texCoords = sf::Vector2f(tu * tileSize.x, (tv + 1) * tileSize.y);
-                triangles[3].texCoords = sf::Vector2f(tu * tileSize.x, (tv + 1) * tileSize.y);
-                triangles[4].texCoords = sf::Vector2f((tu + 1) * tileSize.x, tv * tileSize.y);
-                triangles[5].texCoords = sf::Vector2f((tu + 1) * tileSize.x, (tv + 1) * tileSize.y);
+                triangles[0].texCoords =
+                    sf::Vector2f(tu * tileSize.x, tv * tileSize.y);
+                triangles[1].texCoords =
+                    sf::Vector2f((tu + 1) * tileSize.x, tv * tileSize.y);
+                triangles[2].texCoords =
+                    sf::Vector2f(tu * tileSize.x, (tv + 1) * tileSize.y);
+                triangles[3].texCoords =
+                    sf::Vector2f(tu * tileSize.x, (tv + 1) * tileSize.y);
+                triangles[4].texCoords =
+                    sf::Vector2f((tu + 1) * tileSize.x, tv * tileSize.y);
+                triangles[5].texCoords =
+                    sf::Vector2f((tu + 1) * tileSize.x, (tv + 1) * tileSize.y);
 
                 // create a boundery for colistions
-                sf::FloatRect tileBounding(col * tileSize.x, row * tileSize.y, tileSize.x, tileSize.y);
-                
+                sf::FloatRect tileBounding(col * tileSize.x, row * tileSize.y,
+                                           tileSize.x, tileSize.y);
+
                 assert(row * width + col == bounderyList.size());
                 bounderyList.push_back(tileBounding);
 
@@ -93,24 +94,14 @@ public:
         return true;
     }
 
-    std::vector<sf::FloatRect> GetBounderies()
-    {
-        return bounderyList;
-    }
+    std::vector<sf::FloatRect> GetBounderies() { return bounderyList; }
+    std::vector<int> GetPassableTiles() { return passableTexturesID; }
 
-    std::vector<int> GetPassableTiles()
-    {
-        return passableTexturesID;
-    }
-
-    bool TileIsPassable(int index)
-    {
+    bool TileIsPassable(int index) {
         size_t length = passableTexturesID.size();
 
-        for (size_t i = 0; i < length; i++)
-        {
-            if (textureID[index] == passableTexturesID[i])
-            {
+        for (size_t i = 0; i < length; i++) {
+            if (textureID[index] == passableTexturesID[i]) {
                 return true;
             }
         }
@@ -119,8 +110,7 @@ public:
     }
 
 private:
-    virtual void draw(sf::RenderTarget &target, sf::RenderStates states) const
-    {
+    virtual void draw(sf::RenderTarget &target, sf::RenderStates states) const {
         // apply the transform
         states.transform *= getTransform();
 
@@ -139,4 +129,3 @@ private:
 };
 
 #endif
-
