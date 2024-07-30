@@ -19,17 +19,17 @@
 ================================================ */
 Creature::Creature(float startX,
                    float startY,
-                   int baseHealth,
+                   int baseHealthIn,
                    int moveAmtIn,
                    int atkDmgIn,
                    std::string pathsToSpriteMovementTexturesIn[])
     : texture(), sprite(), playerBoundery(), moveAmt(), atkDmg(), pathsToSpriteMovementTextures(),
-      initialHealth(), currentHealth(), faceDirection() {
+      baseHealth(), currentHealth(), faceDirection() {
 
-    initialHealth = baseHealth;
+    baseHealth = baseHealthIn;
     currentHealth = baseHealth;
     moveAmt = moveAmtIn;
-    atkDmg = atkDmgIn;
+    atkDmg = -atkDmgIn;
 
     // move sprite paths from passed in array to class array
     for (int i = 0; i < 4; i++) {
