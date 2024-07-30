@@ -8,8 +8,8 @@
 #include "creature.h"
 #include <vector>
 
-#include <iostream> // DEBUGing
-#define DEBUG std::cout << " DEBUG: L" << __LINE__ << " "
+//#include <iostream> // DEBUGing
+//#define DEBUG std::cout << " DEBUG: L" << __LINE__ << " "
 
 /* ================================================
 *  CONSTRUCTOR FOR PLAYER SPRITE
@@ -59,7 +59,7 @@ bool Creature::SetUpSprite(std::string texturePath) {
 * UPDATE PLAYER POSITION
 *  Handles movement updates to the player sprite
 ================================================ */
-void Creature::UpdatePlayerPostion(std::string texturePath,
+void Creature::UpdatePostion(std::string texturePath,
                                    int xDelta,
                                    int yDelta,
                                    TileMap map,

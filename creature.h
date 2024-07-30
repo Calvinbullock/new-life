@@ -77,7 +77,7 @@ protected:
     /* ================================================
     *  Private Methods
     ================================================ */
-    void UpdatePlayerPostion(std::string texturePath,
+    void UpdatePostion(std::string texturePath,
                              int xDelta,
                              int yDelta,
                              TileMap map,

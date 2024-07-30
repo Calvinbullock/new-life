@@ -24,19 +24,19 @@ void PlayerCreature::Move(TileMap map, std::vector<Item> items) {
     //   the last int in the call is the direction they face 0 = up, 1 = left
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::W)) {
         std::cout << "you pushed W" << std::endl;
-        UpdatePlayerPostion(playerUpImg, 0, -moveAmt, map, dirUp);
+        UpdatePostion(playerUpImg, 0, -moveAmt, map, dirUp);
 
     } else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
         std::cout << "you pushed D" << std::endl;
-        UpdatePlayerPostion(playerRightImg, moveAmt, 0, map, dirRight);
+        UpdatePostion(playerRightImg, moveAmt, 0, map, dirRight);
 
     } else if (sf::Keyboard::isKeyPressed(sf::Keyboard::S)) {
         std::cout << "you pushed S" << std::endl;
-        UpdatePlayerPostion(playerDownImg, 0, moveAmt, map, dirDown);
+        UpdatePostion(playerDownImg, 0, moveAmt, map, dirDown);
 
     } else if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
         std::cout << "you pushed A" << std::endl;
-        UpdatePlayerPostion(playerLeftImg, -moveAmt, 0, map, dirLeft);
+        UpdatePostion(playerLeftImg, -moveAmt, 0, map, dirLeft);
 
     } else if (sf::Keyboard::isKeyPressed(sf::Keyboard::F)) {
         for (int i = 0; i < (int)items.size(); i++) {
