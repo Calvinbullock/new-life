@@ -13,10 +13,10 @@
 ================================================ */
 
 #include "creature.h"
+#include "gameLevel.h"
 #include "playerCreature.h"
 #include "testFiles/testRunner.h"
 #include "tileMap.cpp"
-#include "gameLevel.h"
 
 #include <SFML/Graphics.hpp>
 #include <cassert>
@@ -29,7 +29,7 @@
 
 -  NOTE: have dad read this over, ask for suggestions on formating, nameing etc
 
-- read gameLevel data from json file then
+-  NOTE: WIP - read gameLevel data from json file then
    - Move gameLevel class to own file
 
 - NPC classes.
@@ -89,6 +89,22 @@ TileMap getCaveMap() {
 }
 
 /* ================================================
+ * CREATE PLAYER
+ *
+ * Instances the player object then returns it.
+================================================ */
+PlayerCreature createPlayer(int moveAmt) {
+    // PLayer sprite direction textures
+    std::string playerSpriteMovementPaths[4] = {
+        "images/protagUp.png",
+        "images/protagRight.png",
+        "images/protagDown.png",
+        "images/protagLeft.png",
+    };
+    return PlayerCreature(52, 52, 100, moveAmt, playerSpriteMovementPaths);
+}
+
+/* ================================================
  * GAME LOOP
  *
  * Runs the main gameLoop
@@ -138,16 +154,7 @@ int main() {
     int moveAmt = 16; // Amount of pixels the player moves with each key press.
     sf::RenderWindow window(sf::VideoMode(windowWidth, windowHeight), "NewLife");
 
-    // NOTE: how to clean this up??
-    // PLayer sprite direction textures
-    std::string playerSpriteMovementPaths[4] = {
-        "images/protagUp.png",
-        "images/protagRight.png",
-        "images/protagDown.png",
-        "images/protagLeft.png",
-    };
-    PlayerCreature player =
-        PlayerCreature(52, 52, 100, moveAmt, playerSpriteMovementPaths);
+    PlayerCreature player = createPlayer(moveAmt);
 
     // TODO: get this into the GetMap
     // -- {
