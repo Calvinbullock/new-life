@@ -15,10 +15,9 @@ public:
     PlayerCreature(float startX,
                    float startY,
                    int baseHealth,
-                   std::string pathsToSpriteMovementTexturesIn[],
-                   int moveAmtIn)
-        : Creature(startX, startY, baseHealth, pathsToSpriteMovementTexturesIn),
-          moveAmt(moveAmtIn) {}
+                   int moveAmtIn,
+                   std::string pathsToSpriteMovementTexturesIn[])
+        : Creature(startX, startY, baseHealth, moveAmtIn, pathsToSpriteMovementTexturesIn) {}
 
     void Move(TileMap map, std::vector<Item> items);
 
@@ -27,5 +26,4 @@ public:
     void NpcCollision(int dmg, std::vector<Creature> npcList);
 
 private:
-    int moveAmt;
 };

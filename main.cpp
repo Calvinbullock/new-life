@@ -147,7 +147,7 @@ int main() {
         "images/protagLeft.png",
     };
     PlayerCreature player =
-        PlayerCreature(52, 52, 100, playerSpriteMovementPaths, moveAmt);
+        PlayerCreature(52, 52, 100, moveAmt, playerSpriteMovementPaths);
 
     // TODO: get this into the GetMap
     // -- {
@@ -157,7 +157,7 @@ int main() {
         "images/slimeDown.png",
         "images/slimeLeft.png",
     };
-    Creature npcSlime = Creature(83, 83, 100, slimeSpriteMovementPaths);
+    Creature npcSlime = Creature(83, 83, 100, moveAmt, slimeSpriteMovementPaths);
 
     TileMap caveMap = getCaveMap();
     Item topDoor = Item("", 64, 0);

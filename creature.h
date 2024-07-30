@@ -29,6 +29,7 @@ public:
     Creature(float startX,
              float startY,
              int baseHealth,
+             int moveAmtIn,
              std::string pathsToSpriteMovementTexturesIn[]);
 
     Creature() {}
@@ -73,6 +74,7 @@ protected:
     int currentHealth;
 
     int faceDirection; // 0 north, 1 e, 2 s, 3 west
+    int moveAmt;
 
     /* ================================================
     *  Private Methods
