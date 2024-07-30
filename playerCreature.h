@@ -20,9 +20,6 @@ public:
         : Creature(startX, startY, baseHealth, moveAmtIn, pathsToSpriteMovementTexturesIn) {}
 
     void Move(TileMap map, std::vector<Item> items);
-
-    // TODO  FIX warnings -- left off here
-    //    cuntinue moveing this into the playerCreature
     void NpcCollision(int dmg, std::vector<Creature> npcList);
 
 private:
