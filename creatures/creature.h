@@ -30,6 +30,7 @@ public:
              float startY,
              int baseHealth,
              int moveAmtIn,
+             int atkDmgIn,
              std::string pathsToSpriteMovementTexturesIn[]);
 
     Creature() {}
@@ -53,16 +54,20 @@ public:
     // destruct-er
     virtual ~Creature() {}
 
+    // get-ers
     sf::Sprite GetSprite() { return sprite; }
     sf::FloatRect GetBoundery() { return playerBoundery; }
+    int GetAtkDmg() { return atkDmg; }
 
+    // set-ers
     bool SetUpSprite(std::string texturePath);
     void SetPlayerXY(float x, float y) {
         sprite.setPosition(sf::Vector2f(x, y));
     }
 
+    // actions
+    void updateHealth(int healthDelta) { currentHealth += healthDelta; }
     virtual void Move(TileMap map, std::vector<Item> items) {}
-    virtual void Attack() {}
 
 protected:
     sf::Texture texture;
@@ -70,19 +75,21 @@ protected:
     sf::FloatRect playerBoundery;
     std::string pathsToSpriteMovementTextures[4];
 
+    // 0 north, 1 e, 2 s, 3 west
+    int faceDirection;
+
     // add a clean position var
     int initialHealth;
     int currentHealth;
-
-    int faceDirection; // 0 north, 1 e, 2 s, 3 west
     int moveAmt;
+    int atkDmg;
 
     /* ================================================
     *  Private Methods
     ================================================ */
     void UpdatePostion(std::string texturePath,
-                             int xDelta,
-                             int yDelta,
-                             TileMap map,
-                             int faceDirectionIn);
+                       int xDelta,
+                       int yDelta,
+                       TileMap map,
+                       int faceDirectionIn);
 };

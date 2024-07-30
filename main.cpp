@@ -103,7 +103,7 @@ PlayerCreature createPlayer(int moveAmt) {
         "images/protagDown.png",
         "images/protagLeft.png",
     };
-    return PlayerCreature(52, 52, 100, moveAmt, playerSpriteMovementPaths);
+    return PlayerCreature(52, 52, 100, moveAmt, 10, playerSpriteMovementPaths);
 }
 
 /* ================================================
@@ -166,7 +166,7 @@ int main() {
         "images/slimeDown.png",
         "images/slimeLeft.png",
     };
-    Creature npcSlime = Creature(83, 83, 100, moveAmt, slimeSpriteMovementPaths);
+    Creature npcSlime = Creature(83, 83, 100, moveAmt, 10, slimeSpriteMovementPaths);
 
     TileMap caveMap = getCaveMap();
     Item topDoor = Item("", 64, 0);

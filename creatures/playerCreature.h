@@ -16,10 +16,12 @@ public:
                    float startY,
                    int baseHealth,
                    int moveAmtIn,
+                   int atkDmgIn,
                    std::string pathsToSpriteMovementTexturesIn[])
-        : Creature(startX, startY, baseHealth, moveAmtIn, pathsToSpriteMovementTexturesIn) {}
+        : Creature(startX, startY, baseHealth, moveAmtIn, atkDmgIn, pathsToSpriteMovementTexturesIn) {}
 
     void Move(TileMap map, std::vector<Item> items);
+    void Attack(std::vector<Creature> creatureList);
     void NpcCollision(int dmg, std::vector<Creature> npcList);
 
 private:

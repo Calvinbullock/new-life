@@ -45,6 +45,20 @@ void PlayerCreature::Move(TileMap map, std::vector<Item> items) {
     }
 }
 
+void PlayerCreature::Attack(std::vector<Creature> npcList) {
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::L)) {
+        for (int i = 0; i < (int)npcList.size(); i++) {
+          
+            sf::FloatRect playerBound = sprite.getGlobalBounds();
+            sf::FloatRect npcBound = npcList[i].GetSprite().getGlobalBounds();
+
+            if (playerBound.intersects(npcBound)) {
+                DEBUG << currentHealth << ", " << initialHealth << std::endl;
+            }
+        }
+    }
+}
+
 // TODO tie this into PlayerMove - stop the player from moveing during a npc
 //      colistion
 /* ================================================
@@ -61,9 +75,8 @@ void PlayerCreature::NpcCollision(int dmg, std::vector<Creature> npcList) {
 
         if (playerBound.intersects(npcBound)) {
             currentHealth = currentHealth - dmg;
-            DEBUG << currentHealth << ", " << initialHealth << ", " << dmg << std::endl;
+            DEBUG << currentHealth << ", " << initialHealth << ", " << dmg
+                  << std::endl;
         }
     }
 }
-
-

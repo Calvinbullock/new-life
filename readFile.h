@@ -90,7 +90,7 @@ inline Creature ProcessCreature(vector<string> lineData) {
     int moveAmt = StringToInt(lineData[9]);
     int atkDmg = StringToInt(lineData[10]);
 
-    Creature creature = Creature(x, y, baseHeath, moveAmt, creatureTexturesPaths);
+    Creature creature = Creature(x, y, baseHeath, moveAmt, atkDmg, creatureTexturesPaths);
     return creature;
 }
 
