@@ -12,9 +12,9 @@
 *    https://www.sfml-dev.org/tutorials/2.6/graphics-vertex-array.php
 ================================================ */
 
-#include "creature.h"
+#include "creatures/creature.h"
 #include "gameLevel.h"
-#include "playerCreature.h"
+#include "creatures/playerCreature.h"
 #include "testFiles/testRunner.h"
 #include "tileMap.cpp"
 
@@ -31,6 +31,8 @@
 
 -  NOTE: WIP - read gameLevel data from json file then
    - Move gameLevel class to own file
+
+- ATTACKING - WORKING HERE --
 
 - NPC classes.
 

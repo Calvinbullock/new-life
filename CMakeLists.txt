@@ -9,7 +9,7 @@ find_package(SFML REQUIRED COMPONENTS graphics window system)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR})
 
 # Define source files
-set(SRCS items/item.cpp main.cpp tileMap.cpp creature.cpp playerCreature.cpp)
+set(SRCS items/item.cpp main.cpp tileMap.cpp creatures/creature.cpp creatures/playerCreature.cpp)
 
 # Generate object files from source files
 add_executable(newLifeEXE ${SRCS})

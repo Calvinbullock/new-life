@@ -11,7 +11,7 @@
 ================================================ */
 
 #pragma once
-#include "creature.h"
+#include "creatures/creature.h"
 #include "gameLevel.h"
 #include "items/item.h"
 

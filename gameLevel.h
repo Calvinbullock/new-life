@@ -11,8 +11,8 @@
 
 #pragma once
 
-#include "creature.h"
-#include "playerCreature.h"
+#include "creatures/creature.h"
+#include "creatures/playerCreature.h"
 #include "tileMap.cpp"
 
 class GameLevel {

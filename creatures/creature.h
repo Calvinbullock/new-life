@@ -13,8 +13,8 @@
 
 #pragma once
 
-#include "items/item.h"
-#include "tileMap.cpp"
+#include "../items/item.h"
+#include "../tileMap.cpp"
 #include <SFML/Graphics.hpp>
 #include <iostream> // for DEBUGING
 
@@ -62,6 +62,7 @@ public:
     }
 
     virtual void Move(TileMap map, std::vector<Item> items) {}
+    virtual void Attack() {}
 
 protected:
     sf::Texture texture;

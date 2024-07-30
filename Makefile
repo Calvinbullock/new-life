@@ -129,29 +129,53 @@ newLifeEXE/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/newLifeEXE.dir/build.make CMakeFiles/newLifeEXE.dir/build
 .PHONY : newLifeEXE/fast
 
-creature.o: creature.cpp.o
-.PHONY : creature.o
+creatures/creature.o: creatures/creature.cpp.o
+.PHONY : creatures/creature.o
 
 # target to build an object file
-creature.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/newLifeEXE.dir/build.make CMakeFiles/newLifeEXE.dir/creature.cpp.o
-.PHONY : creature.cpp.o
+creatures/creature.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/newLifeEXE.dir/build.make CMakeFiles/newLifeEXE.dir/creatures/creature.cpp.o
+.PHONY : creatures/creature.cpp.o
 
-creature.i: creature.cpp.i
-.PHONY : creature.i
+creatures/creature.i: creatures/creature.cpp.i
+.PHONY : creatures/creature.i
 
 # target to preprocess a source file
-creature.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/newLifeEXE.dir/build.make CMakeFiles/newLifeEXE.dir/creature.cpp.i
-.PHONY : creature.cpp.i
+creatures/creature.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/newLifeEXE.dir/build.make CMakeFiles/newLifeEXE.dir/creatures/creature.cpp.i
+.PHONY : creatures/creature.cpp.i
 
-creature.s: creature.cpp.s
-.PHONY : creature.s
+creatures/creature.s: creatures/creature.cpp.s
+.PHONY : creatures/creature.s
 
 # target to generate assembly for a file
-creature.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/newLifeEXE.dir/build.make CMakeFiles/newLifeEXE.dir/creature.cpp.s
-.PHONY : creature.cpp.s
+creatures/creature.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/newLifeEXE.dir/build.make CMakeFiles/newLifeEXE.dir/creatures/creature.cpp.s
+.PHONY : creatures/creature.cpp.s
+
+creatures/playerCreature.o: creatures/playerCreature.cpp.o
+.PHONY : creatures/playerCreature.o
+
+# target to build an object file
+creatures/playerCreature.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/newLifeEXE.dir/build.make CMakeFiles/newLifeEXE.dir/creatures/playerCreature.cpp.o
+.PHONY : creatures/playerCreature.cpp.o
+
+creatures/playerCreature.i: creatures/playerCreature.cpp.i
+.PHONY : creatures/playerCreature.i
+
+# target to preprocess a source file
+creatures/playerCreature.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/newLifeEXE.dir/build.make CMakeFiles/newLifeEXE.dir/creatures/playerCreature.cpp.i
+.PHONY : creatures/playerCreature.cpp.i
+
+creatures/playerCreature.s: creatures/playerCreature.cpp.s
+.PHONY : creatures/playerCreature.s
+
+# target to generate assembly for a file
+creatures/playerCreature.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/newLifeEXE.dir/build.make CMakeFiles/newLifeEXE.dir/creatures/playerCreature.cpp.s
+.PHONY : creatures/playerCreature.cpp.s
 
 items/item.o: items/item.cpp.o
 .PHONY : items/item.o
@@ -201,30 +225,6 @@ main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/newLifeEXE.dir/build.make CMakeFiles/newLifeEXE.dir/main.cpp.s
 .PHONY : main.cpp.s
 
-playerCreature.o: playerCreature.cpp.o
-.PHONY : playerCreature.o
-
-# target to build an object file
-playerCreature.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/newLifeEXE.dir/build.make CMakeFiles/newLifeEXE.dir/playerCreature.cpp.o
-.PHONY : playerCreature.cpp.o
-
-playerCreature.i: playerCreature.cpp.i
-.PHONY : playerCreature.i
-
-# target to preprocess a source file
-playerCreature.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/newLifeEXE.dir/build.make CMakeFiles/newLifeEXE.dir/playerCreature.cpp.i
-.PHONY : playerCreature.cpp.i
-
-playerCreature.s: playerCreature.cpp.s
-.PHONY : playerCreature.s
-
-# target to generate assembly for a file
-playerCreature.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/newLifeEXE.dir/build.make CMakeFiles/newLifeEXE.dir/playerCreature.cpp.s
-.PHONY : playerCreature.cpp.s
-
 tileMap.o: tileMap.cpp.o
 .PHONY : tileMap.o
 
@@ -258,18 +258,18 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... newLifeEXE"
-	@echo "... creature.o"
-	@echo "... creature.i"
-	@echo "... creature.s"
+	@echo "... creatures/creature.o"
+	@echo "... creatures/creature.i"
+	@echo "... creatures/creature.s"
+	@echo "... creatures/playerCreature.o"
+	@echo "... creatures/playerCreature.i"
+	@echo "... creatures/playerCreature.s"
 	@echo "... items/item.o"
 	@echo "... items/item.i"
 	@echo "... items/item.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
-	@echo "... playerCreature.o"
-	@echo "... playerCreature.i"
-	@echo "... playerCreature.s"
 	@echo "... tileMap.o"
 	@echo "... tileMap.i"
 	@echo "... tileMap.s"
