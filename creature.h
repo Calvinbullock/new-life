@@ -13,7 +13,7 @@
 
 #pragma once
 
-#include "item.h"
+#include "items/item.h"
 #include "tileMap.cpp"
 #include <SFML/Graphics.hpp>
 #include <iostream> // for DEBUGING

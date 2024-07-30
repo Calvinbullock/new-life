@@ -13,7 +13,7 @@
 ================================================ */
 
 #include "../gameLevel.h"
-#include "../item.h"
+#include "item.h"
 
 class DoorItem : public Item {
 

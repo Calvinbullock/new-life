@@ -13,7 +13,7 @@
 #pragma once
 #include "creature.h"
 #include "gameLevel.h"
-#include "item.h"
+#include "items/item.h"
 
 #include <cassert>
 #include <fstream>
