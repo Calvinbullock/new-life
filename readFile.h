@@ -85,7 +85,6 @@ inline Creature ProcessCreature(vector<string> lineData) {
  * Read the map data and parse it into a tileMap
  *    Object.
 ================================================ */
-// TODO  add tests!!!
 inline TileMap ProcessMap(vector<string> lineData) {
     vector<int> tiles;
     vector<int> passableTiles;
