@@ -1,5 +1,5 @@
 
-cmake_minimum_required(VERSION 3.0)
+cmake_minimum_required(VERSION 3.5)
 project(newLifeEXE)
 
 # Find SFML libraries
@@ -9,7 +9,7 @@ find_package(SFML REQUIRED COMPONENTS graphics window system)
 include_directories(${CMAKE_CURRENT_SOURCE_DIR})
 
 # Define source files
-set(SRCS item.cpp main.cpp tileMap.cpp creature.cpp playerCreature.cpp)
+set(SRCS items/item.cpp main.cpp tileMap.cpp creature.cpp playerCreature.cpp)
 
 # Generate object files from source files
 add_executable(newLifeEXE ${SRCS})

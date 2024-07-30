@@ -153,29 +153,29 @@ creature.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/newLifeEXE.dir/build.make CMakeFiles/newLifeEXE.dir/creature.cpp.s
 .PHONY : creature.cpp.s
 
-item.o: item.cpp.o
-.PHONY : item.o
+items/item.o: items/item.cpp.o
+.PHONY : items/item.o
 
 # target to build an object file
-item.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/newLifeEXE.dir/build.make CMakeFiles/newLifeEXE.dir/item.cpp.o
-.PHONY : item.cpp.o
+items/item.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/newLifeEXE.dir/build.make CMakeFiles/newLifeEXE.dir/items/item.cpp.o
+.PHONY : items/item.cpp.o
 
-item.i: item.cpp.i
-.PHONY : item.i
+items/item.i: items/item.cpp.i
+.PHONY : items/item.i
 
 # target to preprocess a source file
-item.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/newLifeEXE.dir/build.make CMakeFiles/newLifeEXE.dir/item.cpp.i
-.PHONY : item.cpp.i
+items/item.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/newLifeEXE.dir/build.make CMakeFiles/newLifeEXE.dir/items/item.cpp.i
+.PHONY : items/item.cpp.i
 
-item.s: item.cpp.s
-.PHONY : item.s
+items/item.s: items/item.cpp.s
+.PHONY : items/item.s
 
 # target to generate assembly for a file
-item.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/newLifeEXE.dir/build.make CMakeFiles/newLifeEXE.dir/item.cpp.s
-.PHONY : item.cpp.s
+items/item.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/newLifeEXE.dir/build.make CMakeFiles/newLifeEXE.dir/items/item.cpp.s
+.PHONY : items/item.cpp.s
 
 main.o: main.cpp.o
 .PHONY : main.o
@@ -261,9 +261,9 @@ help:
 	@echo "... creature.o"
 	@echo "... creature.i"
 	@echo "... creature.s"
-	@echo "... item.o"
-	@echo "... item.i"
-	@echo "... item.s"
+	@echo "... items/item.o"
+	@echo "... items/item.i"
+	@echo "... items/item.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
