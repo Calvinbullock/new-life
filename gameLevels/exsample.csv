@@ -1,5 +1,5 @@
 # Line Identifiyer ( C = creature, M = map, # = comment, I = item)
 #
-# identifiyer,creatureName,tex/path,tex/path,tex/path,tex/path,startX,startY,moveAmt,baseHeath,atkDmg
-C,creatureName,tex/path,tex/path,tex/path,tex/path,startX,startY,moveAmt,baseHeath,atkDmg
+# identifiyer,creatureType,tex/path,tex/path,tex/path,tex/path,startX,startY,baseHeath,moveAmt,atkDmg
+C,C,creatureName,tex/path,tex/path,tex/path,tex/path,startX,startY,baseHeath,moveAmt,atkDmg
 

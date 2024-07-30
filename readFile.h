@@ -73,9 +73,24 @@ inline vector<string> SplitLine(char delimiter, string line) {
 /* ================================================
  * PROCESS CREATURE
  *
+ * Process a basic creature object.
 ================================================ */
 inline Creature ProcessCreature(vector<string> lineData) {
-    Creature creature;
+    std::string creatureTexturesPaths[4] = {
+        lineData[2],
+        lineData[3],
+        lineData[4],
+        lineData[5],
+    };
+
+    // start Position / health
+    int x = StringToInt(lineData[6]);
+    int y = StringToInt(lineData[7]);
+    int baseHeath = StringToInt(lineData[8]);
+    int moveAmt = StringToInt(lineData[9]);
+    int atkDmg = StringToInt(lineData[10]);
+
+    Creature creature = Creature(x, y, baseHeath, moveAmt, creatureTexturesPaths);
     return creature;
 }
 
