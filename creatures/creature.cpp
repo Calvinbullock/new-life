@@ -62,6 +62,22 @@ bool Creature::SetUpSprite(std::string texturePath) {
 }
 
 /* ================================================
+* Update  Health
+* Updates the players health by what is passed in. 
+*     sets the creature to dead in current health 
+*     is equal too or less then 0.
+================================================ */
+void Creature::UpdateHealth(int healthDelta) {
+    if (currentHealth + healthDelta <= 0) {
+        currentHealth = 0;
+        isAlive = false;
+    } else if (currentHealth + healthDelta > 0) {
+        currentHealth += healthDelta;
+        isAlive = true;
+    }
+}
+
+/* ================================================
 * UPDATE PLAYER POSITION
 *  Handles movement updates to the player sprite
 ================================================ */

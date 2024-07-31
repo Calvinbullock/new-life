@@ -58,7 +58,7 @@ public:
     }
 
     // actions
-    void UpdateHealth(int healthDelta) { currentHealth += healthDelta; }
+    void UpdateHealth(int healthDelta);
     virtual void Move(TileMap map, std::vector<Item> items) {}
 
 protected:
