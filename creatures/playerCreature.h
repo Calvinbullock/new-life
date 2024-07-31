@@ -14,11 +14,11 @@ class PlayerCreature : public Creature {
 public:
     PlayerCreature(float startX,
                    float startY,
-                   int baseHealth,
+                   int baseHealthIn,
                    int moveAmtIn,
                    int atkDmgIn,
                    std::string pathsToSpriteMovementTexturesIn[])
-        : Creature(startX, startY, baseHealth, moveAmtIn, atkDmgIn, pathsToSpriteMovementTexturesIn) {}
+        : Creature(startX, startY, baseHealthIn, moveAmtIn, atkDmgIn, pathsToSpriteMovementTexturesIn) {}
 
     void Move(TileMap map, std::vector<Item> items);
     void Attack(std::vector<Creature> creatureList);
