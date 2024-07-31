@@ -8,8 +8,8 @@
 #include "creature.h"
 #include <vector>
 
-//#include <iostream> // DEBUGing
-//#define DEBUG std::cout << " DEBUG: L" << __LINE__ << " "
+// #include <iostream> // DEBUGing
+// #define DEBUG std::cout << " DEBUG: L" << __LINE__ << " "
 
 /* ================================================
 *  CONSTRUCTOR FOR PLAYER SPRITE
@@ -23,13 +23,15 @@ Creature::Creature(float startX,
                    int moveAmtIn,
                    int atkDmgIn,
                    std::string pathsToSpriteMovementTexturesIn[])
-    : texture(), sprite(), playerBoundery(), moveAmt(), atkDmg(), pathsToSpriteMovementTextures(),
-      baseHealth(), currentHealth(), faceDirection() {
+    : texture(), sprite(), playerBoundery(), moveAmt(), atkDmg(),
+      pathsToSpriteMovementTextures(), baseHealth(), currentHealth(),
+      faceDirection(), isAlive() {
 
     baseHealth = baseHealthIn;
     currentHealth = baseHealth;
     moveAmt = moveAmtIn;
     atkDmg = -atkDmgIn;
+    isAlive = true;
 
     // move sprite paths from passed in array to class array
     for (int i = 0; i < 4; i++) {
@@ -64,10 +66,10 @@ bool Creature::SetUpSprite(std::string texturePath) {
 *  Handles movement updates to the player sprite
 ================================================ */
 void Creature::UpdatePostion(std::string texturePath,
-                                   int xDelta,
-                                   int yDelta,
-                                   TileMap map,
-                                   int faceDirectionIn) {
+                             int xDelta,
+                             int yDelta,
+                             TileMap map,
+                             int faceDirectionIn) {
     Creature::faceDirection = faceDirectionIn;
 
     // checks if player sprite is in window bounds

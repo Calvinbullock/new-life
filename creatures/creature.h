@@ -15,10 +15,15 @@
 
 #include "../items/item.h"
 #include "../tileMap.cpp"
+
 #include <SFML/Graphics.hpp>
 #include <iostream> // for DEBUGING
 
+// for tests classes
+class TestCreature;
+
 class Creature {
+    friend TestCreature;
 
 public:
     /* ================================================
@@ -39,11 +44,12 @@ public:
     virtual ~Creature() {}
 
     // get-ers
-    sf::Sprite GetSprite() { return sprite; }
-    sf::FloatRect GetBoundery() { return playerBoundery; }
     int GetAtkDmg() { return atkDmg; }
     int GetCurrentHealth() { return currentHealth; }
     int GetBaseHealth() { return baseHealth; }
+    bool IsAlive() { return isAlive; }
+    sf::Sprite GetSprite() { return sprite; }
+    sf::FloatRect GetBoundery() { return playerBoundery; }
 
     // set-ers
     bool SetUpSprite(std::string texturePath);
@@ -56,19 +62,21 @@ public:
     virtual void Move(TileMap map, std::vector<Item> items) {}
 
 protected:
-    sf::Texture texture;
-    sf::Sprite sprite;
-    sf::FloatRect playerBoundery;
-    std::string pathsToSpriteMovementTextures[4];
-
-    // 0 north, 1 e, 2 s, 3 west
-    int faceDirection;
-
     // add a clean position var
     int baseHealth;
     int currentHealth;
     int moveAmt;
     int atkDmg;
+    bool isAlive;
+
+    // 0 north, 1 e, 2 s, 3 west
+    int faceDirection;
+
+    // graphics data
+    sf::Texture texture;
+    sf::Sprite sprite;
+    sf::FloatRect playerBoundery;
+    std::string pathsToSpriteMovementTextures[4];
 
     /* ================================================
     *  Private Methods
