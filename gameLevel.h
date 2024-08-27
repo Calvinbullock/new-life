@@ -46,8 +46,9 @@ public:
 
     // level actions
     void CheckCollision(PlayerCreature &player) {
-        // TODO add npc list
-        player.NpcCollision(10, npcList);
+        for (int i = 0; i < (int)npcList.size(); i++) {
+            player.NpcCollision(10, npcList);
+        }
     }
     void PlayerMove(PlayerCreature &player) { player.Move(tileMap, itemsList); }
 
