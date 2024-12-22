@@ -10,20 +10,24 @@ The actual program is not much more than a basic tile map with collisions, and a
 - Run the script `run.sh`, it will compile an update binary the run it.
 
 # Compiling
-- Run `cmake` to generate a makefile
-- Next run the `make` command.
-- The executable will be named `newLifeEXE`.
-- on Linux run the file using `./newLifeEXE`.
+
+## Linux / Mac
+- `mkdir build`  may need to make the build dir
+- `cd build`     move into the build dir
+- `cmake ..`     run the cmake conf in the parent dir
+- `make`         run the newly build make file
+- `./newLifeEXE` run the binary file
+- `chmod +x newLifeEXE` may need to give the binary executable permission.
 
 # Development Environment
-Editors / Tools: 
-- Neovim 
+Editors / Tools:
+- Neovim
 - VS code
 - clang-format
 - Make / Cmake
 
 Languages/frameworks/libraries:
-- c++ 
+- c++
 - sfml graphics library.
 
 # Useful Websites
