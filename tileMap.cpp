@@ -7,6 +7,7 @@
 
 #include <SFML/Graphics.hpp>
 #include <cassert>
+#include <iostream>
 #include <vector>
 
 #ifndef TILEMAP_H
@@ -25,6 +26,7 @@ public:
               unsigned int width,
               unsigned int height,
               std::vector<int> passableTilesIn) {
+
         // load the tileset texture
         if (!m_tileset.loadFromFile(tileset))
             return false;

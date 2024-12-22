@@ -124,8 +124,14 @@ inline TileMap ProcessMap(vector<string> lineData) {
     }
 
     // load / set up the tileMap object
-    if (!tileMap.load(texturePath, sf::Vector2u(32, 32), tiles, mapLength,
-                      mapWidth, passableTiles))
+    if (!tileMap.load(texturePath,
+                      sf::Vector2u(32, 32),
+                      tiles,
+                      mapLength,
+                      mapWidth,
+                      passableTiles)) {
+        cout << "ERROR "<< texturePath << " texture not found -- crash\n" << endl;
+    }
         assert(false); // if load fails, crash
 
     return tileMap;

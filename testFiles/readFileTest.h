@@ -110,12 +110,12 @@ inline int TestProcessMap_Simple() {
    // *setup
    vector<string> lineData;
    lineData.push_back("M");
-   lineData.push_back("images/dungon-src.png");
-   
+   lineData.push_back("../images/dungon-src.png");
+
    // length X width
    lineData.push_back("3");
    lineData.push_back("3");
-   
+
    // tiles
    lineData.push_back("3");
    lineData.push_back("3");
@@ -154,10 +154,10 @@ inline void Run_ReadFileTests() {
 
     if (TestStringToInt() == 1)
         cout << "TestStringToInt - Fail" << endl;
-   
+
     if (TestProcessMap_Simple() == 1)
         cout << "TestProcessMap_Simple - Fail" << endl;
-        
+
    cout << "Run_ReadFileTests - Pass" << endl;
 }
 

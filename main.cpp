@@ -83,7 +83,7 @@ TileMap getCaveMap() {
     cavePassable.push_back(4);
 
     // load all the parts to create a tile map
-    if (!caveMap.load("images/dungon-src.png", sf::Vector2u(32, 32), cave, 16, 8,
+    if (!caveMap.load("../images/dungon-src.png", sf::Vector2u(32, 32), cave, 16, 8,
                       cavePassable))
         assert(false); // if load fails, crash
 
@@ -98,10 +98,10 @@ TileMap getCaveMap() {
 PlayerCreature createPlayer(int moveAmt) {
     // PLayer sprite direction textures
     std::string playerSpriteMovementPaths[4] = {
-        "images/protagUp.png",
-        "images/protagRight.png",
-        "images/protagDown.png",
-        "images/protagLeft.png",
+        "../images/protagUp.png",
+        "../images/protagRight.png",
+        "../images/protagDown.png",
+        "../images/protagLeft.png",
     };
     return PlayerCreature(52, 52, 100, moveAmt, 10, playerSpriteMovementPaths);
 }
@@ -149,7 +149,7 @@ void GameLoop(sf::RenderWindow &window,
 *  Main Function
 ================================================ */
 int main() {
-    TestRunner();
+    //TestRunner();
 
     float windowWidth = 512;
     float windowHeight = 256;
