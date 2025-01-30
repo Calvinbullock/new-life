@@ -47,6 +47,8 @@ public:
     int GetAtkDmg() { return atkDmg; }
     int GetCurrentHealth() { return currentHealth; }
     int GetBaseHealth() { return baseHealth; }
+    int GetXPos() { return sprite.getPosition().x; }
+    int GetYPos() { return sprite.getPosition().y; }
     bool IsAlive() { return isAlive; }
     sf::Sprite GetSprite() { return sprite; }
     sf::FloatRect GetBoundery() { return playerBoundery; }
