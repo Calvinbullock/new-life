@@ -114,9 +114,7 @@ PlayerCreature createPlayer(int moveAmt) {
  * - Key events
  * - Collisions
 ================================================ */
-void GameLoop(sf::RenderWindow &window,
-              GameLevel &level,
-              PlayerCreature &player) {
+void GameLoop(sf::RenderWindow &window, GameLevel &level, PlayerCreature &player) {
     // Main event / game loop
     while (window.isOpen()) {
         sf::Event event;
@@ -161,10 +159,10 @@ int main() {
     // TODO: get this into the GetMap
     // -- {
     std::string slimeSpriteMovementPaths[4] = {
-        "images/slimeUp.png",
-        "images/slimeRight.png",
-        "images/slimeDown.png",
-        "images/slimeLeft.png",
+        "../images/slimeUp.png",
+        "../images/slimeRight.png",
+        "../images/slimeDown.png",
+        "../images/slimeLeft.png",
     };
     Creature npcSlime = Creature(83, 83, 100, moveAmt, 10, slimeSpriteMovementPaths);
 
