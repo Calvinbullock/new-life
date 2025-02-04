@@ -17,13 +17,14 @@
 *    pathsToSpriteMovementTexturesIn:
 *       should be four paths - {left, right, up, down}
 ================================================ */
-Creature::Creature(float startX,
-                   float startY,
-                   int baseHealthIn,
-                   int moveAmtIn,
-                   int atkDmgIn,
-                   std::string pathsToSpriteMovementTexturesIn[])
-    : texture(), sprite(), playerBoundery(), moveAmt(), atkDmg(),
+Creature::Creature(
+    float startX,
+    float startY,
+    int baseHealthIn,
+    int moveAmtIn,
+    int atkDmgIn,
+    std::string pathsToSpriteMovementTexturesIn[]
+) : texture(), sprite(), playerBoundery(), moveAmt(), atkDmg(),
       pathsToSpriteMovementTextures(), baseHealth(), currentHealth(),
       faceDirection(), isAlive() {
 
@@ -63,8 +64,8 @@ bool Creature::SetUpSprite(std::string texturePath) {
 
 /* ================================================
 * Update  Health
-* Updates the players health by what is passed in. 
-*     sets the creature to dead in current health 
+* Updates the players health by what is passed in.
+*     sets the creature to dead in current health
 *     is equal too or less then 0.
 ================================================ */
 void Creature::UpdateHealth(int healthDelta) {
