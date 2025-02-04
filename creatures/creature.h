@@ -31,12 +31,14 @@ public:
     *  Note: pathsToSpriteMovementTexturesIn:
     *       should be four paths in this arr - {left, right, up, down}
     ================================================ */
-    Creature(float startX,
-             float startY,
-             int baseHealthIn,
-             int moveAmtIn,
-             int atkDmgIn,
-             std::string pathsToSpriteMovementTexturesIn[]);
+    Creature(
+        float startX,
+        float startY,
+        int baseHealthIn,
+        int moveAmtIn,
+        int atkDmgIn,
+        std::string pathsToSpriteMovementTexturesIn[]
+    );
 
     Creature() {}
 
@@ -83,9 +85,11 @@ protected:
     /* ================================================
     *  Private Methods
     ================================================ */
-    void UpdatePostion(std::string texturePath,
-                       int xDelta,
-                       int yDelta,
-                       TileMap map,
-                       int faceDirectionIn);
+    void UpdatePostion(
+        std::string texturePath,
+        int xDelta,
+        int yDelta,
+        TileMap map,
+        int faceDirectionIn
+    );
 };
