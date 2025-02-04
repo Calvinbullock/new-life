@@ -1,8 +1,35 @@
 
 #include "playerCreature.h"
+#include "creature.h"
 
 #include <iostream> // DEBUGing
 #define DEBUG std::cout << " DEBUG: L" << __LINE__ << " "
+
+
+// TODO: this needs to be moved (maybe to sprite moves class)
+/* ================================================
+*  Deals knock back to the defending sprite
+*  Parameters:
+*   attacker - deals knock back
+*   defender - receives knock back
+================================================ */
+inline void spriteKnockBack(Creature attacker, Creature defender) {
+    int xAxis = defender.GetXPos() - attacker.GetXPos();
+    int yAxis = defender.GetYPos() - attacker.GetYPos();
+
+    if (xAxis > 0) {
+        // TODO:
+        // if xAxis is neg then move player back
+    } else if (xAxis < 0) {
+        // if xAxis is neg then move player forward
+    }
+
+    if (yAxis > 0) {
+        // if yAxis is neg then move player back
+    } else if (yAxis < 0) {
+        // if yAxis is neg then move player forward
+    }
+}
 
 /* ================================================
 *  Handles sprite movements
@@ -48,18 +75,25 @@ void PlayerCreature::Move(TileMap map, std::vector<Item> items) {
 void PlayerCreature::Attack(std::vector<Creature> npcList) {
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::L)) {
         for (int i = 0; i < (int)npcList.size(); i++) {
-          
+
             sf::FloatRect playerBound = sprite.getGlobalBounds();
             sf::FloatRect npcBound = npcList[i].GetSprite().getGlobalBounds();
 
             if (playerBound.intersects(npcBound)) {
-                DEBUG << currentHealth << ", " << initialHealth << std::endl;
+                npcList[i].UpdateHealth(atkDmg);
+
+                DEBUG << "HP / Base " << std::endl;
+                DEBUG << currentHealth << ", " << baseHealth << std::endl;
+                DEBUG << currentHealth << ", " << baseHealth << std::endl;
+                DEBUG << npcList[i].GetCurrentHealth() << ", ";
+                std::cout << npcList[i].GetBaseHealth() << std::endl;
+                DEBUG << std::endl;
             }
         }
     }
 }
 
-// TODO tie this into PlayerMove - stop the player from moveing during a npc
+// TODO: tie this into PlayerMove - stop the player from moveing during a npc
 //      colistion
 /* ================================================
 *  Checks for collisions between the NPC and
@@ -71,12 +105,29 @@ void PlayerCreature::NpcCollision(int dmg, std::vector<Creature> npcList) {
     for (int i = 0; i < vectorLength; i++) {
 
         sf::FloatRect playerBound = sprite.getGlobalBounds();
-        sf::FloatRect npcBound = npcList[i].GetSprite().getGlobalBounds();
+        int playerXPos = sprite.getPosition().x;
+        int playerYPos = sprite.getPosition().y;
 
+        sf::FloatRect npcBound = npcList[i].GetSprite().getGlobalBounds();
+        int npcXPos = npcList[i].GetXPos();
+        int npcYPos = npcList[i].GetYPos();
+
+        // collision check
         if (playerBound.intersects(npcBound)) {
-            currentHealth = currentHealth - dmg;
-            DEBUG << currentHealth << ", " << initialHealth << ", " << dmg
-                  << std::endl;
+            if (currentHealth > 0) {
+                currentHealth = currentHealth - dmg;
+                spriteKnockBack(npcList[i], *this);
+
+            } else
+                // TODO: Player dies logic....
+                DEBUG << "-- DEAD --" << std::endl;
+
+
+            DEBUG << "Player " << std::endl;
+            DEBUG << "HP / Base " << std::endl;
+            DEBUG << currentHealth << " / " << baseHealth << ", " << dmg;
+            std::cout << std::endl;
+            std::cout << std::endl;
         }
     }
 }

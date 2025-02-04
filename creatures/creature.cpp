@@ -34,6 +34,9 @@ Creature::Creature(
     atkDmg = -atkDmgIn;
     isAlive = true;
 
+    // populate moveTypes
+    MoveTypeSetUP();
+
     // move sprite paths from passed in array to class array
     for (int i = 0; i < 4; i++) {
         pathsToSpriteMovementTextures[i] = pathsToSpriteMovementTexturesIn[i];

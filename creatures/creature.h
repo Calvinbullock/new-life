@@ -15,9 +15,11 @@
 
 #include "../items/item.h"
 #include "../tileMap.cpp"
+#include "moveTypes.h"
 
 #include <SFML/Graphics.hpp>
 #include <iostream> // for DEBUGING
+#include <vector>
 
 // for tests classes
 class TestCreature;
@@ -43,7 +45,13 @@ public:
     Creature() {}
 
     // destruct-er
-    virtual ~Creature() {}
+    virtual ~Creature() {
+        for (MoveType* moveType : moveTypes) {
+            // BUG: this delete is segfault-ing
+            //delete moveType;
+        }
+        moveTypes.clear();
+    }
 
     // get-ers
     int GetAtkDmg() { return atkDmg; }
@@ -81,6 +89,14 @@ protected:
     sf::Sprite sprite;
     sf::FloatRect playerBoundery;
     std::string pathsToSpriteMovementTextures[4];
+
+    // movement
+    std::vector<MoveType*> moveTypes;
+    int defaultMove;
+
+    void MoveTypeSetUP() {
+        moveTypes.push_back(new BasicPlayerMovement());
+    }
 
     /* ================================================
     *  Private Methods
